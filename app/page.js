@@ -43,6 +43,19 @@ const heroBoards = [
   },
 ];
 
+const marqueeBoards = [
+  { title: 'Core King Club 710', sub: 'IS:710 Marine BWP', icon: '🪵' },
+  { title: '±0.1mm Dual Calibration', sub: 'CNC Wide Belt Sanded', icon: '📐' },
+  { title: 'Kiln-Seasoned Pine Blockboard', sub: 'Warp-Free Solid Core', icon: '🌲' },
+  { title: '72-Hour Boiling Water Proof', sub: 'Pure Phenolic Bond', icon: '💧' },
+  { title: '30-Year Replacement Guarantee', sub: 'Direct Factory Warranty', icon: '🛡️' },
+  { title: 'Core King Gold BWR', sub: 'IS:303 Commercial Grade', icon: '✨' },
+  { title: 'Platinum Fire-Shield', sub: 'IS:5509 Fire Retardant', icon: '🔥' },
+  { title: 'Yamunanagar Works', sub: '4X Hot Press Facility', icon: '🏭' },
+  { title: 'E0 Eco Emission Grade', sub: 'Safe Indoor Air', icon: '🌿' },
+  { title: 'Pro Shuttering Board', sub: '30+ Repetitions', icon: '🏗️' },
+];
+
 export default function HomePage() {
   const [activeBoard, setActiveBoard] = useState(0);
 
@@ -168,7 +181,29 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 2. STATS TICKER BAR */}
+      {/* 2. INFINITE BOARDING & BRAND MARQUEE RIBBON */}
+      <section className="infinite-boarding-section" aria-label="Core King Wood Technologies Marquee">
+        <div className="infinite-boarding-track">
+          {marqueeBoards.map((item, index) => (
+            <div key={`m1-${index}`} className="infinite-board-pill">
+              <span className="infinite-board-icon">{item.icon}</span>
+              <strong>{item.title}</strong>
+              <span className="infinite-board-dot-sep" />
+              <span className="sub">{item.sub}</span>
+            </div>
+          ))}
+          {marqueeBoards.map((item, index) => (
+            <div key={`m2-${index}`} className="infinite-board-pill">
+              <span className="infinite-board-icon">{item.icon}</span>
+              <strong>{item.title}</strong>
+              <span className="infinite-board-dot-sep" />
+              <span className="sub">{item.sub}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* 3. STATS TICKER BAR */}
       <section className="stats-ticker-section">
         <div className="container">
           <div className="stats-grid">
