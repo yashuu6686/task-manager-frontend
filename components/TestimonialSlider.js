@@ -12,7 +12,7 @@ export default function TestimonialSlider() {
           <h2>Specified by India&apos;s Top Design Studios</h2>
           <p>
             From sea-facing penthouses in Mumbai to high-volume modular kitchen factories in Punjab,
-            hear what industry professionals say about Briterply.
+            hear what industry professionals say about Core King Ply.
           </p>
         </div>
 

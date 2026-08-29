@@ -1,6 +1,8 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, CheckCircle2, ShieldCheck, Sparkles, Award, Layers3, Flame, Droplets, Phone, MessageCircle } from 'lucide-react';
 import AnimationWrapper from '@/components/AnimationWrapper';
 import FeatureCard from '@/components/FeatureCard';
@@ -14,7 +16,43 @@ import TestimonialSlider from '@/components/TestimonialSlider';
 import FaqAccordion from '@/components/FaqAccordion';
 import { companyInfo, featureList, homeHighlights, products, quickStats, trustPoints, whyPlywood } from '@/data/siteData';
 
+const heroBoards = [
+  {
+    image: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1200&q=80',
+    title: 'Core King Club 710',
+    tag: 'IS:710 BWP Marine Grade',
+    desc: '4-Stage Press • 72h Boil Proof Gurjan Core',
+  },
+  {
+    image: 'https://images.unsplash.com/photo-1538688525198-9b88f6f53126?auto=format&fit=crop&w=1200&q=80',
+    title: 'Core King Pine Blockboard',
+    tag: 'IS:1659 Warp-Free Pine Core',
+    desc: 'Kiln-Seasoned Solid Pine Battens',
+  },
+  {
+    image: 'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1200&q=80',
+    title: 'Core King Gold BWR',
+    tag: 'IS:303 Commercial Interior',
+    desc: '±0.1mm Dual-Sided Machine Calibrated',
+  },
+  {
+    image: 'https://images.unsplash.com/photo-1541123437800-1bb1317badc2?auto=format&fit=crop&w=1200&q=80',
+    title: 'Core King Platinum Fire-Shield',
+    tag: 'IS:5509 Fire Retardant',
+    desc: 'Vacuum Impregnated • 30+ Min Flame Shield',
+  },
+];
+
 export default function HomePage() {
+  const [activeBoard, setActiveBoard] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveBoard((prev) => (prev + 1) % heroBoards.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <>
       {/* 1. HERO SECTION */}
@@ -28,7 +66,7 @@ export default function HomePage() {
               Engineered <span className="text-highlight">Calibrated Plywood</span> For Luxury Spaces.
             </h1>
             <p>
-              Briterply manufactures ultra-flat calibrated plywood, marine grade BWP 710, and architectural
+              Core King Ply manufactures ultra-flat calibrated plywood, marine grade BWP 710, and architectural
               blockboards using 4-time hydraulic press technology and pure phenolic resins.
             </p>
 
@@ -61,10 +99,47 @@ export default function HomePage() {
           <AnimationWrapper className="hero-visual" delay={0.15}>
             <div className="hero-visual-card">
               <div className="hero-image-wrapper">
-                <img
-                  src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1200&q=80"
-                  alt="Briterply Calibrated Plywood Architectural Display"
-                />
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={activeBoard}
+                    initial={{ opacity: 0, scale: 1.05 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.98 }}
+                    transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                    style={{ width: '100%', height: '100%', position: 'absolute', inset: 0 }}
+                  >
+                    <img
+                      src={heroBoards[activeBoard].image}
+                      alt={heroBoards[activeBoard].title}
+                    />
+                  </motion.div>
+                </AnimatePresence>
+
+                <div className="hero-board-overlay" />
+
+                {/* Interactive Board Indicators */}
+                <div className="hero-board-indicators">
+                  {heroBoards.map((board, i) => (
+                    <button
+                      key={board.title}
+                      type="button"
+                      onClick={() => setActiveBoard(i)}
+                      className={`hero-board-dot ${i === activeBoard ? 'active' : ''}`}
+                      aria-label={`View ${board.title}`}
+                      title={board.title}
+                    />
+                  ))}
+                </div>
+
+                {/* Active Board Live Info */}
+                <div className="hero-board-info">
+                  <span className="hero-board-tag">
+                    <span className="live-pulse-dot" />
+                    <span>{heroBoards[activeBoard].tag}</span>
+                  </span>
+                  <h3>{heroBoards[activeBoard].title}</h3>
+                  <p>{heroBoards[activeBoard].desc}</p>
+                </div>
               </div>
 
               {/* Floating Stat Top */}
@@ -140,7 +215,7 @@ export default function HomePage() {
         <div className="container">
           <SectionHeading
             eyebrow="Precision Engineering"
-            title="The 6 Pillars of Briterply Quality"
+            title="The 6 Pillars of Core King Ply Quality"
             description="Every sheet is engineered to outperform standard commercial plywood in water resistance, tensile strength, and joinery finish."
             align="center"
           />

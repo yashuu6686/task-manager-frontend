@@ -12,7 +12,7 @@ const initialState = {
   email: '',
   city: '',
   role: roles[0],
-  productInterest: 'Briter Club 710 (BWP)',
+  productInterest: 'Core King Club 710 (BWP)',
   sheetsQuantity: '',
   message: '',
 };
@@ -61,7 +61,7 @@ export default function ContactForm() {
   };
 
   const handleWhatsAppRedirect = () => {
-    const text = `Hi Briterply Team! New Quote Request from Website:\n- Name: ${form.name || 'Not provided'}\n- Phone: ${form.phone || 'Not provided'}\n- Role: ${form.role}\n- Location: ${form.city || 'Not provided'}\n- Product Interest: ${form.productInterest}\n- Estimated Requirement: ${form.sheetsQuantity || 'Not specified'}\n- Message: ${form.message || 'None'}`;
+    const text = `Hi Core King Ply Team! New Quote Request from Website:\n- Name: ${form.name || 'Not provided'}\n- Phone: ${form.phone || 'Not provided'}\n- Role: ${form.role}\n- Location: ${form.city || 'Not provided'}\n- Product Interest: ${form.productInterest}\n- Estimated Requirement: ${form.sheetsQuantity || 'Not specified'}\n- Message: ${form.message || 'None'}`;
     window.open(`https://wa.me/919624277017?text=${encodeURIComponent(text)}`, '_blank');
   };
 

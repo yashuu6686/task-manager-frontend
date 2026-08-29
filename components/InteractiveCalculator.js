@@ -6,11 +6,11 @@ import { Calculator, CheckCircle2, ArrowRight, Sparkles, MessageCircle, HelpCirc
 import { companyInfo } from '@/data/siteData';
 
 const applications = [
-  { id: 'kitchen', label: 'Modular Kitchen & Wet Zone', defaultThickness: '16mm / 19mm', recommended: 'Briter Club 710 (BWP)', factor: 1.4 },
-  { id: 'wardrobe', label: 'Full-Height Wardrobe & Closets', defaultThickness: '19mm Pine Blockboard', recommended: 'Briter Club Blockboard', factor: 1.2 },
-  { id: 'living', label: 'Living Room & TV Units', defaultThickness: '12mm / 16mm', recommended: 'Briter Gold BWR', factor: 1.1 },
-  { id: 'ceiling', label: 'Wall Paneling & Ceiling', defaultThickness: '6mm / 9mm', recommended: 'Briter Gold BWR', factor: 0.9 },
-  { id: 'commercial', label: 'Commercial & Hospitality Fire Zone', defaultThickness: '16mm / 19mm', recommended: 'Briter Platinum Fire-Shield', factor: 1.5 },
+  { id: 'kitchen', label: 'Modular Kitchen & Wet Zone', defaultThickness: '16mm / 19mm', recommended: 'Core King Club 710 (BWP)', factor: 1.4 },
+  { id: 'wardrobe', label: 'Full-Height Wardrobe & Closets', defaultThickness: '19mm Pine Blockboard', recommended: 'Core King Pine Blockboard', factor: 1.2 },
+  { id: 'living', label: 'Living Room & TV Units', defaultThickness: '12mm / 16mm', recommended: 'Core King Gold BWR', factor: 1.1 },
+  { id: 'ceiling', label: 'Wall Paneling & Ceiling', defaultThickness: '6mm / 9mm', recommended: 'Core King Gold BWR', factor: 0.9 },
+  { id: 'commercial', label: 'Commercial & Hospitality Fire Zone', defaultThickness: '16mm / 19mm', recommended: 'Core King Platinum Fire-Shield', factor: 1.5 },
 ];
 
 export default function InteractiveCalculator() {
@@ -30,7 +30,7 @@ export default function InteractiveCalculator() {
   }, [areaSqFt]);
 
   const whatsappInquiryUrl = `https://wa.me/919624277017?text=${encodeURIComponent(
-    `Hello Briterply, I calculated my requirement on your website:\n- Application: ${currentApp.label}\n- Approximate Area: ${areaSqFt} sq.ft\n- Recommended Grade: ${currentApp.recommended}\n- Estimated Sheets (8x4 ft): ~${estimatedSheets} sheets\nPlease share direct factory quotation and dealer availability.`
+    `Hello Core King Ply, I calculated my requirement on your website:\n- Application: ${currentApp.label}\n- Approximate Area: ${areaSqFt} sq.ft\n- Recommended Grade: ${currentApp.recommended}\n- Estimated Sheets (8x4 ft): ~${estimatedSheets} sheets\nPlease share direct factory quotation and dealer availability.`
   )}`;
 
   return (

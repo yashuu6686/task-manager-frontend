@@ -15,9 +15,9 @@ const thicknessGuide = [
 ];
 
 const qualityTestsToTry = [
-  { title: 'The Boiling Water Test (BWP)', desc: 'Cut a 2-inch sample and boil it in water for 72 hours. True BWP Marine plywood like Briter Club will show zero layer delamination or glue line failure.' },
+  { title: 'The Boiling Water Test (BWP)', desc: 'Cut a 2-inch sample and boil it in water for 72 hours. True BWP Marine plywood like Core King Club will show zero layer delamination or glue line failure.' },
   { title: 'The Cross-Section Core Gap Check', desc: 'Inspect the exposed edges. Cheap plywood shows hollow air cavities and overlapping veneers, which leads to weak screw holding and sagging.' },
-  { title: 'The Thickness Caliper Test', desc: 'Measure thickness across all 4 corners and center with a digital vernier micrometer. Briterply maintains uniform thickness within ±0.1mm tolerance.' },
+  { title: 'The Thickness Caliper Test', desc: 'Measure thickness across all 4 corners and center with a digital vernier micrometer. Core King Ply maintains uniform thickness within ±0.1mm tolerance.' },
   { title: 'Nail & Screw Retention Test', desc: 'Drive a 2-inch drywall screw 10mm from the edge. High-density hardwood plywood holds firmly without edge splitting.' },
 ];
 

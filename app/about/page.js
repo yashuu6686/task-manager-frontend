@@ -29,7 +29,7 @@ export default function AboutPage() {
               Rooted in Yamunanagar, India&apos;s Timber Capital
             </h2>
             <p style={{ fontSize: '1.05rem', color: 'var(--color-body)', lineHeight: 1.7, marginBottom: '1rem' }}>
-              Founded over 25 years ago in Yamunanagar (Haryana), Briterply was born out of a single
+              Founded over 25 years ago in Yamunanagar (Haryana), Core King Ply was born out of a single
               obsessive goal: to eliminate thickness variation, core voids, and delamination from Indian
               plywood.
             </p>
@@ -68,7 +68,7 @@ export default function AboutPage() {
           <div style={{ borderRadius: '24px', overflow: 'hidden', boxShadow: 'var(--shadow-xl)', border: '1px solid var(--color-border)' }}>
             <img
               src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1200&q=80"
-              alt="Briterply Yamunanagar Manufacturing Plant"
+              alt="Core King Ply Yamunanagar Manufacturing Plant"
               style={{ width: '100%', height: '100%', objectFit: 'cover' }}
             />
           </div>

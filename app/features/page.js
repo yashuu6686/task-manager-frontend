@@ -27,7 +27,7 @@ export default function FeaturesEngineeringPage() {
           <h1>Precision Wood Engineering</h1>
           <p>
             Discover the thermal fusion, automated core composing, and Japanese wide-belt calibration
-            technologies that give Briterply an unbreakable structural advantage.
+            technologies that give Core King Ply an unbreakable structural advantage.
           </p>
         </div>
       </div>

@@ -13,7 +13,7 @@ export default function ContactPage() {
       <div className="page-header">
         <div className="container">
           <span className="eyebrow eyebrow-dark">Direct Factory Access</span>
-          <h1>Contact Briterply Works</h1>
+          <h1>Contact Core King Ply Works</h1>
           <p>
             Connect directly with our manufacturing headquarters in Yamunanagar, Haryana.
             Request product quotations, dealer inquiries, or complimentary sample folders.

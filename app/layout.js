@@ -4,13 +4,13 @@ import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 
 export const metadata = {
-  metadataBase: new URL("https://briterply.com"),
+  metadataBase: new URL("https://corekingply.com"),
   title: {
-    default: "Briterply | Premium Calibrated Plywood",
-    template: "%s | Briterply",
+    default: "Core King Ply | Premium Calibrated Plywood",
+    template: "%s | Core King Ply",
   },
   description:
-    "Briterply manufactures premium calibrated plywood for furniture, interiors, commercial projects, and construction with strength, precision, and lasting durability.",
+    "Core King Ply manufactures premium calibrated plywood for furniture, interiors, commercial projects, and construction with strength, precision, and lasting durability.",
   keywords: [
     "plywood",
     "calibrated plywood",
@@ -20,13 +20,14 @@ export const metadata = {
     "furniture plywood",
     "interior plywood",
     "commercial plywood",
+    "Core King Ply",
   ],
   openGraph: {
-    title: "Briterply | Premium Calibrated Plywood",
+    title: "Core King Ply | Premium Calibrated Plywood",
     description:
       "Premium plywood solutions for furniture, interiors, and construction built with strength, precision, and trust.",
-    url: "https://briterply.com",
-    siteName: "Briterply",
+    url: "https://corekingply.com",
+    siteName: "Core King Ply",
     images: [
       "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1200&q=80",
     ],
@@ -40,7 +41,7 @@ export default function RootLayout({ children }) {
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='16' fill='%231b1b1a'/><text x='50%' y='58%' dominant-baseline='middle' text-anchor='middle' fill='%23f4efe4' font-family='Arial' font-size='32' font-weight='700'>B</text></svg>" />
+        <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='16' fill='%231b1b1a'/><text x='50%' y='58%' dominant-baseline='middle' text-anchor='middle' fill='%23f4efe4' font-family='Arial' font-size='26' font-weight='700'>CK</text></svg>" />
       </head>
       <body>
         <Header />

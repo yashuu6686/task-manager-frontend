@@ -9,9 +9,9 @@ export default function ComparisonTable() {
       <div className="container">
         <div className="section-heading centered">
           <span className="eyebrow">Engineering Superiority</span>
-          <h2>Briterply vs. Ordinary Market Plywood</h2>
+          <h2>Core King Ply vs. Ordinary Market Plywood</h2>
           <p>
-            Why leading architects and premium modular interior manufacturers insist on Briterply
+            Why leading architects and premium modular interior manufacturers insist on Core King Ply
             calibrated boards over conventional market alternatives.
           </p>
         </div>
@@ -24,10 +24,10 @@ export default function ComparisonTable() {
                 <th className="featured">
                   <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
                     <Sparkles size={18} />
-                    <span>Briter Club 710 (Flagship)</span>
+                    <span>Core King Club 710 (Flagship)</span>
                   </div>
                 </th>
-                <th>Briter Gold (BWR Grade)</th>
+                <th>Core King Gold (BWR Grade)</th>
                 <th>Regular Local Plywood</th>
               </tr>
             </thead>
@@ -38,13 +38,13 @@ export default function ComparisonTable() {
                   <td className="featured-col">
                     <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.45rem' }}>
                       <Check size={16} color="#d97706" style={{ marginTop: '0.2rem', flexShrink: 0 }} />
-                      <span>{row.briterClub}</span>
+                      <span>{row.coreKingClub}</span>
                     </div>
                   </td>
                   <td>
                     <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.45rem' }}>
                       <Check size={16} color="#059669" style={{ marginTop: '0.2rem', flexShrink: 0 }} />
-                      <span>{row.briterGold}</span>
+                      <span>{row.coreKingGold}</span>
                     </div>
                   </td>
                   <td style={{ color: '#94a3b8' }}>

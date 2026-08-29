@@ -11,8 +11,8 @@ export default function WhatsAppButton() {
       target="_blank"
       rel="noreferrer"
       className="whatsapp-float"
-      aria-label="Chat with Briterply Plywood Specialist on WhatsApp"
-      title="Chat with Briterply Plywood Specialist on WhatsApp"
+      aria-label="Chat with Core King Ply Specialist on WhatsApp"
+      title="Chat with Core King Ply Specialist on WhatsApp"
     >
       <MessageCircle size={28} strokeWidth={2.2} />
     </Link>

@@ -8,13 +8,13 @@ export default function Footer() {
       <div className="container">
         <div className="footer-top-grid">
           <div>
-            <Link href="/" className="brand footer-brand" aria-label="Briterply Home">
+            <Link href="/" className="brand footer-brand" aria-label="Core King Ply Home">
               <div className="brand-mark">
-                <span className="brand-letter">B</span>
+                <span className="brand-letter">CK</span>
               </div>
               <div className="brand-details">
                 <span className="brand-text">
-                  Briter<span style={{ color: '#f59e0b' }}>ply</span>
+                  Core King <span style={{ color: '#f59e0b' }}>Ply</span>
                 </span>
                 <span className="brand-tagline" style={{ color: 'rgba(255, 255, 255, 0.6)' }}>
                   Yamunanagar, India
@@ -94,7 +94,7 @@ export default function Footer() {
         </div>
 
         <div className="footer-bottom">
-          <p>© {new Date().getFullYear()} Briterply Industries. All Rights Reserved. Crafted for Architectural Excellence.</p>
+          <p>© {new Date().getFullYear()} Core King Ply Industries. All Rights Reserved. Crafted for Architectural Excellence.</p>
           <p>BIS Certified Manufacturing Unit • Yamunanagar, Haryana</p>
         </div>
 

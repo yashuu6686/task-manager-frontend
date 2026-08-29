@@ -53,12 +53,14 @@ export default function Header() {
       <header className={`site-header ${isScrolled ? 'scrolled' : ''}`}>
         <div className="container nav-shell">
           <Link href="/" className="brand" aria-label="Core King Ply Home">
-            <div className="brand-logo-wrap">
-              <img
-                src="/logo.png"
-                alt="Core King - Ply • Board • Door"
-                className="header-brand-img"
-              />
+            <div className="brand-mark">
+              <span className="brand-letter">CK</span>
+            </div>
+            <div className="brand-details">
+              <span className="brand-text">
+                Core King <span>Ply</span>
+              </span>
+              <span className="brand-tagline">Ply • Board • Door</span>
             </div>
           </Link>
 
