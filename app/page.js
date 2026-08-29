@@ -1,263 +1,229 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
-import Header from './components/Header';
-import StatsCards from './components/StatsCards';
-import FilterBar from './components/FilterBar';
-import KanbanBoard from './components/KanbanBoard';
-import TaskListView from './components/TaskListView';
-import TaskModal from './components/TaskModal';
-import CategoryModal from './components/CategoryModal';
-import ProjectModal from './components/ProjectModal';
-import TaskDetailModal from './components/TaskDetailModal';
+import Link from 'next/link';
+import { ArrowRight, CheckCircle2, ShieldCheck, Sparkles, Award, Layers3, Flame, Droplets, Phone, MessageCircle } from 'lucide-react';
+import AnimationWrapper from '@/components/AnimationWrapper';
+import FeatureCard from '@/components/FeatureCard';
+import ProductCard from '@/components/ProductCard';
+import SectionHeading from '@/components/SectionHeading';
+import ContactForm from '@/components/ContactForm';
+import InteractiveCalculator from '@/components/InteractiveCalculator';
+import ComparisonTable from '@/components/ComparisonTable';
+import QualityLabSection from '@/components/QualityLabSection';
+import TestimonialSlider from '@/components/TestimonialSlider';
+import FaqAccordion from '@/components/FaqAccordion';
+import { companyInfo, featureList, homeHighlights, products, quickStats, trustPoints, whyPlywood } from '@/data/siteData';
 
-import {
-  checkBackendHealth,
-  fetchTasks,
-  fetchStats,
-  fetchCategories,
-  fetchProjects,
-  createTask,
-  updateTask,
-  updateTaskStatus,
-  deleteTask,
-  createCategory,
-  createProject
-} from './apiClient';
-
-export default function Home() {
-  const [tasks, setTasks] = useState([]);
-  const [categories, setCategories] = useState([]);
-  const [projects, setProjects] = useState([]);
-  const [stats, setStats] = useState({});
-  const [health, setHealth] = useState(null);
-  const [loading, setLoading] = useState(true);
-
-  // Theme Management (Light / Dark)
-  const [theme, setTheme] = useState('dark');
-
-  useEffect(() => {
-    const savedTheme = localStorage.getItem('taskmaster_theme') || 'dark';
-    setTheme(savedTheme);
-    document.documentElement.setAttribute('data-theme', savedTheme);
-  }, []);
-
-  const toggleTheme = () => {
-    const nextTheme = theme === 'dark' ? 'light' : 'dark';
-    setTheme(nextTheme);
-    localStorage.setItem('taskmaster_theme', nextTheme);
-    document.documentElement.setAttribute('data-theme', nextTheme);
-  };
-
-  // Filters & Views
-  const [searchQuery, setSearchQuery] = useState('');
-  const [viewMode, setViewMode] = useState('kanban'); // 'kanban' | 'list'
-  const [selectedCategory, setSelectedCategory] = useState('all');
-  const [selectedProject, setSelectedProject] = useState('all');
-  const [selectedPriority, setSelectedPriority] = useState('all');
-  const [selectedStatus, setSelectedStatus] = useState('all');
-  const [sortOption, setSortOption] = useState('newest');
-
-  // Modals
-  const [isTaskModalOpen, setIsTaskModalOpen] = useState(false);
-  const [editingTask, setEditingTask] = useState(null);
-  const [defaultTaskStatus, setDefaultTaskStatus] = useState('todo');
-
-  const [isCategoryModalOpen, setIsCategoryModalOpen] = useState(false);
-  const [isProjectModalOpen, setIsProjectModalOpen] = useState(false);
-
-  const [selectedDetailTask, setSelectedDetailTask] = useState(null);
-
-  // Load backend data
-  const loadData = useCallback(async () => {
-    setLoading(true);
-    const healthRes = await checkBackendHealth();
-    setHealth(healthRes);
-
-    const [tasksData, statsData, catData, projData] = await Promise.all([
-      fetchTasks({
-        search: searchQuery,
-        category: selectedCategory,
-        project: selectedProject,
-        priority: selectedPriority,
-        status: selectedStatus,
-        sort: sortOption
-      }),
-      fetchStats(),
-      fetchCategories(),
-      fetchProjects()
-    ]);
-
-    setTasks(tasksData);
-    setStats(statsData);
-    setCategories(catData);
-    setProjects(projData);
-    setLoading(false);
-  }, [searchQuery, selectedCategory, selectedProject, selectedPriority, selectedStatus, sortOption]);
-
-  useEffect(() => {
-    loadData();
-  }, [loadData]);
-
-  // Handlers
-  const handleCreateOrUpdateTask = async (taskPayload) => {
-    if (editingTask) {
-      await updateTask(editingTask._id, taskPayload);
-    } else {
-      await createTask(taskPayload);
-    }
-    setIsTaskModalOpen(false);
-    setEditingTask(null);
-    loadData();
-  };
-
-  const handleStatusChange = async (taskId, newStatus) => {
-    await updateTaskStatus(taskId, newStatus);
-    loadData();
-  };
-
-  const handleDeleteTask = async (taskId) => {
-    if (confirm('Are you sure you want to delete this task?')) {
-      await deleteTask(taskId);
-      loadData();
-    }
-  };
-
-  const handleCreateCategory = async (catPayload) => {
-    await createCategory(catPayload);
-    setIsCategoryModalOpen(false);
-    loadData();
-  };
-
-  const handleCreateProject = async (projPayload) => {
-    await createProject(projPayload);
-    setIsProjectModalOpen(false);
-    loadData();
-  };
-
-  const handleResetFilters = () => {
-    setSelectedCategory('all');
-    setSelectedProject('all');
-    setSelectedPriority('all');
-    setSelectedStatus('all');
-    setSortOption('newest');
-    setSearchQuery('');
-  };
-
+export default function HomePage() {
   return (
-    <main style={{ maxWidth: '1400px', margin: '0 auto', padding: '1.5rem 1.5rem 4rem' }}>
-      
-      {/* Header component with Theme Switcher */}
-      <Header
-        searchQuery={searchQuery}
-        setSearchQuery={setSearchQuery}
-        viewMode={viewMode}
-        setViewMode={setViewMode}
-        onOpenTaskModal={(opts = {}) => {
-          setEditingTask(null);
-          setDefaultTaskStatus(opts.status || 'todo');
-          setIsTaskModalOpen(true);
-        }}
-        onOpenCategoryModal={() => setIsCategoryModalOpen(true)}
-        onOpenProjectModal={() => setIsProjectModalOpen(true)}
-        health={health}
-        onRefresh={loadData}
-        theme={theme}
-        toggleTheme={toggleTheme}
-      />
+    <>
+      {/* 1. HERO SECTION */}
+      <section className="hero-section">
+        <div className="container hero-grid">
+          <AnimationWrapper className="hero-copy" delay={0.05}>
+            <span className="eyebrow">
+              <Sparkles size={14} /> Yamunanagar Manufacturing Excellence
+            </span>
+            <h1>
+              Engineered <span className="text-highlight">Calibrated Plywood</span> For Luxury Spaces.
+            </h1>
+            <p>
+              Briterply manufactures ultra-flat calibrated plywood, marine grade BWP 710, and architectural
+              blockboards using 4-time hydraulic press technology and pure phenolic resins.
+            </p>
 
-      {/* Summary Stats Overview */}
-      <StatsCards stats={stats} />
+            <div className="hero-actions">
+              <Link href="/products" className="button button-primary">
+                <span>Explore Products</span>
+                <ArrowRight size={17} />
+              </Link>
+              <Link href="/contact" className="button button-secondary">
+                <span>Request Sample Kit</span>
+              </Link>
+            </div>
 
-      {/* Filter and Sort bar */}
-      <FilterBar
-        categories={categories}
-        projects={projects}
-        selectedCategory={selectedCategory}
-        setSelectedCategory={setSelectedCategory}
-        selectedProject={selectedProject}
-        setSelectedProject={setSelectedProject}
-        selectedPriority={selectedPriority}
-        setSelectedPriority={setSelectedPriority}
-        selectedStatus={selectedStatus}
-        setSelectedStatus={setSelectedStatus}
-        sortOption={sortOption}
-        setSortOption={setSortOption}
-        onResetFilters={handleResetFilters}
-      />
+            <div className="hero-trust-bar">
+              <div className="trust-item">
+                <ShieldCheck size={18} />
+                <span>IS:710 Marine Certified</span>
+              </div>
+              <div className="trust-item">
+                <CheckCircle2 size={18} />
+                <span>±0.1mm Calibrated Tolerance</span>
+              </div>
+              <div className="trust-item">
+                <Award size={18} />
+                <span>30-Year Replacement Guarantee</span>
+              </div>
+            </div>
+          </AnimationWrapper>
 
-      {/* Main Views (Kanban or List) */}
-      {loading ? (
-        <div style={{ textAlign: 'center', padding: '4rem 1rem', color: 'var(--text-sub)' }}>
-          <div className="pulse-dot" style={{ margin: '0 auto 1rem', width: '16px', height: '16px' }} />
-          Loading Tasks from API...
+          <AnimationWrapper className="hero-visual" delay={0.15}>
+            <div className="hero-visual-card">
+              <div className="hero-image-wrapper">
+                <img
+                  src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1200&q=80"
+                  alt="Briterply Calibrated Plywood Architectural Display"
+                />
+              </div>
+
+              {/* Floating Stat Top */}
+              <div className="hero-floating-stat top-left">
+                <div className="stat-icon-wrap">
+                  <Layers3 size={22} />
+                </div>
+                <div className="stat-text">
+                  <strong>100% Calibrated</strong>
+                  <span>Zero thickness variation</span>
+                </div>
+              </div>
+
+              {/* Floating Stat Bottom */}
+              <div className="hero-floating-stat bottom-right">
+                <div className="stat-icon-wrap emerald">
+                  <Droplets size={22} />
+                </div>
+                <div className="stat-text">
+                  <strong>72h Boiling Proof</strong>
+                  <span>100% BWP Marine resin</span>
+                </div>
+              </div>
+            </div>
+          </AnimationWrapper>
         </div>
-      ) : viewMode === 'kanban' ? (
-        <KanbanBoard
-          tasks={tasks}
-          onStatusChange={handleStatusChange}
-          onEditTask={(task) => {
-            setEditingTask(task);
-            setIsTaskModalOpen(true);
-          }}
-          onDeleteTask={handleDeleteTask}
-          onOpenTaskModal={(opts) => {
-            setEditingTask(null);
-            setDefaultTaskStatus(opts.status || 'todo');
-            setIsTaskModalOpen(true);
-          }}
-          onSelectTask={(task) => setSelectedDetailTask(task)}
-        />
-      ) : (
-        <TaskListView
-          tasks={tasks}
-          onStatusChange={handleStatusChange}
-          onEditTask={(task) => {
-            setEditingTask(task);
-            setIsTaskModalOpen(true);
-          }}
-          onDeleteTask={handleDeleteTask}
-          onSelectTask={(task) => setSelectedDetailTask(task)}
-        />
-      )}
+      </section>
 
-      {/* Modals */}
-      <TaskModal
-        isOpen={isTaskModalOpen}
-        onClose={() => {
-          setIsTaskModalOpen(false);
-          setEditingTask(null);
-        }}
-        onSubmit={handleCreateOrUpdateTask}
-        initialTask={editingTask}
-        categories={categories}
-        projects={projects}
-        defaultStatus={defaultTaskStatus}
-      />
+      {/* 2. STATS TICKER BAR */}
+      <section className="stats-ticker-section">
+        <div className="container">
+          <div className="stats-grid">
+            {quickStats.map((st) => (
+              <div key={st.label} className="stat-card-clean">
+                <div className="stat-number">{st.value}</div>
+                <div className="stat-label">{st.label}</div>
+                <div className="stat-sub">{st.desc}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-      <CategoryModal
-        isOpen={isCategoryModalOpen}
-        onClose={() => setIsCategoryModalOpen(false)}
-        onSubmit={handleCreateCategory}
-      />
+      {/* 3. FLAGSHIP PRODUCTS */}
+      <section id="products" className="products-section">
+        <div className="container">
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', flexWrap: 'wrap', gap: '1.5rem', marginBottom: '3rem' }}>
+            <SectionHeading
+              eyebrow="Engineered Catalog"
+              title="Flagship Plywood & Wood Range"
+              description="Manufactured with zero core gaps, Gurjan faces, and unextended phenolic bond chemistry."
+              align="left"
+            />
+            <Link href="/products" className="button button-dark" style={{ marginBottom: '3rem' }}>
+              <span>View All 5 Series</span>
+              <ArrowRight size={16} />
+            </Link>
+          </div>
 
-      <ProjectModal
-        isOpen={isProjectModalOpen}
-        onClose={() => setIsProjectModalOpen(false)}
-        onSubmit={handleCreateProject}
-      />
+          <div className="product-grid">
+            {products.slice(0, 4).map((product) => (
+              <ProductCard key={product.slug} product={product} />
+            ))}
+          </div>
+        </div>
+      </section>
 
-      <TaskDetailModal
-        task={selectedDetailTask}
-        onClose={() => setSelectedDetailTask(null)}
-        onEdit={(task) => {
-          setEditingTask(task);
-          setIsTaskModalOpen(true);
-        }}
-        onDelete={handleDeleteTask}
-        onStatusChange={handleStatusChange}
-      />
+      {/* 4. INTERACTIVE CALCULATOR */}
+      <InteractiveCalculator />
 
-    </main>
+      {/* 5. ENGINEERING & FEATURES */}
+      <section id="features" className="features-section">
+        <div className="container">
+          <SectionHeading
+            eyebrow="Precision Engineering"
+            title="The 6 Pillars of Briterply Quality"
+            description="Every sheet is engineered to outperform standard commercial plywood in water resistance, tensile strength, and joinery finish."
+            align="center"
+          />
+
+          <div className="feature-grid">
+            {featureList.map((feature) => (
+              <FeatureCard key={feature.title} {...feature} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 6. COMPARISON TABLE */}
+      <ComparisonTable />
+
+      {/* 7. QUALITY TESTING LAB */}
+      <QualityLabSection />
+
+      {/* 8. TESTIMONIALS */}
+      <TestimonialSlider />
+
+      {/* 9. FAQ ACCORDION */}
+      <FaqAccordion />
+
+      {/* 10. DIRECT CONTACT & INQUIRY */}
+      <section id="contact" className="contact-section">
+        <div className="container contact-grid">
+          <div className="contact-info-card">
+            <span className="eyebrow eyebrow-dark">Direct Factory Access</span>
+            <h3>Connect with Yamunanagar Works</h3>
+            <p>
+              Whether you require 50 sheets for a bespoke penthouse or 5,000 sheets for a commercial tower,
+              our technical sales desk is at your service.
+            </p>
+
+            <ul className="contact-details-list">
+              <li className="contact-detail-item">
+                <div className="contact-icon-box">
+                  <Phone size={20} />
+                </div>
+                <div className="contact-detail-text">
+                  <strong>Direct Factory Phone</strong>
+                  <a href={companyInfo.phoneLink}>{companyInfo.phone}</a>
+                </div>
+              </li>
+
+              <li className="contact-detail-item">
+                <div className="contact-icon-box">
+                  <MessageCircle size={20} />
+                </div>
+                <div className="contact-detail-text">
+                  <strong>WhatsApp Sales Hotline</strong>
+                  <a href={companyInfo.whatsappLink} target="_blank" rel="noreferrer">
+                    +91 96242 77017 (24x7 Chat)
+                  </a>
+                </div>
+              </li>
+
+              <li className="contact-detail-item">
+                <div className="contact-icon-box">
+                  <ShieldCheck size={20} />
+                </div>
+                <div className="contact-detail-text">
+                  <strong>Plant & Dispatch Address</strong>
+                  <span>{companyInfo.address}</span>
+                </div>
+              </li>
+            </ul>
+
+            <div style={{ padding: '1.25rem', borderRadius: '12px', background: 'rgba(255, 255, 255, 0.06)', border: '1px solid rgba(255,255,255,0.1)' }}>
+              <strong style={{ display: 'block', color: '#f59e0b', fontSize: '0.9rem', marginBottom: '0.25rem' }}>
+                Complimentary Architect Sample Kit
+              </strong>
+              <span style={{ fontSize: '0.825rem', color: 'rgba(255,255,255,0.7)' }}>
+                Includes 19mm cross-sections, calibration test blocks, and physical IS:710 test certificates delivered directly to your studio.
+              </span>
+            </div>
+          </div>
+
+          <ContactForm />
+        </div>
+      </section>
+    </>
   );
 }
+
