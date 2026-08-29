@@ -81,7 +81,7 @@ export default function InteractiveCalculator() {
             </div>
 
             <div className="calc-form-group">
-              <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>
                 <label className="calc-label" style={{ marginBottom: 0 }}>
                   2. Approximate Room / Interior Area
                 </label>
@@ -96,41 +96,36 @@ export default function InteractiveCalculator() {
                 onChange={(e) => setAreaSqFt(Number(e.target.value))}
                 style={{ width: '100%', accentColor: '#d97706', cursor: 'pointer' }}
               />
-              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.75rem', color: 'rgba(255,255,255,0.5)', marginTop: '0.25rem' }}>
-                <span>50 sq.ft (Single Unit)</span>
-                <span>1000 sq.ft (3BHK Flat)</span>
-                <span>2500+ sq.ft (Villa / Commercial)</span>
+              <div className="calc-slider-labels">
+                <span>50 sq.ft (Single)</span>
+                <span>1000 sq.ft (3BHK)</span>
+                <span>2500+ sq.ft (Villa)</span>
               </div>
             </div>
 
             <div className="calc-result-box">
               <div className="calc-result-header">
-                <span>Recommended Specification</span>
-                <span className="pill" style={{ background: 'rgba(255,255,255,0.15)', color: '#ffffff' }}>
+                <span className="calc-result-title">Recommended Specification</span>
+                <span className="pill calc-spec-pill" style={{ background: 'rgba(255,255,255,0.15)', color: '#ffffff' }}>
                   Standard 8x4 Ft Sheets
                 </span>
               </div>
 
-              <div className="two-col-grid" style={{ alignItems: 'center', marginBottom: '1.25rem' }}>
-
-                <div>
-                  <div style={{ fontSize: '0.8rem', color: 'rgba(255,255,255,0.7)', textTransform: 'uppercase' }}>
-                    Ideal Grade
-                  </div>
-                  <strong style={{ fontSize: '1.15rem', color: '#ffffff', display: 'block' }}>
+              <div className="calc-result-body">
+                <div className="calc-result-grade">
+                  <div className="calc-meta-label">Ideal Grade</div>
+                  <strong className="calc-recommended-title">
                     {currentApp.recommended}
                   </strong>
-                  <div style={{ fontSize: '0.8rem', color: '#f59e0b', marginTop: '0.2rem' }}>
+                  <div className="calc-thickness-tag">
                     Recommended Thickness: {currentApp.defaultThickness}
                   </div>
                 </div>
 
-                <div style={{ textAlign: 'right' }}>
-                  <div style={{ fontSize: '0.8rem', color: 'rgba(255,255,255,0.7)', textTransform: 'uppercase' }}>
-                    Estimated Sheets
-                  </div>
-                  <div className="calc-result-number" style={{ color: '#f59e0b' }}>
-                    ~{estimatedSheets} <span style={{ fontSize: '1rem', fontWeight: 600, color: '#ffffff' }}>Sheets</span>
+                <div className="calc-result-sheets">
+                  <div className="calc-meta-label">Estimated Sheets</div>
+                  <div className="calc-result-number">
+                    ~{estimatedSheets} <span className="calc-sheets-unit">Sheets</span>
                   </div>
                 </div>
               </div>
@@ -139,8 +134,7 @@ export default function InteractiveCalculator() {
                 href={whatsappInquiryUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="button button-emerald"
-                style={{ width: '100%', justifyContent: 'center' }}
+                className="button button-emerald calc-whatsapp-btn"
               >
                 <MessageCircle size={18} />
                 <span>Get Exact Factory Price On WhatsApp</span>

@@ -1,9 +1,51 @@
 'use client';
 
+import { useState } from 'react';
+import { motion } from 'framer-motion';
 import { Check, X, ShieldCheck, Sparkles } from 'lucide-react';
 import { comparisonData } from '@/data/siteData';
 
+const grades = [
+  {
+    id: 'club',
+    name: 'Core King Club 710',
+    shortName: 'Club 710',
+    subtitle: 'Flagship BWP Marine Grade',
+    badge: 'Recommended',
+    warranty: '30 Yrs Warranty',
+    color: '#d97706',
+    dataKey: 'coreKingClub',
+    isRecommended: true,
+  },
+  {
+    id: 'gold',
+    name: 'Core King Gold BWR',
+    shortName: 'Gold BWR',
+    subtitle: 'Commercial & Residential BWR',
+    badge: 'Best Seller',
+    warranty: '20 Yrs Warranty',
+    color: '#059669',
+    dataKey: 'coreKingGold',
+    isRecommended: false,
+  },
+  {
+    id: 'market',
+    name: 'Regular Market Plywood',
+    shortName: 'Regular Ply',
+    subtitle: 'Conventional Local Timber',
+    badge: 'Uncalibrated',
+    warranty: 'No Warranty',
+    color: '#ef4444',
+    dataKey: 'regularMarket',
+    isRecommended: false,
+  },
+];
+
 export default function ComparisonTable() {
+  const [activeGrade, setActiveGrade] = useState('club');
+
+  const selectedGradeObj = grades.find((g) => g.id === activeGrade) || grades[0];
+
   return (
     <section className="comparison-section">
       <div className="container">
@@ -16,14 +58,77 @@ export default function ComparisonTable() {
           </p>
         </div>
 
-        <div className="table-wrapper">
+        {/* MOBILE CARD VIEW (Shown only on mobile viewports < 920px) */}
+        <div className="comp-mobile-card-container">
+          {/* 3 Equal Grid Tabs */}
+          <div className="comp-grade-tabs-grid">
+            {grades.map((g) => (
+              <button
+                key={g.id}
+                type="button"
+                className={`comp-grade-tab-item ${activeGrade === g.id ? 'active' : ''} ${g.isRecommended ? 'recommended' : ''}`}
+                onClick={() => setActiveGrade(g.id)}
+              >
+                <span>{g.shortName}</span>
+              </button>
+            ))}
+          </div>
+
+          {/* Active Grade Spec Card */}
+          <motion.div
+            key={activeGrade}
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.2 }}
+            className={`comp-mobile-card ${selectedGradeObj.isRecommended ? 'recommended-card' : ''}`}
+          >
+            <div className="comp-card-header">
+              <div className="comp-card-badge-row">
+                <span className="comp-card-badge" style={{ color: selectedGradeObj.color, background: `${selectedGradeObj.color}15` }}>
+                  {selectedGradeObj.badge}
+                </span>
+                <span className="comp-card-warranty">
+                  <ShieldCheck size={14} color={selectedGradeObj.color} />
+                  <span>{selectedGradeObj.warranty}</span>
+                </span>
+              </div>
+
+              <h3 className="comp-card-title">{selectedGradeObj.name}</h3>
+              <span className="comp-card-subtitle">{selectedGradeObj.subtitle}</span>
+            </div>
+
+            <div className="comp-card-specs">
+              {comparisonData.map((row) => {
+                const val = row[selectedGradeObj.dataKey];
+                const isNegative = selectedGradeObj.id === 'market';
+
+                return (
+                  <div key={row.parameter} className="comp-spec-row">
+                    <div className="comp-spec-param">{row.parameter}</div>
+                    <div className="comp-spec-val">
+                      {isNegative ? (
+                        <X size={16} color="#ef4444" style={{ flexShrink: 0, marginTop: '2px' }} />
+                      ) : (
+                        <Check size={16} color={selectedGradeObj.color} style={{ flexShrink: 0, marginTop: '2px' }} />
+                      )}
+                      <span>{val}</span>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </motion.div>
+        </div>
+
+        {/* DESKTOP TABLE VIEW (Shown only on desktop viewports >= 920px) */}
+        <div className="table-wrapper comp-desktop-table-container">
           <table className="comp-table">
             <thead>
               <tr>
                 <th>Technical Parameter</th>
                 <th className="featured">
                   <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-                    <Sparkles size={18} />
+                    <Sparkles size={16} />
                     <span>Core King Club 710 (Flagship)</span>
                   </div>
                 </th>

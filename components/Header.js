@@ -88,8 +88,9 @@ export default function Header() {
               <span>{companyInfo.phone}</span>
             </a>
 
-            <Link href="/contact" className="button button-primary small-button">
-              <span>Get Instant Quote</span>
+            <Link href="/contact" className="button button-primary small-button header-quote-btn">
+              <span className="quote-btn-text">Get Instant Quote</span>
+              <span className="quote-btn-short">Get Quote</span>
               <ArrowRight size={15} />
             </Link>
 
@@ -131,6 +132,9 @@ export default function Header() {
               </nav>
 
               <div className="mobile-contact-box">
+                <Link href="/contact" className="button button-primary" style={{ width: '100%', justifyContent: 'center' }}>
+                  <Sparkles size={16} /> Get Instant Quote <ArrowRight size={16} />
+                </Link>
                 <a href={companyInfo.phoneLink} className="button button-dark" style={{ width: '100%' }}>
                   <Phone size={16} /> Call Sales Desk: {companyInfo.phone}
                 </a>
