@@ -285,31 +285,52 @@ button, input, select, textarea {
   flex-shrink: 0;
 }
 
-.desktop-nav a {
+.desktop-nav a,
+.desktop-nav .nav-link-item {
   font-size: 0.88rem;
   font-weight: 600;
   color: var(--color-body);
-  padding: 0.45rem 0.85rem;
+  padding: 0.45rem 0.95rem;
   border-radius: var(--radius-full);
-  transition: all 0.2s ease;
+  transition: all 0.22s ease;
   position: relative;
   white-space: nowrap;
   text-wrap: nowrap;
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 0.35rem;
 }
 
-.desktop-nav a:hover {
-  color: var(--accent-700);
-  background: rgba(255, 255, 255, 0.8);
+.desktop-nav a:hover,
+.desktop-nav .nav-link-item:hover {
+  color: #d97706;
+  background: rgba(255, 255, 255, 0.9);
 }
 
-.desktop-nav a.active {
-  color: #ffffff;
-  background: var(--color-primary);
-  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.15);
+.desktop-nav a.active,
+.desktop-nav .nav-link-item.active {
+  color: #ffffff !important;
+  background: #d97706 !important;
+  box-shadow: 0 4px 14px rgba(217, 119, 6, 0.4) !important;
+  font-weight: 700 !important;
 }
+
+/* Smooth scroll margin offset for fixed header */
+#hero,
+#about,
+#features,
+#quote,
+#quality-policy,
+#chat-with-us,
+#contact,
+#core-king-gold,
+#core-king-club,
+#products-hero {
+  scroll-margin-top: 75px;
+}
+
+
 
 
 .nav-actions {
@@ -2781,5 +2802,1003 @@ button, input, select, textarea {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+}
+
+/* ==========================================================================
+   BRITERPLY MATCHING STYLES & LAYOUT SYSTEM
+   ========================================================================== */
+
+/* Section Titles */
+.briter-section-title {
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+
+.briter-section-title h2 {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--color-heading);
+  letter-spacing: -0.02em;
+  margin-bottom: 0.5rem;
+}
+
+.briter-section-title p {
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #d97706;
+}
+
+/* 1. Hero Section */
+.briter-hero-section {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background: #090e1a;
+}
+
+.hero-slider-container {
+  position: relative;
+  width: 100%;
+  min-height: 540px;
+  height: 72vh;
+  max-height: 760px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-slide-active {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.hero-slider-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.hero-slider-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(9, 14, 26, 0.45) 0%, rgba(9, 14, 26, 0.75) 100%);
+  pointer-events: none;
+}
+
+.hero-arrow-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: #ffffff;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  transition: all 0.2s ease;
+}
+
+.hero-arrow-btn:hover {
+  background: #d97706;
+  border-color: #d97706;
+  transform: translateY(-50%) scale(1.08);
+}
+
+.hero-arrow-btn.prev {
+  left: 1.5rem;
+}
+
+.hero-arrow-btn.next {
+  right: 1.5rem;
+}
+
+.hero-dots-pagination {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.6rem;
+  z-index: 10;
+}
+
+.hero-dot-bullet {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.hero-dot-bullet.active {
+  background: #d97706;
+  width: 28px;
+  border-radius: 999px;
+}
+
+.hero-caption-box {
+  position: absolute;
+  z-index: 5;
+  text-align: center;
+  color: #ffffff;
+  padding: 0 1.5rem;
+  max-width: 800px;
+}
+
+.hero-caption-box h2 {
+  font-size: 3rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 0.75rem;
+  line-height: 1.15;
+}
+
+.hero-caption-box h2 span {
+  color: #d97706;
+}
+
+.hero-caption-box p {
+  font-size: 1.25rem;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 400;
+}
+
+/* 2. About Section */
+.briter-about-section {
+  padding: 6rem 0;
+  background: var(--bg-main);
+}
+
+.briter-about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3.5rem;
+  align-items: center;
+  background: #ffffff;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+}
+
+.about-image-col {
+  height: 100%;
+  min-height: 420px;
+}
+
+.about-featured-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.about-content-col {
+  padding: 3rem 3rem 3rem 1rem;
+}
+
+.about-content-col h3 {
+  font-size: 1.85rem;
+  font-weight: 800;
+  color: var(--color-heading);
+  margin-bottom: 1rem;
+}
+
+.about-lead-p {
+  font-size: 0.975rem;
+  color: var(--color-body);
+  line-height: 1.65;
+  margin-bottom: 1.25rem;
+}
+
+.about-checks-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  margin-bottom: 1.25rem;
+}
+
+.about-checks-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  font-size: 0.925rem;
+  color: var(--color-heading);
+  font-weight: 500;
+}
+
+.check-icon {
+  color: #d97706;
+  margin-top: 0.2rem;
+  flex-shrink: 0;
+}
+
+.about-closing-p {
+  font-size: 0.925rem;
+  color: var(--color-muted);
+  line-height: 1.6;
+}
+
+/* 3. Features Section */
+.briter-features-section {
+  padding: 6rem 0;
+  background: #ffffff;
+}
+
+.briter-features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.briter-feature-card {
+  background: var(--bg-main);
+  padding: 2.25rem 2rem;
+  border-radius: 16px;
+  border: 1px solid var(--color-border);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.briter-feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
+  border-color: #d97706;
+}
+
+.feature-icon-box {
+  width: 58px;
+  height: 58px;
+  border-radius: 12px;
+  background: rgba(217, 119, 6, 0.1);
+  color: #d97706;
+  display: grid;
+  place-items: center;
+  margin-bottom: 1.25rem;
+}
+
+.briter-feature-card h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-heading);
+  margin-bottom: 0.75rem;
+}
+
+.briter-feature-card p {
+  font-size: 0.925rem;
+  color: var(--color-muted);
+  line-height: 1.6;
+}
+
+/* 4. Quote Section */
+.briter-quote-section {
+  position: relative;
+  padding: 7rem 0;
+  overflow: hidden;
+  background: #090e1a;
+  text-align: center;
+}
+
+.quote-bg-wrapper {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.quote-bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.quote-overlay-dark {
+  position: absolute;
+  inset: 0;
+  background: rgba(9, 14, 26, 0.75);
+}
+
+.quote-container {
+  position: relative;
+  z-index: 5;
+}
+
+.quote-box-inner h3 {
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+.quote-box-inner h3 span {
+  color: #f59e0b;
+}
+
+.quote-subtext {
+  font-size: 1.15rem;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 2rem;
+}
+
+.btn-briter-product {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.9rem 2rem;
+  border-radius: 999px;
+  background: #d97706;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 0.95rem;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 14px rgba(217, 119, 6, 0.4);
+}
+
+.btn-briter-product:hover {
+  background: #b45309;
+  transform: translateY(-2px);
+  color: #ffffff;
+}
+
+/* 5. Quality Policy Section */
+.briter-quality-section {
+  padding: 6rem 0;
+  background: var(--bg-main);
+}
+
+.briter-quality-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3.5rem;
+  align-items: center;
+}
+
+.quality-img-col {
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--color-border);
+}
+
+.quality-featured-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.quality-card-box {
+  background: #ffffff;
+  padding: 2.5rem;
+  border-radius: 20px;
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+}
+
+.quality-card-heading {
+  font-size: 1.55rem;
+  font-weight: 800;
+  color: var(--color-heading);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 1.25rem;
+}
+
+.text-primary-icon {
+  color: #d97706;
+}
+
+.quality-card-box p {
+  font-size: 0.95rem;
+  color: var(--color-body);
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+
+.quality-card-box p:last-child {
+  margin-bottom: 0;
+}
+
+/* 6. Chat with Us Section */
+.briter-chat-section {
+  padding: 5rem 0;
+  background: #ffffff;
+  border-top: 1px solid var(--color-border-light);
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.briter-chat-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.chat-icon-col {
+  display: flex;
+  justify-content: center;
+}
+
+.large-whatsapp-circle {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  background: rgba(37, 211, 102, 0.12);
+  display: grid;
+  place-items: center;
+  animation: pulseWhatsApp 2s infinite ease-in-out;
+}
+
+@keyframes pulseWhatsApp {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.4);
+  }
+  70% {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 20px rgba(37, 211, 102, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+  }
+}
+
+.chat-content-col h3 {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--color-heading);
+  margin-bottom: 0.75rem;
+}
+
+.chat-content-col p {
+  font-size: 0.975rem;
+  color: var(--color-muted);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.btn-whatsapp-custom {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.85rem 1.85rem;
+  border-radius: 8px;
+  background: #25D366;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 0.925rem;
+  letter-spacing: 0.04em;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.35);
+}
+
+.btn-whatsapp-custom:hover {
+  background: #1eb956;
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+/* 7. Contact Section */
+.briter-contact-section {
+  padding: 6rem 0;
+  background: var(--bg-main);
+}
+
+.briter-contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.6fr;
+  gap: 2.5rem;
+  align-items: start;
+}
+
+.contact-cards-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.briter-contact-card {
+  background: #ffffff;
+  padding: 1.5rem;
+  border-radius: 14px;
+  border: 1px solid var(--color-border);
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  box-shadow: var(--shadow-xs);
+  transition: all 0.2s ease;
+}
+
+.briter-contact-card:hover {
+  border-color: #d97706;
+  box-shadow: var(--shadow-sm);
+}
+
+.card-icon-wrap {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: rgba(217, 119, 6, 0.1);
+  color: #d97706;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+
+.card-details h4 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--color-heading);
+  margin-bottom: 0.25rem;
+}
+
+.card-details p,
+.card-details a {
+  font-size: 0.9rem;
+  color: var(--color-body);
+  line-height: 1.5;
+}
+
+.card-details a:hover {
+  color: #d97706;
+}
+
+/* Contact Form Wrapper */
+.contact-form-wrapper {
+  background: #ffffff;
+  padding: 2.25rem;
+  border-radius: 18px;
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+}
+
+.contact-form-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.form-row-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+
+.form-group {
+  width: 100%;
+}
+
+.form-control {
+  width: 100%;
+  padding: 0.85rem 1.1rem;
+  border-radius: 10px;
+  border: 1px solid var(--color-border);
+  background: var(--bg-main);
+  font-size: 0.925rem;
+  color: var(--color-heading);
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.form-control:focus {
+  border-color: #d97706;
+  background: #ffffff;
+}
+
+.form-actions-flex {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.btn-submit-full {
+  flex: 1.2;
+  justify-content: center;
+  padding: 0.85rem 1.5rem;
+}
+
+.btn-whatsapp-direct {
+  flex: 1;
+  justify-content: center;
+  padding: 0.85rem 1.5rem;
+}
+
+/* 8. Products Page Layout */
+.briter-products-hero-section {
+  padding: 4.5rem 0 3.5rem;
+  background: #090e1a;
+  color: #ffffff;
+}
+
+.breadcrumbs-wrap {
+  margin-bottom: 2rem;
+}
+
+.briter-breadcrumb {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+}
+
+.briter-breadcrumb .breadcrumb-item a {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.briter-breadcrumb .breadcrumb-item a:hover {
+  color: #ffffff;
+}
+
+.briter-breadcrumb .breadcrumb-separator {
+  color: rgba(255, 255, 255, 0.4);
+  display: flex;
+  align-items: center;
+}
+
+.briter-breadcrumb .breadcrumb-item.active {
+  color: #f59e0b;
+  font-weight: 600;
+}
+
+.hero-title {
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+}
+
+.hero-title span {
+  color: #d97706;
+}
+
+.hero-subtitle {
+  font-size: 1.15rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 1.5rem;
+}
+
+.hero-description-block {
+  max-width: 1050px;
+  margin: 0 auto 2rem;
+}
+
+.hero-description-block p {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+.hero-cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.btn-outline-light {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.75rem 1.75rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 0.925rem;
+  transition: all 0.2s ease;
+}
+
+.btn-outline-light:hover {
+  background: #ffffff;
+  color: #090e1a;
+}
+
+/* Fullscreen Product Sections */
+.briter-product-fullscreen-section {
+  padding: 6rem 0;
+  background: #ffffff;
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.briter-product-fullscreen-section.alt-bg {
+  background: var(--bg-main);
+}
+
+.product-fullscreen-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.product-img-card {
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--color-border);
+  background: #090e1a;
+}
+
+.product-display-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.product-details-inner h2 {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--color-heading);
+  margin-bottom: 1.25rem;
+}
+
+.product-specs-box {
+  background: var(--bg-main);
+  padding: 1.25rem 1.5rem;
+  border-radius: 12px;
+  border: 1px solid var(--color-border);
+  margin-bottom: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.briter-product-fullscreen-section.alt-bg .product-specs-box {
+  background: #ffffff;
+}
+
+.product-specs-box p {
+  font-size: 0.925rem;
+  color: var(--color-body);
+  margin: 0;
+}
+
+.product-specs-box strong {
+  color: var(--color-heading);
+  min-width: 110px;
+  display: inline-block;
+}
+
+.product-description-p {
+  font-size: 0.95rem;
+  color: var(--color-body);
+  line-height: 1.65;
+  margin-bottom: 1.25rem;
+}
+
+.product-key-features h4 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--color-heading);
+  margin-bottom: 0.65rem;
+}
+
+.product-key-features ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.product-key-features li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--color-body);
+}
+
+.feature-bullet-icon {
+  color: #059669;
+  flex-shrink: 0;
+}
+
+/* Responsive Rules */
+@media (max-width: 992px) {
+  .briter-about-grid,
+  .briter-quality-grid,
+  .briter-chat-grid,
+  .briter-contact-grid,
+  .product-fullscreen-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .about-content-col {
+    padding: 2rem;
+  }
+
+  .order-image-right {
+    order: 1;
+  }
+
+  .order-content-left {
+    order: 2;
+  }
+
+  .briter-features-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .hero-caption-box h2 {
+    font-size: 2.2rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .briter-features-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form-row-2 {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-caption-box h2 {
+    font-size: 1.75rem;
+  }
+
+  .hero-caption-box p {
+    font-size: 1rem;
+  }
+
+  .hero-slider-container {
+    min-height: 420px;
+  }
+
+  .briter-about-section,
+  .briter-features-section,
+  .briter-quality-section,
+  .briter-contact-section,
+  .briter-product-fullscreen-section {
+    padding: 3.5rem 0;
+  }
+}
+
+/* ==========================================================================
+   DYNAMIC FIREWORKS SPARK TRAIL & LUXURY ARROW POINTER SYSTEM
+   ========================================================================== */
+
+/* Cursor hide on desktop when custom cursor is active */
+@media (hover: hover) and (pointer: fine) {
+  html.has-custom-cursor,
+  html.has-custom-cursor body,
+  html.has-custom-cursor a,
+  html.has-custom-cursor button,
+  html.has-custom-cursor .button,
+  html.has-custom-cursor .btn,
+  html.has-custom-cursor [role="button"],
+  html.has-custom-cursor .hero-arrow-btn,
+  html.has-custom-cursor .hero-dot-bullet,
+  html.has-custom-cursor .menu-toggle,
+  html.has-custom-cursor .whatsapp-float {
+    cursor: none !important;
+  }
+
+  html.has-custom-cursor input,
+  html.has-custom-cursor textarea,
+  html.has-custom-cursor select,
+  html.has-custom-cursor [contenteditable="true"] {
+    cursor: text !important;
+  }
+}
+
+/* Fullscreen High-Performance Fireworks Canvas */
+.custom-cursor-firework-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 999998;
+}
+
+/* Instantly Recognizable Luxury Mouse Pointer Arrow */
+.custom-cursor-arrow-pointer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 24px;
+  height: 24px;
+  pointer-events: none;
+  z-index: 999999;
+  will-change: transform;
+  transition: opacity 0.25s ease;
+  transform-origin: 1px 1px;
+}
+
+.cursor-arrow-svg {
+  display: block;
+  width: 24px;
+  height: 24px;
+  transform-origin: 1px 1px;
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), filter 0.22s ease;
+}
+
+/* Ambient Pulse Halo at Arrow Tip */
+.arrow-tip-spark {
+  position: absolute;
+  top: -6px;
+  left: -6px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(251, 191, 36, 0.6) 0%, rgba(245, 158, 11, 0.2) 50%, transparent 75%);
+  pointer-events: none;
+  animation: arrowTipPulse 1.8s infinite ease-in-out;
+}
+
+/* Interactive Hover State on Buttons/Links/Cards */
+.custom-cursor-arrow-pointer.is-hovered .cursor-arrow-svg {
+  transform: scale(1.2) rotate(-8deg);
+  filter: drop-shadow(0 0 10px rgba(245, 158, 11, 0.85));
+}
+
+.custom-cursor-arrow-pointer.is-hovered .arrow-tip-spark {
+  transform: scale(1.6);
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.9) 0%, rgba(245, 158, 11, 0.5) 45%, transparent 75%);
+}
+
+/* Tactile Click State */
+.custom-cursor-arrow-pointer.is-clicked .cursor-arrow-svg {
+  transform: scale(0.85) rotate(-12deg);
+}
+
+/* Text Input State */
+.custom-cursor-arrow-pointer.is-text {
+  opacity: 0 !important;
+}
+
+@keyframes arrowTipPulse {
+  0%, 100% {
+    transform: scale(0.9);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scale(1.4);
+    opacity: 1;
+  }
+}
+
+/* Reduced Motion & Touch Isolation */
+@media (prefers-reduced-motion: reduce) {
+  .custom-cursor-firework-canvas,
+  .custom-cursor-arrow-pointer,
+  .arrow-tip-spark {
+    display: none !important;
+  }
+}
+
+@media (hover: none) or (pointer: coarse) {
+  .custom-cursor-firework-canvas,
+  .custom-cursor-arrow-pointer {
+    display: none !important;
+  }
+
+  html.has-custom-cursor,
+  html.has-custom-cursor body,
+  html.has-custom-cursor a,
+  html.has-custom-cursor button {
+    cursor: auto !important;
   }
 }

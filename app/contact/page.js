@@ -1,10 +1,7 @@
 'use client';
 
-import Link from 'next/link';
-import { Mail, MapPin, MessageCircle, Phone, Clock, ShieldCheck, Award, Building2, Truck, Users } from 'lucide-react';
-import SectionHeading from '@/components/SectionHeading';
+import { Mail, MapPin, MessageCircle, Phone } from 'lucide-react';
 import ContactForm from '@/components/ContactForm';
-import FaqAccordion from '@/components/FaqAccordion';
 import { companyInfo } from '@/data/siteData';
 
 export default function ContactPage() {
@@ -12,116 +9,122 @@ export default function ContactPage() {
     <>
       <div className="page-header">
         <div className="container">
-          <span className="eyebrow eyebrow-dark">Direct Factory Access</span>
-          <h1>Contact Core King Ply Works</h1>
+          <span className="eyebrow eyebrow-dark">{companyInfo.name}</span>
+          <h1>Get In Touch</h1>
           <p>
-            Connect directly with our manufacturing headquarters in Yamunanagar, Haryana.
-            Request product quotations, dealer inquiries, or complimentary sample folders.
+            Ready to start your project? Contact us today!
           </p>
         </div>
       </div>
 
-      {/* Main Contact Grid */}
-      <section className="contact-section">
-        <div className="container contact-grid">
-          <div>
-            <div className="contact-info-card" style={{ marginBottom: '2rem' }}>
-              <span className="eyebrow eyebrow-dark">Headquarters & Plant</span>
-              <h3>Yamunanagar Manufacturing Works</h3>
-              <p>
-                Our production facility and central dispatch hub are located in the heart of India&apos;s
-                timber capital with direct logistics connectivity across all Indian states.
-              </p>
-
-              <ul className="contact-details-list">
-                <li className="contact-detail-item">
-                  <div className="contact-icon-box">
-                    <MapPin size={20} />
-                  </div>
-                  <div className="contact-detail-text">
-                    <strong>Plant & Office Address</strong>
-                    <span>{companyInfo.address}</span>
-                  </div>
-                </li>
-
-                <li className="contact-detail-item">
-                  <div className="contact-icon-box">
-                    <Phone size={20} />
-                  </div>
-                  <div className="contact-detail-text">
-                    <strong>Direct Factory Phone</strong>
-                    <a href={companyInfo.phoneLink}>{companyInfo.phone}</a>
-                  </div>
-                </li>
-
-                <li className="contact-detail-item">
-                  <div className="contact-icon-box">
-                    <MessageCircle size={20} />
-                  </div>
-                  <div className="contact-detail-text">
-                    <strong>WhatsApp Direct Hotline</strong>
-                    <a href={companyInfo.whatsappLink} target="_blank" rel="noreferrer">
-                      +91 96242 77017 (Instant Quote)
-                    </a>
-                  </div>
-                </li>
-
-                <li className="contact-detail-item">
-                  <div className="contact-icon-box">
-                    <Mail size={20} />
-                  </div>
-                  <div className="contact-detail-text">
-                    <strong>Sales & Inquiries Email</strong>
-                    <a href={companyInfo.emailLink}>{companyInfo.email}</a>
-                  </div>
-                </li>
-              </ul>
-
-              <div style={{ display: 'flex', gap: '0.75rem', marginTop: '1.5rem', flexWrap: 'wrap' }}>
-                <a
-                  href={`https://maps.google.com/?q=${encodeURIComponent('Khajoori Road, Yamunanagar, Haryana')}`}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="button button-secondary"
-                  style={{ fontSize: '0.85rem', padding: '0.6rem 1rem' }}
-                >
-                  <MapPin size={15} />
-                  <span>Get Driving Directions</span>
-                </a>
+      {/* Chat with Us Section */}
+      <section className="briter-chat-section" style={{ padding: '3.5rem 0' }}>
+        <div className="container">
+          <div className="briter-chat-grid">
+            <div className="chat-icon-col">
+              <div className="large-whatsapp-circle">
+                <MessageCircle size={80} color="#25D366" />
               </div>
             </div>
 
-            {/* Quick Inquiries Support Cards */}
-            <div className="two-col-grid">
-
-              <div style={{ background: '#ffffff', padding: '1.5rem', borderRadius: '16px', border: '1px solid var(--color-border)' }}>
-                <Users size={24} color="#d97706" style={{ marginBottom: '0.6rem' }} />
-                <strong style={{ display: 'block', fontSize: '1rem', color: 'var(--color-heading)' }}>
-                  Dealership Inquiries
-                </strong>
-                <p style={{ fontSize: '0.825rem', color: 'var(--color-muted)', marginTop: '0.25rem' }}>
-                  Exclusive territory distribution rights for Tier 1 & Tier 2 cities.
-                </p>
-              </div>
-
-              <div style={{ background: '#ffffff', padding: '1.5rem', borderRadius: '16px', border: '1px solid var(--color-border)' }}>
-                <Truck size={24} color="#059669" style={{ marginBottom: '0.6rem' }} />
-                <strong style={{ display: 'block', fontSize: '1rem', color: 'var(--color-heading)' }}>
-                  Direct Project Dispatch
-                </strong>
-                <p style={{ fontSize: '0.825rem', color: 'var(--color-muted)', marginTop: '0.25rem' }}>
-                  Full truckload (FTL) direct factory billing with customized sizes.
-                </p>
-              </div>
+            <div className="chat-content-col">
+              <h3>CONTACT US FOR ASSISTANCE</h3>
+              <p>
+                Have any queries or need more information about our products or
+                services? Feel free to get in touch with us. We&apos;re always ready
+                to assist you.
+              </p>
+              <a
+                href={companyInfo.whatsappLink}
+                target="_blank"
+                rel="noreferrer"
+                className="btn-whatsapp-custom"
+              >
+                CHAT ON WHATSAPP
+              </a>
             </div>
           </div>
-
-          <ContactForm />
         </div>
       </section>
 
-      {/* FAQ Section */}
+      {/* Main Contact Grid */}
+      <section id="contact" className="briter-contact-section" style={{ padding: '4rem 0 6rem' }}>
+        <div className="container">
+          <div className="briter-section-title">
+            <h2>Get In Touch</h2>
+            <p>READY TO START YOUR PROJECT? CONTACT US TODAY!</p>
+          </div>
+
+          <div className="briter-contact-grid">
+            {/* Info Cards Column */}
+            <div className="contact-cards-col">
+              <div className="briter-contact-card">
+                <div className="card-icon-wrap">
+                  <MapPin size={22} />
+                </div>
+                <div className="card-details">
+                  <h4>Address</h4>
+                  <p>
+                    {companyInfo.addressLine1},<br />
+                    {companyInfo.addressLine2},<br />
+                    {companyInfo.addressLine3}
+                  </p>
+                </div>
+              </div>
+
+              <div className="briter-contact-card">
+                <div className="card-icon-wrap">
+                  <Phone size={22} />
+                </div>
+                <div className="card-details">
+                  <h4>Phone</h4>
+                  <p>
+                    <a href={companyInfo.phoneLink}>{companyInfo.phone}</a>
+                  </p>
+                </div>
+              </div>
+
+              <div className="briter-contact-card">
+                <div className="card-icon-wrap">
+                  <MessageCircle size={22} />
+                </div>
+                <div className="card-details">
+                  <h4>WhatsApp</h4>
+                  <p>
+                    <a href={companyInfo.whatsappLink} target="_blank" rel="noreferrer">
+                      {companyInfo.whatsapp}
+                    </a>
+                  </p>
+                </div>
+              </div>
+
+              <div className="briter-contact-card">
+                <div className="card-icon-wrap">
+                  <Mail size={22} />
+                </div>
+                <div className="card-details">
+                  <h4>Email</h4>
+                  <p>
+                    <a href={companyInfo.emailLink}>{companyInfo.email}</a>
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Form Column */}
+            <div className="contact-form-col">
+              <ContactForm />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* =====================================================================
+          EXTRA FAQS / DRIVING DIRECTION CARDS COMMENTED OUT TO MATCH BRITERPLY
+          =====================================================================
       <FaqAccordion />
+      ===================================================================== */}
     </>
   );
 }
+

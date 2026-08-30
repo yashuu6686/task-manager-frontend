@@ -1,58 +1,168 @@
 'use client';
 
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { usePathname, useRouter } from 'next/navigation';
+import { useEffect, useState, useRef } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { ArrowRight, ChevronRight, Menu, MessageCircle, Phone, ShieldCheck, Sparkles, X } from 'lucide-react';
+import { ChevronDown, ChevronRight, Menu, MessageCircle, Phone, X } from 'lucide-react';
 import { companyInfo, navItems } from '@/data/siteData';
 
 export default function Header() {
   const pathname = usePathname();
+  const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isProductsDropdownOpen, setIsProductsDropdownOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState('hero');
+  const isManualScrolling = useRef(false);
 
+  // Scroll detection & Smooth Scroll Spy
   useEffect(() => {
-    const onScroll = () => setIsScrolled(window.scrollY > 20);
-    onScroll();
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
 
-  useEffect(() => {
-    setIsOpen(false);
+      // Don't override activeSection if user just clicked a menu link
+      if (isManualScrolling.current) return;
+
+      if (pathname === '/') {
+        const sections = [
+          { id: 'contact', name: 'contact' },
+          { id: 'features', name: 'features' },
+          { id: 'about', name: 'about' },
+          { id: 'hero', name: 'hero' },
+        ];
+
+        const scrollPosition = window.scrollY + 120;
+
+        for (const s of sections) {
+          const el = document.getElementById(s.id);
+          if (el) {
+            const top = el.offsetTop;
+            if (scrollPosition >= top) {
+              setActiveSection(s.name);
+              break;
+            }
+          }
+        }
+      }
+    };
+
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
   }, [pathname]);
+
+  // Update active state when route changes
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsOpen(false);
+      setIsProductsDropdownOpen(false);
+
+      if (pathname === '/products') {
+        setActiveSection('products');
+      } else if (pathname === '/about') {
+        setActiveSection('about');
+      } else if (pathname === '/features') {
+        setActiveSection('features');
+      } else if (pathname === '/contact') {
+        setActiveSection('contact');
+      } else if (pathname === '/') {
+        const hash = window.location.hash.replace('#', '');
+        if (hash) {
+          setActiveSection(hash);
+        } else {
+          setActiveSection('hero');
+        }
+      }
+    }, 0);
+
+    return () => clearTimeout(timer);
+  }, [pathname]);
+
+  // Smooth scroll handler on menu click
+  const handleNavClick = (e, href, sectionId) => {
+    setIsOpen(false);
+    setIsProductsDropdownOpen(false);
+
+    if (sectionId) {
+      setActiveSection(sectionId);
+    }
+
+    // If on homepage and clicking a section link, smoothly scroll to it without router re-render
+    if (pathname === '/' && sectionId && sectionId !== 'products') {
+      e.preventDefault();
+      const el = document.getElementById(sectionId);
+      if (el) {
+        isManualScrolling.current = true;
+        const headerOffset = 70;
+        const elementPosition = el.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+        window.scrollTo({
+          top: Math.max(0, offsetPosition),
+          behavior: 'smooth',
+        });
+
+        // Update URL hash smoothly without jump
+        window.history.pushState(null, '', `#${sectionId}`);
+
+        setTimeout(() => {
+          isManualScrolling.current = false;
+        }, 700);
+      }
+    }
+  };
+
+  const isItemActive = (item) => {
+    if (pathname === '/products' && item.href.includes('products')) return true;
+    if (pathname === '/about' && item.label === 'About') return true;
+    if (pathname === '/features' && item.label === 'Features') return true;
+    if (pathname === '/contact' && item.label === 'Contact') return true;
+
+    if (pathname === '/') {
+      if (item.label === 'Home' && activeSection === 'hero') return true;
+      if (item.label === 'About' && activeSection === 'about') return true;
+      if (item.label === 'Features' && activeSection === 'features') return true;
+      if (item.label === 'Contact' && activeSection === 'contact') return true;
+      if (item.label === 'Products' && activeSection === 'products') return true;
+    }
+
+    return false;
+  };
 
   return (
     <>
-      {/* Micro Top Announcement Bar */}
+      {/* Top Announcement Bar */}
       <div className="top-bar">
         <div className="container top-bar-content">
           <div className="top-bar-left">
             <span className="top-bar-item">
-              <ShieldCheck size={14} color="#10b981" />
-              <span>IS:710 Marine & IS:303 Certified Manufacturing</span>
+              <span>{companyInfo.name} - Marketed by {companyInfo.marketedBy}</span>
             </span>
-            <span className="top-bar-badge">Yamunanagar Facility</span>
           </div>
 
           <div className="top-bar-right">
             <a href={companyInfo.phoneLink} className="top-bar-item">
               <Phone size={13} color="#f59e0b" />
-              <span>Factory Sales: {companyInfo.phoneDisplay}</span>
+              <span>Sales: {companyInfo.phoneDisplay}</span>
             </a>
             <a href={companyInfo.whatsappLink} target="_blank" rel="noreferrer" className="top-bar-item">
               <MessageCircle size={13} color="#25d366" />
-              <span>WhatsApp Direct</span>
+              <span>WhatsApp</span>
             </a>
           </div>
         </div>
       </div>
 
-      {/* Main Glassmorphic Sticky Header */}
-      <header className={`site-header ${isScrolled ? 'scrolled' : ''}`}>
+      {/* Main Sticky Header */}
+      <header id="header" className={`site-header ${isScrolled ? 'scrolled' : ''}`}>
         <div className="container nav-shell">
-          <Link href="/" className="brand" aria-label="Core King Ply Home">
+          <Link
+            href="/#hero"
+            className="brand"
+            aria-label="Core King Ply Home"
+            onClick={(e) => handleNavClick(e, '/#hero', 'hero')}
+          >
             <div className="brand-mark">
               <span className="brand-letter">CK</span>
             </div>
@@ -60,39 +170,101 @@ export default function Header() {
               <span className="brand-text">
                 Core King <span>Ply</span>
               </span>
-              <span className="brand-tagline">Ply • Board • Door</span>
+              <span className="brand-tagline">Premium Calibrated Plywood</span>
             </div>
           </Link>
 
-
-
-
           <nav className="desktop-nav" aria-label="Main Navigation">
             {navItems.map((item) => {
-              const isActive = pathname === item.href;
+              const active = isItemActive(item);
+
+              if (item.dropdown) {
+                return (
+                  <div
+                    key={item.label}
+                    className="nav-item-dropdown-wrap"
+                    onMouseEnter={() => setIsProductsDropdownOpen(true)}
+                    onMouseLeave={() => setIsProductsDropdownOpen(false)}
+                    style={{ position: 'relative' }}
+                  >
+                    <Link
+                      href={item.href}
+                      onClick={(e) => handleNavClick(e, item.href, 'products')}
+                      className={`nav-link-item ${active ? 'active' : ''}`}
+                      style={{ display: 'inline-flex', alignItems: 'center', gap: '4px' }}
+                    >
+                      <span>{item.label}</span>
+                      <ChevronDown size={14} style={{ transition: 'transform 0.2s', transform: isProductsDropdownOpen ? 'rotate(180deg)' : 'rotate(0)' }} />
+                    </Link>
+
+                    {isProductsDropdownOpen && (
+                      <div
+                        className="dropdown-menu-glass"
+                        style={{
+                          position: 'absolute',
+                          top: '100%',
+                          left: 0,
+                          minWidth: '200px',
+                          background: '#ffffff',
+                          borderRadius: '12px',
+                          boxShadow: '0 10px 25px rgba(0,0,0,0.12)',
+                          padding: '0.5rem 0',
+                          zIndex: 100,
+                          border: '1px solid var(--color-border)',
+                        }}
+                      >
+                        {item.dropdown.map((dropItem) => (
+                          <Link
+                            key={dropItem.label}
+                            href={dropItem.href}
+                            onClick={() => setIsProductsDropdownOpen(false)}
+                            style={{
+                              display: 'block',
+                              padding: '0.6rem 1.25rem',
+                              fontSize: '0.9rem',
+                              color: 'var(--color-heading)',
+                              fontWeight: 500,
+                            }}
+                            className="dropdown-item-link"
+                          >
+                            {dropItem.label}
+                          </Link>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                );
+              }
+
+              const sectionTarget =
+                item.label === 'Home'
+                  ? 'hero'
+                  : item.label === 'About'
+                  ? 'about'
+                  : item.label === 'Features'
+                  ? 'features'
+                  : item.label === 'Contact'
+                  ? 'contact'
+                  : '';
+
               return (
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={isActive ? 'active' : ''}
+                  onClick={(e) => handleNavClick(e, item.href, sectionTarget)}
+                  className={`nav-link-item ${active ? 'active' : ''}`}
                 >
-                  {item.label}
+                  <span>{item.label}</span>
                 </Link>
               );
             })}
           </nav>
 
           <div className="nav-actions">
-            <a href={companyInfo.phoneLink} className="header-phone">
-              <Phone size={15} color="#d97706" />
-              <span>{companyInfo.phone}</span>
+            <a href={companyInfo.whatsappLink} target="_blank" rel="noreferrer" className="button button-emerald small-button header-quote-btn">
+              <MessageCircle size={15} />
+              <span>Chat WhatsApp</span>
             </a>
-
-            <Link href="/contact" className="button button-primary small-button header-quote-btn">
-              <span className="quote-btn-text">Get Instant Quote</span>
-              <span className="quote-btn-short">Get Quote</span>
-              <ArrowRight size={15} />
-            </Link>
 
             <button
               type="button"
@@ -119,33 +291,62 @@ export default function Header() {
               transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
             >
               <nav aria-label="Mobile Navigation">
-                {navItems.map((item) => (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    className={pathname === item.href ? 'active' : ''}
-                  >
-                    <span>{item.label}</span>
-                    <ChevronRight size={18} opacity={0.6} />
-                  </Link>
-                ))}
+                {navItems.map((item) => {
+                  const active = isItemActive(item);
+                  const sectionTarget =
+                    item.label === 'Home'
+                      ? 'hero'
+                      : item.label === 'About'
+                      ? 'about'
+                      : item.label === 'Features'
+                      ? 'features'
+                      : item.label === 'Contact'
+                      ? 'contact'
+                      : 'products';
+
+                  return (
+                    <div key={item.label}>
+                      <Link
+                        href={item.href}
+                        onClick={(e) => handleNavClick(e, item.href, sectionTarget)}
+                        className={active ? 'active' : ''}
+                      >
+                        <span style={{ fontWeight: active ? 700 : 500, color: active ? '#d97706' : 'inherit' }}>
+                          {item.label}
+                        </span>
+                        <ChevronRight size={18} opacity={active ? 1 : 0.6} color={active ? '#d97706' : 'currentColor'} />
+                      </Link>
+                      {item.dropdown && (
+                        <div style={{ paddingLeft: '1.5rem', marginBottom: '0.5rem' }}>
+                          {item.dropdown.map((sub) => (
+                            <Link
+                              key={sub.label}
+                              href={sub.href}
+                              onClick={() => setIsOpen(false)}
+                              style={{ fontSize: '0.85rem', color: 'var(--color-muted)', display: 'block', padding: '0.35rem 0' }}
+                            >
+                              • {sub.label}
+                            </Link>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
               </nav>
 
               <div className="mobile-contact-box">
-                <Link href="/contact" className="button button-primary" style={{ width: '100%', justifyContent: 'center' }}>
-                  <Sparkles size={16} /> Get Instant Quote <ArrowRight size={16} />
-                </Link>
-                <a href={companyInfo.phoneLink} className="button button-dark" style={{ width: '100%' }}>
-                  <Phone size={16} /> Call Sales Desk: {companyInfo.phone}
-                </a>
                 <a
                   href={companyInfo.whatsappLink}
                   target="_blank"
                   rel="noreferrer"
                   className="button button-emerald"
-                  style={{ width: '100%' }}
+                  style={{ width: '100%', justifyContent: 'center' }}
                 >
-                  <MessageCircle size={16} /> WhatsApp Inquiry
+                  <MessageCircle size={16} /> Chat on WhatsApp
+                </a>
+                <a href={companyInfo.phoneLink} className="button button-dark" style={{ width: '100%', justifyContent: 'center' }}>
+                  <Phone size={16} /> Call: {companyInfo.phone}
                 </a>
               </div>
             </motion.div>
@@ -155,4 +356,7 @@ export default function Header() {
     </>
   );
 }
+
+
+
 

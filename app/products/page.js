@@ -1,141 +1,195 @@
 'use client';
 
-import { useState, useMemo } from 'react';
 import Link from 'next/link';
-import { Search, Filter, ShieldCheck, ArrowRight, MessageCircle, FileText } from 'lucide-react';
-import SectionHeading from '@/components/SectionHeading';
-import ProductCard from '@/components/ProductCard';
+import { ArrowRight, CheckCircle2, ShieldCheck, ChevronRight, MessageCircle } from 'lucide-react';
 import { products, companyInfo } from '@/data/siteData';
 
-const categories = ['All Collections', 'Marine Grade BWP', 'Commercial & Residential BWR', 'Specialty Fire Retardant & Marine', 'High-Stability Blockboard', 'Heavy Construction Shuttering'];
-
 export default function ProductsPage() {
-  const [selectedCategory, setSelectedCategory] = useState('All Collections');
-  const [searchQuery, setSearchQuery] = useState('');
-
-  const filteredProducts = useMemo(() => {
-    return products.filter((p) => {
-      const matchCategory = selectedCategory === 'All Collections' || p.category === selectedCategory;
-      const matchSearch =
-        p.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        p.grade.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        p.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        p.applications.some((app) => app.toLowerCase().includes(searchQuery.toLowerCase()));
-      return matchCategory && matchSearch;
-    });
-  }, [selectedCategory, searchQuery]);
+  const goldProduct = products.find((p) => p.slug === 'core-king-gold') || products[0];
+  const clubProduct = products.find((p) => p.slug === 'core-king-club') || products[1];
 
   return (
     <>
-      <div className="page-header">
+      {/* Products Hero Section */}
+      <section id="products-hero" className="briter-products-hero-section">
         <div className="container">
-          <span className="eyebrow eyebrow-dark">Engineered Timber Collection</span>
-          <h1>Precision Calibrated Plywood</h1>
-          <p>
-            Explore our complete portfolio of IS:710 Marine Grade, IS:303 BWR Commercial, Fire-Retardant,
-            and Solid Pine Core Blockboards crafted for architectural excellence.
-          </p>
-        </div>
-      </div>
-
-      <section className="products-section">
-        <div className="container">
-          {/* Filter & Search Bar */}
-          <div style={{ background: '#ffffff', padding: '1.5rem', borderRadius: '16px', border: '1px solid var(--color-border)', boxShadow: 'var(--shadow-sm)', marginBottom: '3rem' }}>
-            <div className="catalog-search-bar">
-              <div style={{ position: 'relative' }}>
-                <Search size={18} color="#94a3b8" style={{ position: 'absolute', left: '1rem', top: '50%', transform: 'translateY(-50%)' }} />
-                <input
-                  type="text"
-                  placeholder="Search by grade (e.g. BWP, BWR, 19mm, Kitchen)..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  style={{ width: '100%', padding: '0.85rem 1rem 0.85rem 2.85rem', borderRadius: '12px', border: '1px solid var(--color-border)', outline: 'none', background: 'var(--bg-main)', fontSize: '0.95rem' }}
-                />
-              </div>
-
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
-                {categories.map((cat) => (
-                  <button
-                    key={cat}
-                    type="button"
-                    onClick={() => setSelectedCategory(cat)}
-                    className="pill"
-                    style={{
-                      cursor: 'pointer',
-                      background: selectedCategory === cat ? 'var(--color-primary)' : 'var(--bg-main)',
-                      color: selectedCategory === cat ? '#ffffff' : 'var(--color-body)',
-                      borderColor: selectedCategory === cat ? 'var(--color-primary)' : 'var(--color-border)',
-                      padding: '0.45rem 0.85rem',
-                      fontSize: '0.825rem',
-                      fontWeight: 600,
-                    }}
-                  >
-                    {cat}
-                  </button>
-                ))}
-              </div>
-            </div>
+          {/* Breadcrumbs */}
+          <div className="breadcrumbs-wrap">
+            <nav aria-label="breadcrumb">
+              <ol className="briter-breadcrumb">
+                <li className="breadcrumb-item">
+                  <Link href="/">Home</Link>
+                </li>
+                <li className="breadcrumb-separator">
+                  <ChevronRight size={14} />
+                </li>
+                <li className="breadcrumb-item active" aria-current="page">
+                  Plywood Collection
+                </li>
+              </ol>
+            </nav>
           </div>
 
-          {/* Product Grid */}
-          {filteredProducts.length > 0 ? (
-            <div className="product-grid">
-              {filteredProducts.map((product) => (
-                <ProductCard key={product.slug} product={product} />
-              ))}
-            </div>
-          ) : (
-            <div style={{ textAlign: 'center', padding: '4rem 1rem', background: '#ffffff', borderRadius: '16px', border: '1px solid var(--color-border)' }}>
-              <p style={{ fontSize: '1.2rem', color: 'var(--color-muted)', marginBottom: '1rem' }}>
-                No products found matching &ldquo;{searchQuery}&rdquo;.
-              </p>
-              <button
-                type="button"
-                className="button button-secondary"
-                onClick={() => {
-                  setSearchQuery('');
-                  setSelectedCategory('All Collections');
-                }}
-              >
-                Reset Filters
-              </button>
-            </div>
-          )}
-
-          {/* Brochure & Sample Box */}
-          <div className="banner-cta-grid" style={{ marginTop: '4.5rem', background: 'linear-gradient(135deg, #090e1a 0%, #1e293b 100%)', color: '#ffffff', padding: '3rem', borderRadius: '24px', border: '1px solid rgba(217, 119, 6, 0.3)' }}>
-
-            <div>
-              <span className="eyebrow eyebrow-dark">Architect & Builder Support</span>
-              <h2 style={{ color: '#ffffff', fontSize: '2rem', marginBottom: '0.75rem' }}>
-                Need Custom Sizes or Direct Plant Quotation?
-              </h2>
-              <p style={{ color: 'rgba(255, 255, 255, 0.75)', fontSize: '0.95rem', lineHeight: 1.6 }}>
-                We manufacture bespoke sizes (7x3, 7x4, 8x4 ft) and customized thicknesses from 6mm to 32mm
-                for commercial contracts and bulk container shipments.
+          <div className="products-hero-content text-center">
+            <h1 className="hero-title">
+              Our Plywood Collection<span>.</span>
+            </h1>
+            <p className="hero-subtitle">
+              Engineered for strength, durability, and reliability.
+            </p>
+            <div className="hero-description-block">
+              <p>
+                Experience strength, reliability, and design versatility with our premium plywood
+                collection. Crafted from carefully selected raw materials and processed with advanced
+                technology, each sheet reflects durability and long-lasting performance. At {companyInfo.name}wood,
+                we understand that plywood is the backbone of furniture and interiors, which is
+                why we offer a wide range tailored for diverse applications—from modular kitchens and
+                wardrobes to paneling and premium projects. Our collection balances performance with
+                aesthetics, ensuring not just utility but also timeless appeal. Step into a world of
+                quality you can trust, and let our plywood products lay the foundation for spaces that
+                embody elegance, strength, and sophistication.
               </p>
             </div>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
-              <a
-                href={companyInfo.whatsappLink}
-                target="_blank"
-                rel="noreferrer"
-                className="button button-emerald"
-                style={{ width: '100%', justifyContent: 'center' }}
-              >
-                <MessageCircle size={18} />
-                <span>Chat with Product Specialist</span>
+            <div className="hero-cta-buttons">
+              <a href="#core-king-gold" className="btn btn-outline-light me-3">
+                View Gold
               </a>
-              <Link href="/contact" className="button button-secondary" style={{ width: '100%', justifyContent: 'center' }}>
-                <span>Request Formal Price List</span>
-              </Link>
+              <a href="#core-king-club" className="btn btn-outline-light">
+                View Club
+              </a>
             </div>
           </div>
         </div>
       </section>
+
+      {/* Core King Gold Product Section */}
+      <section id="core-king-gold" className="briter-product-fullscreen-section">
+        <div className="container">
+          <div className="product-fullscreen-grid">
+            <div className="product-image-col order-image-right">
+              <div className="product-img-card">
+                <img
+                  src={goldProduct.image}
+                  alt={goldProduct.name}
+                  className="product-display-img"
+                />
+              </div>
+            </div>
+
+            <div className="product-content-col order-content-left">
+              <div className="product-details-inner">
+                <h2>{goldProduct.name}</h2>
+                <div className="product-specs-box">
+                  <p><strong>Grade:</strong> {goldProduct.grade}</p>
+                  <p><strong>Warranty:</strong> {goldProduct.warranty}</p>
+                  <p><strong>Technology:</strong> {goldProduct.technology}</p>
+                  <p><strong>Applications:</strong> {goldProduct.applications}</p>
+                </div>
+
+                <p className="product-description-p">
+                  {goldProduct.description}
+                </p>
+
+                <div className="product-key-features">
+                  <h4>Key Features:</h4>
+                  <ul>
+                    {goldProduct.features.map((feat) => (
+                      <li key={feat}>
+                        <CheckCircle2 size={16} className="feature-bullet-icon" />
+                        <span>{feat}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div style={{ marginTop: '1.75rem' }}>
+                  <a
+                    href={`https://wa.me/919624277017?text=${encodeURIComponent(`Hi, I am interested in ${goldProduct.name} (${goldProduct.grade}). Please share pricing and details.`)}`}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="btn-whatsapp-custom"
+                    style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}
+                  >
+                    <MessageCircle size={18} />
+                    <span>Inquire About Gold</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Core King Club Product Section */}
+      <section id="core-king-club" className="briter-product-fullscreen-section alt-bg">
+        <div className="container">
+          <div className="product-fullscreen-grid">
+            <div className="product-image-col">
+              <div className="product-img-card">
+                <img
+                  src={clubProduct.image}
+                  alt={clubProduct.name}
+                  className="product-display-img"
+                />
+              </div>
+            </div>
+
+            <div className="product-content-col">
+              <div className="product-details-inner">
+                <h2>{clubProduct.name}</h2>
+                <div className="product-specs-box">
+                  <p><strong>Grade:</strong> {clubProduct.grade}</p>
+                  <p><strong>Warranty:</strong> {clubProduct.warranty}</p>
+                  <p><strong>Technology:</strong> {clubProduct.technology}</p>
+                  <p><strong>Applications:</strong> {clubProduct.applications}</p>
+                </div>
+
+                <p className="product-description-p">
+                  {clubProduct.description}
+                </p>
+
+                <div className="product-key-features">
+                  <h4>Key Features:</h4>
+                  <ul>
+                    {clubProduct.features.map((feat) => (
+                      <li key={feat}>
+                        <CheckCircle2 size={16} className="feature-bullet-icon" />
+                        <span>{feat}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div style={{ marginTop: '1.75rem' }}>
+                  <a
+                    href={`https://wa.me/919624277017?text=${encodeURIComponent(`Hi, I am interested in ${clubProduct.name} (${clubProduct.grade}). Please share pricing and details.`)}`}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="btn-whatsapp-custom"
+                    style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}
+                  >
+                    <MessageCircle size={18} />
+                    <span>Inquire About Club</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* =====================================================================
+          EXTRA PRODUCTS / ADVANCED SEARCH COMMENTED OUT TO MATCH BRITERPLY
+          =====================================================================
+      <section className="extra-products-catalog">
+        <div className="container">
+          ...
+        </div>
+      </section>
+      ===================================================================== */}
     </>
   );
 }
+
 

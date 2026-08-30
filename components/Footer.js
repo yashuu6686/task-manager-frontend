@@ -1,10 +1,29 @@
 import Link from 'next/link';
-import { Mail, MapPin, MessageCircle, Phone, ShieldCheck, Award, ArrowUpRight } from 'lucide-react';
-import { companyInfo, navItems, products } from '@/data/siteData';
+import { Mail, MessageCircle, Phone } from 'lucide-react';
+import { companyInfo, navItems } from '@/data/siteData';
+
+function InstagramIcon({ size = 18 }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+      <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+    </svg>
+  );
+}
 
 export default function Footer() {
   return (
-    <footer className="site-footer">
+    <footer id="footer" className="site-footer">
       <div className="container">
         <div className="footer-top-grid">
           <div>
@@ -23,22 +42,15 @@ export default function Footer() {
             </Link>
 
             <p className="footer-copy">
-              India’s premier manufacturer of high-precision calibrated plywood, marine grade BWP 710,
-              and architectural wood solutions. Engineered for architects, interior designers, and luxury spaces.
+              {companyInfo.shortDescription}
             </p>
 
-
+            {/* Extra badges commented out
             <div className="footer-badges-strip">
-              <span className="pill emerald">
-                <ShieldCheck size={13} /> IS:710 Marine
-              </span>
-              <span className="pill emerald">
-                <Award size={13} /> IS:303 BWR
-              </span>
-              <span className="pill ghost" style={{ color: '#fff', borderColor: 'rgba(255,255,255,0.2)' }}>
-                E0 Emission
-              </span>
+              <span className="pill emerald">IS:710 Marine</span>
+              <span className="pill emerald">IS:303 BWR</span>
             </div>
+            */}
           </div>
 
           <div className="footer-column">
@@ -55,34 +67,38 @@ export default function Footer() {
           </div>
 
           <div className="footer-column">
-            <h3>Product Range</h3>
+            <h3>Products</h3>
             <ul className="footer-links">
-              {products.map((product) => (
-                <li key={product.slug}>
-                  <Link href={`/products/${product.slug}`}>
-                    <span>{product.name}</span>
-                    <ArrowUpRight size={14} opacity={0.6} />
-                  </Link>
-                </li>
-              ))}
+              <li>
+                <Link href="/products#core-king-gold">
+                  <span>Core King Gold</span>
+                </Link>
+              </li>
+              <li>
+                <Link href="/products#core-king-club">
+                  <span>Core King Club</span>
+                </Link>
+              </li>
             </ul>
           </div>
 
           <div className="footer-column">
-            <h3>Factory & Sales Desk</h3>
+            <h3>Contact Us</h3>
             <ul className="footer-contact">
               <li>
-                <MapPin size={18} />
-                <span>{companyInfo.address}</span>
-              </li>
-              <li>
                 <Phone size={18} />
-                <a href={companyInfo.phoneLink}>Call: {companyInfo.phone}</a>
+                <a href={companyInfo.phoneLink}>{companyInfo.phone}</a>
               </li>
               <li>
                 <MessageCircle size={18} />
                 <a href={companyInfo.whatsappLink} target="_blank" rel="noreferrer">
-                  WhatsApp: +91 96242 77017
+                  WhatsApp: +91 9624277017
+                </a>
+              </li>
+              <li>
+                <InstagramIcon size={18} />
+                <a href={companyInfo.instagramLink} target="_blank" rel="noreferrer">
+                  Instagram
                 </a>
               </li>
               <li>
@@ -94,13 +110,11 @@ export default function Footer() {
         </div>
 
         <div className="footer-bottom">
-          <p>© {new Date().getFullYear()} Core King Ply Industries. All Rights Reserved. Crafted for Architectural Excellence.</p>
-          <p>BIS Certified Manufacturing Unit • Yamunanagar, Haryana</p>
+          <p className="copyright">© 2025 <strong>{companyInfo.name}</strong> | All Rights Reserved</p>
         </div>
-
-
       </div>
     </footer>
   );
 }
+
 
