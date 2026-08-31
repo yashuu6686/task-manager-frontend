@@ -14,12 +14,12 @@ export default function ProductCard({ product }) {
       <div className="product-card__header">
         <img src={product.image} alt={product.name} loading="lazy" />
         <div className="product-card__badge-top">
-          <span className="pill" style={{ background: '#ffffff', color: '#0f172a', fontWeight: 800 }}>
+          <span className="pill" style={{ background: '#121215', color: '#d4af37', border: '1px solid rgba(212, 175, 55, 0.4)', fontWeight: 800 }}>
             {product.grade}
           </span>
         </div>
         <div className="product-card__warranty-top">
-          <ShieldCheck size={14} color="#10b981" />
+          <ShieldCheck size={14} color="#d4af37" />
           <span>{product.warranty}</span>
         </div>
       </div>
@@ -55,7 +55,7 @@ export default function ProductCard({ product }) {
             <ArrowRight size={16} />
           </Link>
           <a
-            href={`https://wa.me/919624277017?text=Hi%2C%20I%20want%20to%20know%20more%20about%20${encodeURIComponent(
+            href={`https://wa.me/917016059330?text=Hi%2C%20I%20want%20to%20know%20more%20about%20${encodeURIComponent(
               product.name
             )}`}
             target="_blank"
