@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Send, CheckCircle2, LoaderCircle, MessageCircle } from 'lucide-react';
 import { companyInfo } from '@/data/siteData';
 
@@ -30,7 +31,7 @@ export default function ContactForm() {
 
   const handleWhatsAppChat = () => {
     const text = `Hello ${companyInfo.name}, I would like to inquire about your plywood products.\nName: ${form.name || ''}\nEmail: ${form.email || ''}\nSubject: ${form.subject || ''}\nMessage: ${form.message || ''}`;
-    window.open(`https://wa.me/919624277017?text=${encodeURIComponent(text)}`, '_blank');
+    window.open(`https://wa.me/917016059330?text=${encodeURIComponent(text)}`, '_blank');
   };
 
   return (
@@ -86,7 +87,13 @@ export default function ContactForm() {
         </div>
 
         <div className="form-actions-flex">
-          <button type="submit" className="button button-primary btn-submit-full" disabled={isSubmitting}>
+          <motion.button
+            type="submit"
+            className="button button-primary btn-submit-full"
+            disabled={isSubmitting}
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+          >
             {isSubmitting ? (
               <>
                 <LoaderCircle className="spin" size={18} /> Sending message...
@@ -96,25 +103,33 @@ export default function ContactForm() {
                 <Send size={18} /> Send Message
               </>
             )}
-          </button>
-          <button
+          </motion.button>
+          <motion.button
             type="button"
             onClick={handleWhatsAppChat}
             className="button button-emerald btn-whatsapp-direct"
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
           >
             <MessageCircle size={18} /> Chat on WhatsApp
-          </button>
+          </motion.button>
         </div>
 
-        {isSuccess && (
-          <div className="sent-message" style={{ marginTop: '1rem', color: '#10b981', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-            <CheckCircle2 size={18} />
-            <span>Your message has been sent. Thank you!</span>
-          </div>
-        )}
+        <AnimatePresence>
+          {isSuccess && (
+            <motion.div
+              className="sent-message"
+              initial={{ opacity: 0, y: -10, height: 0 }}
+              animate={{ opacity: 1, y: 0, height: 'auto' }}
+              exit={{ opacity: 0, y: -10, height: 0 }}
+              style={{ marginTop: '1rem', color: '#10b981', display: 'flex', alignItems: 'center', gap: '0.5rem', fontWeight: 600 }}
+            >
+              <CheckCircle2 size={18} />
+              <span>Your message has been sent successfully. Thank you!</span>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </form>
   );
 }
-
-

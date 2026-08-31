@@ -197,41 +197,48 @@ export default function Header() {
                       <ChevronDown size={14} style={{ transition: 'transform 0.2s', transform: isProductsDropdownOpen ? 'rotate(180deg)' : 'rotate(0)' }} />
                     </Link>
 
-                    {isProductsDropdownOpen && (
-                      <div
-                        className="dropdown-menu-glass"
-                        style={{
-                          position: 'absolute',
-                          top: '100%',
-                          left: 0,
-                          minWidth: '200px',
-                          background: '#ffffff',
-                          borderRadius: '12px',
-                          boxShadow: '0 10px 25px rgba(0,0,0,0.12)',
-                          padding: '0.5rem 0',
-                          zIndex: 100,
-                          border: '1px solid var(--color-border)',
-                        }}
-                      >
-                        {item.dropdown.map((dropItem) => (
-                          <Link
-                            key={dropItem.label}
-                            href={dropItem.href}
-                            onClick={() => setIsProductsDropdownOpen(false)}
-                            style={{
-                              display: 'block',
-                              padding: '0.6rem 1.25rem',
-                              fontSize: '0.9rem',
-                              color: 'var(--color-heading)',
-                              fontWeight: 500,
-                            }}
-                            className="dropdown-item-link"
-                          >
-                            {dropItem.label}
-                          </Link>
-                        ))}
-                      </div>
-                    )}
+                    <AnimatePresence>
+                      {isProductsDropdownOpen && (
+                        <motion.div
+                          className="dropdown-menu-glass"
+                          initial={{ opacity: 0, y: 8, scale: 0.96 }}
+                          animate={{ opacity: 1, y: 0, scale: 1 }}
+                          exit={{ opacity: 0, y: 6, scale: 0.96 }}
+                          transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                          style={{
+                            position: 'absolute',
+                            top: '100%',
+                            left: 0,
+                            minWidth: '220px',
+                            background: '#121215',
+                            borderRadius: '12px',
+                            boxShadow: '0 16px 36px rgba(0,0,0,0.8), 0 0 15px rgba(212,175,55,0.15)',
+                            padding: '0.5rem 0',
+                            zIndex: 100,
+                            border: '1px solid rgba(212, 175, 55, 0.35)',
+                          }}
+                        >
+                          {item.dropdown.map((dropItem) => (
+                            <Link
+                              key={dropItem.label}
+                              href={dropItem.href}
+                              onClick={() => setIsProductsDropdownOpen(false)}
+                              style={{
+                                display: 'block',
+                                padding: '0.65rem 1.25rem',
+                                fontSize: '0.9rem',
+                                color: '#ffffff',
+                                fontWeight: 600,
+                                transition: 'all 0.2s',
+                              }}
+                              className="dropdown-item-link"
+                            >
+                              {dropItem.label}
+                            </Link>
+                          ))}
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                   </div>
                 );
               }
@@ -261,9 +268,10 @@ export default function Header() {
           </nav>
 
           <div className="nav-actions">
-            <a href={companyInfo.whatsappLink} target="_blank" rel="noreferrer" className="button button-emerald small-button header-quote-btn">
+            <a href={companyInfo.whatsappLink} target="_blank" rel="noreferrer" className="button button-primary small-button header-quote-btn">
               <MessageCircle size={15} />
-              <span>Chat WhatsApp</span>
+              <span className="quote-btn-text">Chat WhatsApp</span>
+              <span className="quote-btn-short">WhatsApp</span>
             </a>
 
             <button
@@ -311,10 +319,10 @@ export default function Header() {
                         onClick={(e) => handleNavClick(e, item.href, sectionTarget)}
                         className={active ? 'active' : ''}
                       >
-                        <span style={{ fontWeight: active ? 700 : 500, color: active ? '#d97706' : 'inherit' }}>
+                        <span style={{ fontWeight: active ? 700 : 500, color: active ? '#d4af37' : 'inherit' }}>
                           {item.label}
                         </span>
-                        <ChevronRight size={18} opacity={active ? 1 : 0.6} color={active ? '#d97706' : 'currentColor'} />
+                        <ChevronRight size={18} opacity={active ? 1 : 0.6} color={active ? '#d4af37' : 'currentColor'} />
                       </Link>
                       {item.dropdown && (
                         <div style={{ paddingLeft: '1.5rem', marginBottom: '0.5rem' }}>
@@ -323,7 +331,7 @@ export default function Header() {
                               key={sub.label}
                               href={sub.href}
                               onClick={() => setIsOpen(false)}
-                              style={{ fontSize: '0.85rem', color: 'var(--color-muted)', display: 'block', padding: '0.35rem 0' }}
+                              style={{ fontSize: '0.85rem', color: '#9ca3af', display: 'block', padding: '0.35rem 0' }}
                             >
                               • {sub.label}
                             </Link>
@@ -340,7 +348,7 @@ export default function Header() {
                   href={companyInfo.whatsappLink}
                   target="_blank"
                   rel="noreferrer"
-                  className="button button-emerald"
+                  className="button button-primary"
                   style={{ width: '100%', justifyContent: 'center' }}
                 >
                   <MessageCircle size={16} /> Chat on WhatsApp
