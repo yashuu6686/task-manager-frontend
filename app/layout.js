@@ -1,4 +1,5 @@
 import "./globals.css";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
@@ -36,6 +37,8 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+  const gaId = process.env.NEXT_PUBLIC_GA_ID || "G-YTBXV8ZB7B";
+
   return (
     <html lang="en">
       <head>
@@ -49,6 +52,7 @@ export default function RootLayout({ children }) {
         <Footer />
         <WhatsAppButton />
       </body>
+      <GoogleAnalytics gaId={gaId} />
     </html>
   );
 }
