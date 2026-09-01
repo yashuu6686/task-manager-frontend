@@ -171,15 +171,11 @@ export default function Header() {
             aria-label="Core King Ply Home"
             onClick={(e) => handleNavClick(e, '/#hero', 'hero')}
           >
-            <div className="brand-mark">
-              <span className="brand-letter">CK</span>
-            </div>
-            <div className="brand-details">
-              <span className="brand-text">
-                Core King <span>Ply</span>
-              </span>
-              <span className="brand-tagline">Premium Calibrated Plywood</span>
-            </div>
+            <img
+              src="/images/LOGO.svg"
+              alt="Core King Ply Logo"
+              className="brand-logo-img"
+            />
           </Link>
 
           <nav className="desktop-nav" aria-label="Main Navigation">

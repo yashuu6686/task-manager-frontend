@@ -27,6 +27,8 @@ export const companyInfo = {
   emailLink: 'mailto:corekingply@gmail.com',
   instagramLink: 'https://www.instagram.com/core_king_ply?utm_source=qr&igsh=d2lna2N0aGV2bnBk',
   instagramHandle: '@core_king_ply',
+  logo: '/images/LOGO.svg',
+  favicon: '/images/LOGO.svg',
   
   // Extra template company statistics (Commented out)
   /*
@@ -150,27 +152,17 @@ export const qualityPolicy = {
   ],
 };
 
-// Hero Sliders matching user request (4 slides)
+// Hero Sliders matching user request (01.jpg and 02.jpg)
 export const heroSlides = [
   {
     id: 1,
-    image: '/images/hero1.png',
-    alt: 'Core King Calibrated Plywood',
+    image: '/images/01.jpg',
+    alt: 'Core King Premium Calibrated Plywood Banner',
   },
   {
     id: 2,
-    image: '/images/hero2.png',
-    alt: 'Core King Premium Wood',
-  },
-  {
-    id: 3,
-    image: '/images/hero3.png',
-    alt: 'Core King Quality Craftsmanship',
-  },
-  {
-    id: 4,
-    image: '/images/hero4.png',
-    alt: 'Core King Plywood Solutions',
+    image: '/images/02.jpg',
+    alt: 'Core King Superior Strength & Durability Banner',
   },
 ];
 

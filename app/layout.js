@@ -23,6 +23,15 @@ export const metadata = {
     "commercial plywood",
     "Core King Ply",
   ],
+  icons: {
+    icon: [
+      { url: '/images/LOGO.svg', type: 'image/svg+xml' },
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+      { url: '/favicon.ico' },
+    ],
+    shortcut: '/images/LOGO.svg',
+    apple: '/images/LOGO.svg',
+  },
   openGraph: {
     title: "Core King Ply | Premium Calibrated Plywood",
     description:
@@ -30,7 +39,7 @@ export const metadata = {
     url: "https://corekingply.com",
     siteName: "Core King Ply",
     images: [
-      "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1200&q=80",
+      "/images/01.jpg",
     ],
     type: "website",
   },
@@ -44,7 +53,9 @@ export default function RootLayout({ children }) {
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='16' fill='%231b1b1a'/><text x='50%' y='58%' dominant-baseline='middle' text-anchor='middle' fill='%23f4efe4' font-family='Arial' font-size='26' font-weight='700'>CK</text></svg>" />
+        <link rel="icon" href="/images/LOGO.svg" type="image/svg+xml" />
+        <link rel="shortcut icon" href="/images/LOGO.svg" />
+        <link rel="apple-touch-icon" href="/images/LOGO.svg" />
       </head>
       <body>
         <Header />

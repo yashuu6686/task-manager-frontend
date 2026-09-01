@@ -28,17 +28,11 @@ export default function Footer() {
         <div className="footer-top-grid">
           <div>
             <Link href="/" className="brand footer-brand" aria-label="Core King Ply Home">
-              <div className="brand-mark">
-                <span className="brand-letter">CK</span>
-              </div>
-              <div className="brand-details">
-                <span className="brand-text">
-                  Core King <span style={{ color: '#f59e0b' }}>Ply</span>
-                </span>
-                <span className="brand-tagline" style={{ color: 'rgba(255, 255, 255, 0.6)' }}>
-                  Premium Calibrated Plywood
-                </span>
-              </div>
+              <img
+                src="/images/LOGO.svg"
+                alt="Core King Ply Logo"
+                className="brand-logo-img footer-logo-img"
+              />
             </Link>
 
             <p className="footer-copy">
