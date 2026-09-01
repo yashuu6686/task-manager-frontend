@@ -81,8 +81,8 @@
 }
 
 html {
-  scroll-behavior: smooth;
   font-size: 16px;
+  overflow-x: hidden;
 }
 
 body {
@@ -92,7 +92,6 @@ body {
   background-image: 
     radial-gradient(at 0% 0%, rgba(217, 119, 6, 0.035) 0px, transparent 50%),
     radial-gradient(at 100% 100%, rgba(16, 185, 129, 0.025) 0px, transparent 50%);
-  background-attachment: fixed;
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -101,10 +100,27 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-display);
-  color: var(--color-heading);
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: var(--accent-500);
   font-weight: 700;
   line-height: 1.2;
   letter-spacing: -0.02em;
+}
+
+h1 span, h2 span, h3 span, h4 span, h5 span, h6 span {
+  background: inherit;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+h1 svg, h2 svg, h3 svg, h4 svg, h5 svg, h6 svg {
+  color: #d4af37;
+  stroke: #d4af37;
+  -webkit-text-fill-color: initial;
 }
 
 p {
@@ -188,8 +204,10 @@ button, input, select, textarea {
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid rgba(212, 175, 55, 0.35);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: padding 0.25s ease, background-color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
   padding: 0.85rem 0;
+  transform: translateZ(0);
+  will-change: transform;
 }
 
 .site-header.scrolled {
@@ -532,14 +550,17 @@ button, input, select, textarea {
 }
 
 .button-emerald {
-  background: linear-gradient(135deg, var(--emerald-600) 0%, var(--emerald-500) 100%);
-  color: #ffffff;
-  box-shadow: 0 10px 25px -4px rgba(16, 185, 129, 0.35);
+  background: var(--accent-gradient);
+  color: #000000;
+  box-shadow: 0 10px 25px -4px rgba(212, 175, 55, 0.4);
+  font-weight: 800;
 }
 
 .button-emerald:hover {
-  background: var(--emerald-700);
+  background: var(--accent-gradient-hover);
+  color: #000000;
   transform: translateY(-2px);
+  box-shadow: 0 14px 30px -4px rgba(212, 175, 55, 0.6);
 }
 
 .small-button {
@@ -612,7 +633,10 @@ button, input, select, textarea {
 
 .section-heading h2 {
   font-size: 2.65rem;
-  color: var(--color-heading);
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   margin: 0.4rem 0 0.85rem;
   letter-spacing: -0.03em;
 }
@@ -624,7 +648,10 @@ button, input, select, textarea {
 }
 
 .section-heading.dark h2 {
-  color: #ffffff;
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .section-heading.dark p {
@@ -672,7 +699,10 @@ button, input, select, textarea {
   line-height: 1.06;
   letter-spacing: -0.035em;
   margin-bottom: 1.25rem;
-  color: #ffffff;
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .hero-copy h1 .text-highlight {
@@ -1377,8 +1407,8 @@ button, input, select, textarea {
   background: #121215;
   border-radius: var(--radius-lg);
   padding: 2rem;
-  border: 1px solid rgba(212, 175, 55, 0.3);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  border: 2.5px solid #d4af37;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7), 0 0 20px rgba(212, 175, 55, 0.25);
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
   overflow: hidden;
@@ -1387,8 +1417,8 @@ button, input, select, textarea {
 .feature-card:hover {
   transform: translateY(-6px);
   background: #18181c;
-  border-color: #d4af37;
-  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.8), 0 0 20px rgba(212, 175, 55, 0.2);
+  border-color: #fcf6ba;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.85), 0 0 30px rgba(212, 175, 55, 0.45);
 }
 
 .feature-card__top {
@@ -1423,7 +1453,10 @@ button, input, select, textarea {
 
 .feature-card h3 {
   font-size: 1.3rem;
-  color: #ffffff;
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   margin-bottom: 0.6rem;
 }
 
@@ -2302,7 +2335,10 @@ button, input, select, textarea {
 
 .footer-column h3 {
   font-size: 1.1rem;
-  color: #ffffff;
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   margin-bottom: 1.25rem;
   position: relative;
   padding-bottom: 0.5rem;
@@ -2381,11 +2417,12 @@ button, input, select, textarea {
   width: 60px;
   height: 60px;
   border-radius: var(--radius-full);
-  background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
-  color: #ffffff;
+  background: var(--accent-gradient);
+  color: #000000;
   display: grid;
   place-items: center;
-  box-shadow: 0 10px 30px rgba(37, 211, 102, 0.45);
+  box-shadow: 0 10px 30px rgba(212, 175, 55, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.4);
   z-index: 999;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   text-decoration: none;
@@ -2394,9 +2431,9 @@ button, input, select, textarea {
 .whatsapp-float::before {
   content: '';
   position: absolute;
-  inset: -4px;
+  inset: -5px;
   border-radius: var(--radius-full);
-  border: 2px solid rgba(37, 211, 102, 0.6);
+  border: 2px solid rgba(212, 175, 55, 0.6);
   animation: radar-pulse 2s infinite ease-out;
   pointer-events: none;
 }
@@ -2414,7 +2451,9 @@ button, input, select, textarea {
 
 .whatsapp-float:hover {
   transform: translateY(-4px) scale(1.08);
-  box-shadow: 0 16px 40px rgba(37, 211, 102, 0.6);
+  box-shadow: 0 16px 40px rgba(212, 175, 55, 0.7);
+  background: var(--accent-gradient-hover);
+  color: #000000;
 }
 
 /* ==========================================================================
@@ -2440,7 +2479,10 @@ button, input, select, textarea {
 
 .page-header h1 {
   font-size: 3.25rem;
-  color: #ffffff;
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   margin: 0.5rem 0 0.85rem;
 }
 
@@ -2886,7 +2928,10 @@ button, input, select, textarea {
 .briter-section-title h2 {
   font-size: 2.2rem;
   font-weight: 800;
-  color: var(--color-heading);
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   letter-spacing: -0.02em;
   margin-bottom: 0.5rem;
 }
@@ -2896,7 +2941,7 @@ button, input, select, textarea {
   font-weight: 700;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: #d97706;
+  color: #d4af37;
 }
 
 /* 1. Hero Section */
@@ -2931,6 +2976,7 @@ button, input, select, textarea {
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  transform: translateZ(0);
 }
 
 .hero-slider-bg-blur {
@@ -2940,7 +2986,8 @@ button, input, select, textarea {
   height: 100%;
   object-fit: cover;
   filter: blur(30px) brightness(0.35);
-  transform: scale(1.12);
+  transform: scale(1.12) translateZ(0);
+  will-change: transform;
   pointer-events: none;
 }
 
@@ -3091,7 +3138,10 @@ button, input, select, textarea {
 .about-content-col h3 {
   font-size: 1.85rem;
   font-weight: 800;
-  color: #ffffff;
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   margin-bottom: 1rem;
 }
 
@@ -3147,17 +3197,18 @@ button, input, select, textarea {
   background: #121215;
   padding: 2.25rem 2rem;
   border-radius: 16px;
-  border: 1px solid rgba(212, 175, 55, 0.3);
-  transition: all 0.3s ease;
+  border: 2.5px solid #d4af37;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7), 0 0 20px rgba(212, 175, 55, 0.25);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 }
 
 .briter-feature-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.8), 0 0 20px rgba(212, 175, 55, 0.2);
-  border-color: #d4af37;
+  transform: translateY(-8px);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.85), 0 0 30px rgba(212, 175, 55, 0.45);
+  border-color: #fcf6ba;
 }
 
 .feature-icon-box {
@@ -3169,12 +3220,17 @@ button, input, select, textarea {
   display: grid;
   place-items: center;
   margin-bottom: 1.25rem;
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .briter-feature-card h3 {
   font-size: 1.25rem;
   font-weight: 700;
-  color: #ffffff;
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   margin-bottom: 0.75rem;
 }
 
@@ -3222,13 +3278,19 @@ button, input, select, textarea {
 .quote-box-inner h3 {
   font-size: 2.8rem;
   font-weight: 800;
-  color: #ffffff;
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   line-height: 1.2;
   margin-bottom: 1rem;
 }
 
 .quote-box-inner h3 span {
-  color: #d4af37;
+  background: inherit;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .quote-subtext {
@@ -3296,11 +3358,21 @@ button, input, select, textarea {
 .quality-card-heading {
   font-size: 1.55rem;
   font-weight: 800;
-  color: #ffffff;
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   display: flex;
   align-items: center;
   gap: 0.6rem;
   margin-bottom: 1.25rem;
+}
+
+.quality-card-heading span {
+  background: inherit;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .text-primary-icon {
@@ -3368,7 +3440,10 @@ button, input, select, textarea {
 .chat-content-col h3 {
   font-size: 1.6rem;
   font-weight: 800;
-  color: #ffffff;
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   margin-bottom: 0.75rem;
 }
 
@@ -3451,7 +3526,10 @@ button, input, select, textarea {
 .card-details h4 {
   font-size: 1.05rem;
   font-weight: 700;
-  color: #ffffff;
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   margin-bottom: 0.25rem;
 }
 
@@ -3581,12 +3659,18 @@ button, input, select, textarea {
 .hero-title {
   font-size: 2.8rem;
   font-weight: 800;
-  color: #ffffff;
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   margin-bottom: 0.5rem;
 }
 
 .hero-title span {
-  color: #d4af37;
+  background: inherit;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .hero-subtitle {
@@ -3682,23 +3766,25 @@ button, input, select, textarea {
   overflow: hidden;
   height: 660px;
   max-height: 680px;
-  background: #09090b;
+  background: radial-gradient(circle at center, #1b1b22 0%, #09090b 100%);
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 0.5rem;
 }
 
 .product-display-img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   object-position: center;
   display: block;
   transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.7));
 }
 
 .luxury-product-showcase:hover .product-display-img {
-  transform: scale(1.04);
+  transform: scale(1.03);
 }
 
 /* Floating Badges on Image */
@@ -3794,14 +3880,20 @@ button, input, select, textarea {
 .luxury-product-info h2 {
   font-size: 2.5rem;
   font-weight: 800;
-  color: #ffffff;
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   letter-spacing: -0.02em;
   line-height: 1.15;
   margin-bottom: 1rem;
 }
 
 .luxury-product-info h2 span {
-  color: #d4af37;
+  background: inherit;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .product-description-p {
@@ -3881,11 +3973,21 @@ button, input, select, textarea {
 .product-key-features h4 {
   font-size: 1.05rem;
   font-weight: 800;
-  color: #ffffff;
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   margin-bottom: 0.85rem;
   display: flex;
   align-items: center;
   gap: 0.5rem;
+}
+
+.product-key-features h4 span {
+  background: inherit;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .product-key-features h4 svg {
@@ -4134,135 +4236,6 @@ button, input, select, textarea {
 }
 
 /* ==========================================================================
-   DYNAMIC FIREWORKS SPARK TRAIL & LUXURY ARROW POINTER SYSTEM
-   ========================================================================== */
-
-/* Cursor hide on desktop when custom cursor is active */
-@media (hover: hover) and (pointer: fine) {
-  html.has-custom-cursor,
-  html.has-custom-cursor body,
-  html.has-custom-cursor a,
-  html.has-custom-cursor button,
-  html.has-custom-cursor .button,
-  html.has-custom-cursor .btn,
-  html.has-custom-cursor [role="button"],
-  html.has-custom-cursor .hero-arrow-btn,
-  html.has-custom-cursor .hero-dot-bullet,
-  html.has-custom-cursor .menu-toggle,
-  html.has-custom-cursor .whatsapp-float {
-    cursor: none !important;
-  }
-
-  html.has-custom-cursor input,
-  html.has-custom-cursor textarea,
-  html.has-custom-cursor select,
-  html.has-custom-cursor [contenteditable="true"] {
-    cursor: text !important;
-  }
-}
-
-/* Fullscreen High-Performance Fireworks Canvas */
-.custom-cursor-firework-canvas {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  pointer-events: none;
-  z-index: 999998;
-}
-
-/* Instantly Recognizable Luxury Mouse Pointer Arrow */
-.custom-cursor-arrow-pointer {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 24px;
-  height: 24px;
-  pointer-events: none;
-  z-index: 999999;
-  will-change: transform;
-  transition: opacity 0.25s ease;
-  transform-origin: 1px 1px;
-}
-
-.cursor-arrow-svg {
-  display: block;
-  width: 24px;
-  height: 24px;
-  transform-origin: 1px 1px;
-  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), filter 0.22s ease;
-}
-
-/* Ambient Pulse Halo at Arrow Tip */
-.arrow-tip-spark {
-  position: absolute;
-  top: -6px;
-  left: -6px;
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(251, 191, 36, 0.6) 0%, rgba(245, 158, 11, 0.2) 50%, transparent 75%);
-  pointer-events: none;
-  animation: arrowTipPulse 1.8s infinite ease-in-out;
-}
-
-/* Interactive Hover State on Buttons/Links/Cards */
-.custom-cursor-arrow-pointer.is-hovered .cursor-arrow-svg {
-  transform: scale(1.2) rotate(-8deg);
-  filter: drop-shadow(0 0 10px rgba(245, 158, 11, 0.85));
-}
-
-.custom-cursor-arrow-pointer.is-hovered .arrow-tip-spark {
-  transform: scale(1.6);
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.9) 0%, rgba(245, 158, 11, 0.5) 45%, transparent 75%);
-}
-
-/* Tactile Click State */
-.custom-cursor-arrow-pointer.is-clicked .cursor-arrow-svg {
-  transform: scale(0.85) rotate(-12deg);
-}
-
-/* Text Input State */
-.custom-cursor-arrow-pointer.is-text {
-  opacity: 0 !important;
-}
-
-@keyframes arrowTipPulse {
-  0%, 100% {
-    transform: scale(0.9);
-    opacity: 0.7;
-  }
-  50% {
-    transform: scale(1.4);
-    opacity: 1;
-  }
-}
-
-/* Reduced Motion & Touch Isolation */
-@media (prefers-reduced-motion: reduce) {
-  .custom-cursor-firework-canvas,
-  .custom-cursor-arrow-pointer,
-  .arrow-tip-spark {
-    display: none !important;
-  }
-}
-
-@media (hover: none) or (pointer: coarse) {
-  .custom-cursor-firework-canvas,
-  .custom-cursor-arrow-pointer {
-    display: none !important;
-  }
-
-  html.has-custom-cursor,
-  html.has-custom-cursor body,
-  html.has-custom-cursor a,
-  html.has-custom-cursor button {
-    cursor: auto !important;
-  }
-}
-
-/* ==========================================================================
    RICH SITE ANIMATIONS & MICRO-INTERACTIONS
    ========================================================================== */
 
@@ -4324,20 +4297,22 @@ button, input, select, textarea {
 /* Feature Cards Interactive Lift & Glow */
 .briter-feature-card {
   position: relative;
+  border: 2.5px solid #d4af37;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7), 0 0 20px rgba(212, 175, 55, 0.25);
   transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, border-color 0.35s ease;
 }
 
 .briter-feature-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 16px 32px -8px rgba(217, 119, 6, 0.15), 0 6px 16px -4px rgba(15, 23, 42, 0.08);
-  border-color: rgba(217, 119, 6, 0.6);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.85), 0 0 30px rgba(212, 175, 55, 0.45);
+  border-color: #fcf6ba;
 }
 
 .briter-feature-card:hover .feature-icon-box {
   transform: scale(1.1) rotate(4deg);
-  background: #d97706;
-  color: #ffffff;
-  box-shadow: 0 8px 20px rgba(217, 119, 6, 0.35);
+  background: var(--accent-gradient);
+  color: #000000;
+  box-shadow: 0 8px 20px rgba(212, 175, 55, 0.4);
 }
 
 .feature-icon-box {
@@ -4375,9 +4350,9 @@ button, input, select, textarea {
 
 .briter-contact-card:hover .card-icon-wrap {
   transform: scale(1.08);
-  background: #d97706;
-  color: #ffffff;
-  box-shadow: 0 4px 14px rgba(217, 119, 6, 0.35);
+  background: var(--accent-gradient);
+  color: #000000;
+  box-shadow: 0 4px 14px rgba(212, 175, 55, 0.4);
 }
 
 .card-icon-wrap {
@@ -4387,38 +4362,6 @@ button, input, select, textarea {
 /* Quote Section Floating Glow */
 .quote-box-inner {
   animation: heroFloat 6s ease-in-out infinite;
-}
-
-/* Floating WhatsApp Badge Ring Pulsing */
-.whatsapp-float {
-  position: fixed;
-  bottom: 2rem;
-  right: 2rem;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  background: #25D366;
-  color: #ffffff;
-  display: grid;
-  place-items: center;
-  box-shadow: 0 8px 24px rgba(37, 211, 102, 0.45);
-  z-index: 999;
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
-}
-
-.whatsapp-float::before {
-  content: '';
-  position: absolute;
-  inset: -6px;
-  border-radius: 50%;
-  background: rgba(37, 211, 102, 0.35);
-  z-index: -1;
-  animation: pulseWhatsApp 2.2s infinite ease-in-out;
-}
-
-.whatsapp-float:hover {
-  transform: scale(1.12) rotate(6deg);
-  box-shadow: 0 12px 30px rgba(37, 211, 102, 0.6);
 }
 
 /* Keyframe Animations */

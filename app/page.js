@@ -14,7 +14,6 @@ import {
   Phone,
   MessageCircle,
   Mail,
-  MapPin,
   ChevronLeft,
   ChevronRight,
   ArrowRight,
@@ -370,7 +369,7 @@ export default function HomePage() {
                 whileHover={{ scale: 1.12, rotate: 8 }}
                 transition={{ type: 'spring', stiffness: 300 }}
               >
-                <MessageCircle size={80} color="#25D366" />
+                <MessageCircle size={80} color="#d4af37" />
               </motion.div>
             </motion.div>
 
@@ -425,24 +424,6 @@ export default function HomePage() {
               whileInView="visible"
               viewport={{ once: true, amount: 0.2 }}
             >
-              <motion.div
-                className="briter-contact-card"
-                variants={fadeInUp}
-                whileHover={{ x: 6 }}
-              >
-                <div className="card-icon-wrap">
-                  <MapPin size={22} />
-                </div>
-                <div className="card-details">
-                  <h4>Address</h4>
-                  <p>
-                    {companyInfo.addressLine1},<br />
-                    {companyInfo.addressLine2},<br />
-                    {companyInfo.addressLine3}
-                  </p>
-                </div>
-              </motion.div>
-
               <motion.div
                 className="briter-contact-card"
                 variants={fadeInUp}

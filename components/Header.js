@@ -18,32 +18,40 @@ export default function Header() {
 
   // Scroll detection & Smooth Scroll Spy
   useEffect(() => {
+    let ticking = false;
+
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const currentScrollY = window.scrollY;
+          const scrolled = currentScrollY > 20;
+          setIsScrolled((prev) => (prev !== scrolled ? scrolled : prev));
 
-      // Don't override activeSection if user just clicked a menu link
-      if (isManualScrolling.current) return;
+          // Don't override activeSection if user just clicked a menu link
+          if (!isManualScrolling.current && pathname === '/') {
+            const sections = [
+              { id: 'contact', name: 'contact' },
+              { id: 'features', name: 'features' },
+              { id: 'about', name: 'about' },
+              { id: 'hero', name: 'hero' },
+            ];
 
-      if (pathname === '/') {
-        const sections = [
-          { id: 'contact', name: 'contact' },
-          { id: 'features', name: 'features' },
-          { id: 'about', name: 'about' },
-          { id: 'hero', name: 'hero' },
-        ];
+            const scrollPosition = currentScrollY + 140;
 
-        const scrollPosition = window.scrollY + 120;
-
-        for (const s of sections) {
-          const el = document.getElementById(s.id);
-          if (el) {
-            const top = el.offsetTop;
-            if (scrollPosition >= top) {
-              setActiveSection(s.name);
-              break;
+            for (const s of sections) {
+              const el = document.getElementById(s.id);
+              if (el) {
+                const top = el.offsetTop;
+                if (scrollPosition >= top) {
+                  setActiveSection((prev) => (prev !== s.name ? s.name : prev));
+                  break;
+                }
+              }
             }
           }
-        }
+          ticking = false;
+        });
+        ticking = true;
       }
     };
 
@@ -147,7 +155,7 @@ export default function Header() {
               <span>Sales: {companyInfo.phoneDisplay}</span>
             </a>
             <a href={companyInfo.whatsappLink} target="_blank" rel="noreferrer" className="top-bar-item">
-              <MessageCircle size={13} color="#25d366" />
+              <MessageCircle size={13} color="#d4af37" />
               <span>WhatsApp</span>
             </a>
           </div>

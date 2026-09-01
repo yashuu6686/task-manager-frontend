@@ -161,11 +161,11 @@ export default function ProductsPage() {
                 <div className="product-card-bottom-strip">
                   <div className="bottom-feature-item">
                     <Layers size={14} />
-                    <span>4-Time Hot Press</span>
+                    <span>4-Time Press</span>
                   </div>
                   <div className="bottom-feature-item">
                     <CheckCheck size={14} />
-                    <span>Machine Calibrated</span>
+                    <span>100% Calibrated</span>
                   </div>
                   <div className="bottom-feature-item">
                     <Sparkles size={14} />
@@ -210,7 +210,7 @@ export default function ProductsPage() {
                   </div>
                   <div className="spec-details">
                     <span className="spec-title-label">Warranty</span>
-                    <strong className="spec-value-strong">{goldProduct.warranty} Replacement</strong>
+                    <strong className="spec-value-strong">{goldProduct.warranty}</strong>
                   </div>
                 </div>
 
@@ -315,7 +315,7 @@ export default function ProductsPage() {
                 <div className="product-card-bottom-strip">
                   <div className="bottom-feature-item">
                     <Layers size={14} />
-                    <span>4-Time Hot Press</span>
+                    <span>4-Time Press</span>
                   </div>
                   <div className="bottom-feature-item">
                     <CheckCheck size={14} />
@@ -364,7 +364,7 @@ export default function ProductsPage() {
                   </div>
                   <div className="spec-details">
                     <span className="spec-title-label">Warranty</span>
-                    <strong className="spec-value-strong">{clubProduct.warranty} Replacement</strong>
+                    <strong className="spec-value-strong">{clubProduct.warranty}</strong>
                   </div>
                 </div>
 

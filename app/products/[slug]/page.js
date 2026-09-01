@@ -103,11 +103,11 @@ export default async function ProductDetail({ params }) {
                 <div className="product-card-bottom-strip">
                   <div className="bottom-feature-item">
                     <Layers size={14} />
-                    <span>4-Time Hot Press</span>
+                    <span>4-Time Press</span>
                   </div>
                   <div className="bottom-feature-item">
                     <CheckCheck size={14} />
-                    <span>Machine Calibrated</span>
+                    <span>100% Calibrated</span>
                   </div>
                   <div className="bottom-feature-item">
                     <Sparkles size={14} />
@@ -147,7 +147,7 @@ export default async function ProductDetail({ params }) {
                   </div>
                   <div className="spec-details">
                     <span className="spec-title-label">Warranty</span>
-                    <strong className="spec-value-strong">{product.warranty} Replacement</strong>
+                    <strong className="spec-value-strong">{product.warranty}</strong>
                   </div>
                 </div>
 
@@ -214,15 +214,15 @@ export default async function ProductDetail({ params }) {
           {/* Related Products */}
           {relatedProducts.length > 0 && (
             <div style={{ borderTop: '1px solid var(--color-border)', paddingTop: '3.5rem' }}>
-              <h3 style={{ fontSize: '1.75rem', color: 'var(--color-heading)', marginBottom: '1.5rem' }}>
+              <h3 style={{ fontSize: '1.75rem', marginBottom: '1.5rem' }}>
                 Other Collections
               </h3>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.5rem' }}>
                 {relatedProducts.map((rel) => (
-                  <div key={rel.slug} style={{ background: '#ffffff', borderRadius: '18px', padding: '1.75rem', border: '1px solid var(--color-border)', boxShadow: 'var(--shadow-sm)' }}>
+                  <div key={rel.slug} style={{ background: '#121215', borderRadius: '18px', padding: '1.75rem', border: '1.5px solid rgba(212, 175, 55, 0.35)', boxShadow: '0 10px 25px rgba(0, 0, 0, 0.6)' }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.75rem' }}>
                       <span className="badge-grade" style={{ fontSize: '0.75rem', padding: '0.25rem 0.65rem' }}>{rel.grade.split(' ')[0]}</span>
-                      <span style={{ fontSize: '0.85rem', color: '#059669', fontWeight: 700 }}>{rel.warranty}</span>
+                      <span style={{ fontSize: '0.85rem', color: '#34d399', fontWeight: 700 }}>{rel.warranty}</span>
                     </div>
                     <h4 style={{ fontSize: '1.35rem', marginBottom: '0.5rem' }}>{rel.name}</h4>
                     <p style={{ color: 'var(--color-body)', fontSize: '0.9rem', marginBottom: '1.25rem', lineHeight: 1.6 }}>{rel.description.substring(0, 110)}...</p>

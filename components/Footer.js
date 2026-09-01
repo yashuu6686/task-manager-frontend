@@ -36,7 +36,7 @@ export default function Footer() {
                   Core King <span style={{ color: '#f59e0b' }}>Ply</span>
                 </span>
                 <span className="brand-tagline" style={{ color: 'rgba(255, 255, 255, 0.6)' }}>
-                  Yamunanagar, India
+                  Premium Calibrated Plywood
                 </span>
               </div>
             </Link>

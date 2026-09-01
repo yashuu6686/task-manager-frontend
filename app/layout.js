@@ -2,7 +2,6 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
-import CustomCursor from "@/components/CustomCursor";
 
 export const metadata = {
   metadataBase: new URL("https://corekingply.com"),
@@ -45,7 +44,6 @@ export default function RootLayout({ children }) {
         <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='16' fill='%231b1b1a'/><text x='50%' y='58%' dominant-baseline='middle' text-anchor='middle' fill='%23f4efe4' font-family='Arial' font-size='26' font-weight='700'>CK</text></svg>" />
       </head>
       <body>
-        <CustomCursor />
         <Header />
         <main className="page-shell">{children}</main>
         <Footer />
