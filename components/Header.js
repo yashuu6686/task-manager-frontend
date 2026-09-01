@@ -304,9 +304,9 @@ export default function Header() {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
             >
-              <nav aria-label="Mobile Navigation">
+              <nav className="mobile-nav-list" aria-label="Mobile Navigation">
                 {navItems.map((item) => {
                   const active = isItemActive(item);
                   const sectionTarget =
@@ -321,27 +321,27 @@ export default function Header() {
                       : 'products';
 
                   return (
-                    <div key={item.label}>
+                    <div key={item.label} className="mobile-nav-item">
                       <Link
                         href={item.href}
                         onClick={(e) => handleNavClick(e, item.href, sectionTarget)}
-                        className={active ? 'active' : ''}
+                        className={`mobile-nav-link ${active ? 'active' : ''}`}
                       >
-                        <span style={{ fontWeight: active ? 700 : 500, color: active ? '#d4af37' : 'inherit' }}>
-                          {item.label}
-                        </span>
-                        <ChevronRight size={18} opacity={active ? 1 : 0.6} color={active ? '#d4af37' : 'currentColor'} />
+                        <span className="mobile-nav-text">{item.label}</span>
+                        <ChevronRight size={18} className="mobile-nav-arrow" />
                       </Link>
+
                       {item.dropdown && (
-                        <div style={{ paddingLeft: '1.5rem', marginBottom: '0.5rem' }}>
+                        <div className="mobile-submenu">
                           {item.dropdown.map((sub) => (
                             <Link
                               key={sub.label}
                               href={sub.href}
                               onClick={() => setIsOpen(false)}
-                              style={{ fontSize: '0.85rem', color: '#9ca3af', display: 'block', padding: '0.35rem 0' }}
+                              className="mobile-sub-link"
                             >
-                              • {sub.label}
+                              <span className="mobile-sub-dot">◆</span>
+                              <span>{sub.label}</span>
                             </Link>
                           ))}
                         </div>
@@ -357,11 +357,10 @@ export default function Header() {
                   target="_blank"
                   rel="noreferrer"
                   className="button button-primary"
-                  style={{ width: '100%', justifyContent: 'center' }}
                 >
                   <MessageCircle size={16} /> Chat on WhatsApp
                 </a>
-                <a href={companyInfo.phoneLink} className="button button-dark" style={{ width: '100%', justifyContent: 'center' }}>
+                <a href={companyInfo.phoneLink} className="button button-dark">
                   <Phone size={16} /> Call: {companyInfo.phone}
                 </a>
               </div>
