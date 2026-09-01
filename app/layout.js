@@ -25,12 +25,15 @@ export const metadata = {
   ],
   icons: {
     icon: [
-      { url: '/images/LOGO.svg', type: 'image/svg+xml' },
-      { url: '/favicon.svg', type: 'image/svg+xml' },
-      { url: '/favicon.ico' },
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/icon.png', type: 'image/png', sizes: '192x192' },
+      { url: '/favicon-32x32.png', type: 'image/png', sizes: '32x32' },
+      { url: '/favicon-16x16.png', type: 'image/png', sizes: '16x16' },
     ],
-    shortcut: '/images/LOGO.svg',
-    apple: '/images/LOGO.svg',
+    shortcut: '/favicon.ico',
+    apple: [
+      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+    ],
   },
   openGraph: {
     title: "Core King Ply | Premium Calibrated Plywood",
@@ -53,9 +56,6 @@ export default function RootLayout({ children }) {
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link rel="icon" href="/images/LOGO.svg" type="image/svg+xml" />
-        <link rel="shortcut icon" href="/images/LOGO.svg" />
-        <link rel="apple-touch-icon" href="/images/LOGO.svg" />
       </head>
       <body>
         <Header />
