@@ -65,8 +65,8 @@ const defaultBoardingItems = [
   },
   {
     icon: <Award size={16} />,
-    title: 'Core King Gold & Club',
-    subtitle: '20 & 30 Year Durability Benchmark',
+    title: 'Core King BWR & Club710',
+    subtitle: '15 & 21 Year Durability Benchmark',
     highlight: true,
   },
   {

@@ -8,22 +8,22 @@ import { comparisonData } from '@/data/siteData';
 const grades = [
   {
     id: 'club',
-    name: 'Core King Club 710',
-    shortName: 'Club 710',
+    name: 'Core King Club710',
+    shortName: 'Club710',
     subtitle: 'Flagship BWP Marine Grade',
     badge: 'Recommended',
-    warranty: '30 Yrs Warranty',
+    warranty: '21 Yrs Warranty',
     color: '#d97706',
     dataKey: 'coreKingClub',
     isRecommended: true,
   },
   {
     id: 'gold',
-    name: 'Core King Gold BWR',
-    shortName: 'Gold BWR',
+    name: 'Core King BWR',
+    shortName: 'Core King BWR',
     subtitle: 'Commercial & Residential BWR',
     badge: 'Best Seller',
-    warranty: '20 Yrs Warranty',
+    warranty: '15 Yrs Warranty',
     color: '#059669',
     dataKey: 'coreKingGold',
     isRecommended: false,
@@ -129,10 +129,10 @@ export default function ComparisonTable() {
                 <th className="featured">
                   <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
                     <Sparkles size={16} />
-                    <span>Core King Club 710 (Flagship)</span>
+                    <span>Core King Club710 (Flagship)</span>
                   </div>
                 </th>
-                <th>Core King Gold (BWR Grade)</th>
+                <th>Core King BWR (BWR Grade)</th>
                 <th>Regular Local Plywood</th>
               </tr>
             </thead>

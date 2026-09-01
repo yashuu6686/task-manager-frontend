@@ -71,12 +71,12 @@ export default function Footer() {
             <ul className="footer-links">
               <li>
                 <Link href="/products#core-king-gold">
-                  <span>Core King Gold</span>
+                  <span>Core King BWR</span>
                 </Link>
               </li>
               <li>
                 <Link href="/products#core-king-club">
-                  <span>Core King Club</span>
+                  <span>Core King Club710</span>
                 </Link>
               </li>
             </ul>

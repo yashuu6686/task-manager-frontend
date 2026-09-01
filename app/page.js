@@ -269,7 +269,7 @@ export default function HomePage() {
         <div className="quote-bg-wrapper">
           <img
             src="/images/plywood_banner_img.webp"
-            alt="Core King Club Plywood"
+            alt="Core King Club710 Plywood"
             className="quote-bg-img"
           />
         </div>

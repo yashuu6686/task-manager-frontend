@@ -111,7 +111,7 @@ export default function ProductsPage() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                View Gold
+                View Core King BWR
               </motion.a>
               <motion.a
                 href="#core-king-club"
@@ -119,14 +119,14 @@ export default function ProductsPage() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                View Club
+                View Core King Club710
               </motion.a>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* 1. Core King Gold Product Section */}
+      {/* 1. Core King BWR Product Section */}
       <section id="core-king-gold" className="briter-product-fullscreen-section">
         <div className="container">
           <div className="product-fullscreen-grid">
@@ -280,7 +280,7 @@ export default function ProductsPage() {
         </div>
       </section>
 
-      {/* 2. Core King Club Product Section */}
+      {/* 2. Core King Club710 Product Section */}
       <section id="core-king-club" className="briter-product-fullscreen-section alt-bg">
         <div className="container">
           <div className="product-fullscreen-grid">

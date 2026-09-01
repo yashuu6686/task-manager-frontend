@@ -25,7 +25,8 @@ export const companyInfo = {
   whatsappLink: 'https://wa.me/917016059330',
   phoneLink: 'tel:+917016059330',
   emailLink: 'mailto:corekingply@gmail.com',
-  instagramLink: 'https://www.instagram.com/briterply?utm_source=qr&igsh=MW5mZW16c3B5dDNwMw==',
+  instagramLink: 'https://www.instagram.com/core_king_ply?utm_source=qr&igsh=d2lna2N0aGV2bnBk',
+  instagramHandle: '@core_king_ply',
   
   // Extra template company statistics (Commented out)
   /*
@@ -48,8 +49,8 @@ export const navItems = [
     href: '/products',
     dropdown: [
       { label: 'Plywoods', href: '/products' },
-      { label: 'Core King Gold', href: '/products#core-king-gold' },
-      { label: 'Core King Club', href: '/products#core-king-club' },
+      { label: 'Core King BWR', href: '/products#core-king-gold' },
+      { label: 'Core King Club710', href: '/products#core-king-club' },
     ],
   },
   { label: 'Contact', href: '/#contact' },
@@ -187,7 +188,7 @@ export const products = [
     standard: 'IS:303 BWR Benchmark',
     warranty: '15 Years Warranty',
     warrantyShort: '15 Years',
-    technology: '4-Stage Hydraulic Hot Press, 100% Calibrated',
+    technology: '4-Stage Press',
     resin: 'Fortified Melamine BWR Synthetic Resin',
     coreTimber: '100% Selected High-Density Hardwood Timber',
     calibration: '100% Calibrated (±0.1 mm precision)',
@@ -238,7 +239,7 @@ export const products = [
     standard: 'IS:710 Marine Grade Benchmark',
     warranty: '21 Years Warranty',
     warrantyShort: '21 Years',
-    technology: '4-Stage Ultra-High Pressure Press, Precision Calibrated',
+    technology: '4-Stage Press',
     resin: '100% Pure Unextended Phenolic (PF) Resin',
     coreTimber: 'Selected High-Density Hardwood & Gurjan Species',
     calibration: 'Dual-Sided Machine Calibrated (±0.05 mm precision)',
@@ -256,7 +257,7 @@ export const products = [
       { name: 'Heavy Load Partitions', icon: 'Wrench' },
     ],
     description:
-      'Core King Club is our flagship premium plywood, offering unmatched water resistance, strength, and termite protection. Perfect for luxury projects where quality cannot be compromised.',
+      'Core King Club710 is our flagship premium plywood, offering unmatched water resistance, strength, and termite protection. Perfect for luxury projects where quality cannot be compromised.',
     features: [
       'Superior water resistance for wet areas and coastal environments',
       '100% pure Phenolic synthetic resin for unbreakable bonding',
@@ -365,7 +366,7 @@ export const testimonials = [
     name: 'Ar. Rajesh Malhotra',
     role: 'Principal Architect, Studio Forma',
     location: 'New Delhi & Gurugram',
-    text: 'We have specified Core King Club in over 40 luxury residential villas. Zero waviness, absolute peace of mind.',
+    text: 'We have specified Core King Club710 in over 40 luxury residential villas. Zero waviness, absolute peace of mind.',
     rating: 5,
   },
 ];

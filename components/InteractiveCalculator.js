@@ -6,10 +6,10 @@ import { Calculator, CheckCircle2, ArrowRight, Sparkles, MessageCircle, HelpCirc
 import { companyInfo } from '@/data/siteData';
 
 const applications = [
-  { id: 'kitchen', label: 'Modular Kitchen & Wet Zone', defaultThickness: '16mm / 19mm', recommended: 'Core King Club 710 (BWP)', factor: 1.4 },
+  { id: 'kitchen', label: 'Modular Kitchen & Wet Zone', defaultThickness: '16mm / 19mm', recommended: 'Core King Club710 (BWP)', factor: 1.4 },
   { id: 'wardrobe', label: 'Full-Height Wardrobe & Closets', defaultThickness: '19mm Pine Blockboard', recommended: 'Core King Pine Blockboard', factor: 1.2 },
-  { id: 'living', label: 'Living Room & TV Units', defaultThickness: '12mm / 16mm', recommended: 'Core King Gold BWR', factor: 1.1 },
-  { id: 'ceiling', label: 'Wall Paneling & Ceiling', defaultThickness: '6mm / 9mm', recommended: 'Core King Gold BWR', factor: 0.9 },
+  { id: 'living', label: 'Living Room & TV Units', defaultThickness: '12mm / 16mm', recommended: 'Core King BWR', factor: 1.1 },
+  { id: 'ceiling', label: 'Wall Paneling & Ceiling', defaultThickness: '6mm / 9mm', recommended: 'Core King BWR', factor: 0.9 },
   { id: 'commercial', label: 'Commercial & Hospitality Fire Zone', defaultThickness: '16mm / 19mm', recommended: 'Core King Platinum Fire-Shield', factor: 1.5 },
 ];
 
