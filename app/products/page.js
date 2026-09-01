@@ -169,7 +169,7 @@ export default function ProductsPage() {
                   </div>
                   <div className="bottom-feature-item">
                     <Sparkles size={14} />
-                    <span>Smooth Finish</span>
+                    <span>BWR</span>
                   </div>
                 </div>
               </div>
