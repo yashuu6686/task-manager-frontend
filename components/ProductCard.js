@@ -55,7 +55,7 @@ export default function ProductCard({ product }) {
             <ArrowRight size={16} />
           </Link>
           <a
-            href={`https://wa.me/917016059330?text=Hi%2C%20I%20want%20to%20know%20more%20about%20${encodeURIComponent(
+            href={`https://wa.me/917016059329?text=Hi%2C%20I%20want%20to%20know%20more%20about%20${encodeURIComponent(
               product.name
             )}`}
             target="_blank"

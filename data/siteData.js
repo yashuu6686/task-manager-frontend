@@ -17,13 +17,13 @@ export const companyInfo = {
   addressLine2: 'Yamunanagar',
   addressLine3: 'Haryana-135001',
   city: 'Yamunanagar, Haryana',
-  phone: '+91 7016059330',
-  phoneDisplay: '+91 7016059330',
-  whatsapp: '+91 7016059330',
+  phone: '+91 7016059329',
+  phoneDisplay: '+91 7016059329',
+  whatsapp: '+91 7016059329',
   email: 'corekingply@gmail.com',
   supportEmail: 'corekingply@gmail.com',
-  whatsappLink: 'https://wa.me/917016059330',
-  phoneLink: 'tel:+917016059330',
+  whatsappLink: 'https://wa.me/917016059329',
+  phoneLink: 'tel:+917016059329',
   emailLink: 'mailto:corekingply@gmail.com',
   instagramLink: 'https://www.instagram.com/core_king_ply?utm_source=qr&igsh=d2lna2N0aGV2bnBk',
   instagramHandle: '@core_king_ply',
@@ -145,24 +145,49 @@ export const qualityPolicy = {
   heading: 'Quality Policy',
   subtitle: 'OUR COMMITMENT TO DELIVERING TRUSTED MATERIALS',
   cardTitle: 'Trusted Quality, Every Time',
-  image: '/images/quality_policy.jpg',
+  image: '/images/IMG_20260902_004940.png',
   paragraphs: [
     'As a leading supplier, Core King plywood ensures that every product we offer comes from certified and reliable manufacturers who meet stringent quality benchmarks. Our partners follow industry best practices, enabling us to deliver consistent performance, superior finishes, and long-term durability.',
     'We conduct careful sourcing, maintain transparency, and strive for continual improvement to meet our clients\' evolving expectations across residential and commercial projects.',
   ],
 };
 
-// Hero Sliders matching user request (01.jpg and 02.jpg)
+// Hero Sliders in exact requested sequence
 export const heroSlides = [
   {
     id: 1,
-    image: '/images/01.jpg',
-    alt: 'Core King Premium Calibrated Plywood Banner',
+    image: '/images/hero/IMG-20260803-WA0000(1).jpg',
+    alt: 'Core King Premium Calibrated Plywood Banner 1',
   },
   {
     id: 2,
-    image: '/images/02.jpg',
-    alt: 'Core King Superior Strength & Durability Banner',
+    image: '/images/hero/file_000000005bcc8211bf8fd3ade923888a.png',
+    alt: 'Core King Premium Calibrated Plywood Banner 2',
+  },
+  {
+    id: 3,
+    image: '/images/hero/IMG-20260826-WA0018(1).jpg',
+    alt: 'Core King Premium Calibrated Plywood Banner 3',
+  },
+  {
+    id: 4,
+    image: '/images/hero/file_000000009d688208a7b556e236f2c8b1.png',
+    alt: 'Core King Premium Calibrated Plywood Banner 4',
+  },
+  {
+    id: 5,
+    image: '/images/hero/file_00000000c5e4821192b0b168d353ceca.png',
+    alt: 'Core King Premium Calibrated Plywood Banner 5',
+  },
+  {
+    id: 6,
+    image: '/images/hero/IMG_20260824_181350.png',
+    alt: 'Core King Premium Calibrated Plywood Banner 6',
+  },
+  {
+    id: 7,
+    image: '/images/hero/IMG-20260809-WA0000.jpg',
+    alt: 'Core King Premium Calibrated Plywood Banner 7',
   },
 ];
 

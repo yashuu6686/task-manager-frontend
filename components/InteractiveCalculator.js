@@ -29,7 +29,7 @@ export default function InteractiveCalculator() {
     return Math.max(1, sheets);
   }, [areaSqFt]);
 
-  const whatsappInquiryUrl = `https://wa.me/917016059330?text=${encodeURIComponent(
+  const whatsappInquiryUrl = `https://wa.me/917016059329?text=${encodeURIComponent(
     `Hello Core King Ply, I calculated my requirement on your website:\n- Application: ${currentApp.label}\n- Approximate Area: ${areaSqFt} sq.ft\n- Recommended Grade: ${currentApp.recommended}\n- Estimated Sheets (8x4 ft): ~${estimatedSheets} sheets\nPlease share direct factory quotation and dealer availability.`
   )}`;
 

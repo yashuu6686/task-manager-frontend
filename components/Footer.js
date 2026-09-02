@@ -86,7 +86,7 @@ export default function Footer() {
               <li>
                 <MessageCircle size={18} />
                 <a href={companyInfo.whatsappLink} target="_blank" rel="noreferrer">
-                  WhatsApp: +91 7016059330
+                  WhatsApp: {companyInfo.whatsapp}
                 </a>
               </li>
               <li>

@@ -67,7 +67,7 @@ export default function AboutPage() {
               transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
             >
               <img
-                src="/images/elevate.webp"
+                src="/images/IMG_20260902_000820.png"
                 alt="Core King Plywood Elevate"
                 className="about-featured-img"
               />

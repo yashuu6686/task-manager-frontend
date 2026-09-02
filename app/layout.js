@@ -42,7 +42,7 @@ export const metadata = {
     url: "https://corekingply.com",
     siteName: "Core King Ply",
     images: [
-      "/images/01.jpg",
+      "/images/hero/IMG-20260803-WA0000(1).jpg",
     ],
     type: "website",
   },

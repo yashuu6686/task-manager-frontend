@@ -26,7 +26,7 @@ export default async function ProductDetail({ params }) {
 
   const relatedProducts = products.filter((p) => p.slug !== slug);
 
-  const whatsappInquiry = `https://wa.me/917016059330?text=${encodeURIComponent(
+  const whatsappInquiry = `https://wa.me/917016059329?text=${encodeURIComponent(
     `Hello ${companyInfo.name}, I am interested in ${product.name} (${product.grade}). Please share pricing and details.`
   )}`;
 

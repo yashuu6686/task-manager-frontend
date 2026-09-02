@@ -254,7 +254,7 @@ export default function ProductsPage() {
               {/* Action Buttons */}
               <div className="product-cta-row">
                 <motion.a
-                  href={`https://wa.me/917016059330?text=${encodeURIComponent(`Hi, I am interested in ${goldProduct.name} (${goldProduct.grade}). Please share pricing and details.`)}`}
+                  href={`https://wa.me/917016059329?text=${encodeURIComponent(`Hi, I am interested in ${goldProduct.name} (${goldProduct.grade}). Please share pricing and details.`)}`}
                   target="_blank"
                   rel="noreferrer"
                   className="btn-whatsapp-quote"
@@ -266,13 +266,13 @@ export default function ProductsPage() {
                 </motion.a>
 
                 <motion.a
-                  href="tel:+917016059330"
+                  href="tel:+917016059329"
                   className="btn-call-quote"
                   whileHover={{ scale: 1.04, y: -2 }}
                   whileTap={{ scale: 0.96 }}
                 >
                   <Phone size={16} />
-                  <span>Call: +91 7016059330</span>
+                  <span>Call: +91 7016059329</span>
                 </motion.a>
               </div>
             </motion.div>
@@ -408,7 +408,7 @@ export default function ProductsPage() {
               {/* Action Buttons */}
               <div className="product-cta-row">
                 <motion.a
-                  href={`https://wa.me/917016059330?text=${encodeURIComponent(`Hi, I am interested in ${clubProduct.name} (${clubProduct.grade}). Please share pricing and details.`)}`}
+                  href={`https://wa.me/917016059329?text=${encodeURIComponent(`Hi, I am interested in ${clubProduct.name} (${clubProduct.grade}). Please share pricing and details.`)}`}
                   target="_blank"
                   rel="noreferrer"
                   className="btn-whatsapp-quote"
@@ -420,13 +420,13 @@ export default function ProductsPage() {
                 </motion.a>
 
                 <motion.a
-                  href="tel:+917016059330"
+                  href="tel:+917016059329"
                   className="btn-call-quote"
                   whileHover={{ scale: 1.04, y: -2 }}
                   whileTap={{ scale: 0.96 }}
                 >
                   <Phone size={16} />
-                  <span>Call: +91 7016059330</span>
+                  <span>Call: +91 7016059329</span>
                 </motion.a>
               </div>
             </motion.div>

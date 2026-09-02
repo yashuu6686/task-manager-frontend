@@ -31,7 +31,7 @@ export default function ContactForm() {
 
   const handleWhatsAppChat = () => {
     const text = `Hello ${companyInfo.name}, I would like to inquire about your plywood products.\nName: ${form.name || ''}\nEmail: ${form.email || ''}\nSubject: ${form.subject || ''}\nMessage: ${form.message || ''}`;
-    window.open(`https://wa.me/917016059330?text=${encodeURIComponent(text)}`, '_blank');
+    window.open(`https://wa.me/917016059329?text=${encodeURIComponent(text)}`, '_blank');
   };
 
   return (
