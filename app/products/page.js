@@ -259,7 +259,7 @@ export default function ProductsPage() {
                   whileTap={{ scale: 0.96 }}
                 >
                   <Mail size={18} />
-                  <span>Email Us</span>
+                  <span>Email</span>
                 </motion.a>
               </div>
             </motion.div>
@@ -401,7 +401,7 @@ export default function ProductsPage() {
                   whileTap={{ scale: 0.96 }}
                 >
                   <Mail size={18} />
-                  <span>Email Us</span>
+                  <span>Email</span>
                 </motion.a>
               </div>
             </motion.div>
