@@ -250,7 +250,7 @@ export default function Header() {
           </nav>
 
           <div className="nav-actions">
-            <a href={companyInfo.emailLink} className="button button-primary small-button header-quote-btn">
+            <a href={companyInfo.emailLink} className="button button-primary small-button header-quote-btn email-cta">
               <Mail size={15} />
               <span className="quote-btn-text">Email Us</span>
               <span className="quote-btn-short">Email</span>
@@ -311,7 +311,7 @@ export default function Header() {
                             <Link
                               key={sub.label}
                               href={sub.href}
-                              onClick={() => setIsOpen(false)}
+                              onClick={(e) => handleNavClick(e, sub.href, 'products')}
                               className="mobile-sub-link"
                             >
                               <span className="mobile-sub-dot">◆</span>
@@ -328,7 +328,7 @@ export default function Header() {
               <div className="mobile-contact-box">
                 <a
                   href={companyInfo.emailLink}
-                  className="button button-primary"
+                  className="button button-primary email-cta"
                 >
                   <Mail size={16} /> Email: {companyInfo.email}
                 </a>

@@ -418,6 +418,20 @@ button, input, select, textarea {
   flex-shrink: 0;
 }
 
+.email-cta {
+  background: #d4af37;
+  color: #111111;
+  border-color: #f5d76e;
+  box-shadow: 0 8px 20px rgba(212, 175, 55, 0.35);
+}
+
+.email-cta:hover {
+  background: #f0c84b;
+  color: #111111;
+  border-color: #ffe69a;
+  box-shadow: 0 12px 26px rgba(212, 175, 55, 0.5);
+}
+
 .quote-btn-short {
   display: none;
 }
@@ -576,6 +590,12 @@ button, input, select, textarea {
   color: #000000;
   box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
   border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.mobile-contact-box .email-cta {
+  background: #d4af37;
+  color: #111111;
+  border-color: #f5d76e;
 }
 
 .mobile-contact-box .button-dark {
