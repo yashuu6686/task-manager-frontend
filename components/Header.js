@@ -97,7 +97,7 @@ export default function Header() {
     }
 
     // If on homepage and clicking a section link, smoothly scroll to it without router re-render
-    if (pathname === '/' && sectionId && sectionId !== 'products') {
+    if (pathname === '/' && href.startsWith('/#') && sectionId && sectionId !== 'products') {
       e.preventDefault();
       const el = document.getElementById(sectionId);
       if (el) {

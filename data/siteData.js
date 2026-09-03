@@ -44,8 +44,8 @@ export const companyInfo = {
 // Navigation items matching Briterply navigation structure
 export const navItems = [
   { label: 'Home', href: '/#hero' },
-  { label: 'About', href: '/#about' },
-  { label: 'Features', href: '/#features' },
+  { label: 'About', href: '/about' },
+  { label: 'Features', href: '/features' },
   {
     label: 'Products',
     href: '/products',
@@ -55,7 +55,7 @@ export const navItems = [
       { label: 'Core King BWR', href: '/products#core-king-gold' },
     ],
   },
-  { label: 'Contact', href: '/#contact' },
+  { label: 'Contact', href: '/contact' },
   
   /* Extra Navigation routes commented out to match Briterply.com exact structure
   { label: 'Plywood Guide', href: '/plywoods' },
