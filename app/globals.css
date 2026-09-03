@@ -4292,7 +4292,7 @@ button, input, select, textarea {
   }
 
   .briter-hero-section {
-    display: none;
+    display: block;
   }
 
   .hero-slider-container {
