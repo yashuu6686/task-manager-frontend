@@ -367,7 +367,7 @@ export default function HomePage() {
                 whileHover={{ scale: 1.12, rotate: 8 }}
                 transition={{ type: 'spring', stiffness: 300 }}
               >
-                <MessageCircle size={80} color="#d4af37" />
+                <Mail size={80} color="#d4af37" />
               </motion.div>
             </motion.div>
 
@@ -385,14 +385,12 @@ export default function HomePage() {
                 to assist you.
               </p>
               <motion.a
-                href={companyInfo.whatsappLink}
-                target="_blank"
-                rel="noreferrer"
+                href={companyInfo.emailLink}
                 className="btn-whatsapp-custom"
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
               >
-                CHAT ON WHATSAPP
+                EMAIL US TODAY
               </motion.a>
             </motion.div>
           </div>
@@ -428,46 +426,28 @@ export default function HomePage() {
                 whileHover={{ x: 6 }}
               >
                 <div className="card-icon-wrap">
-                  <Phone size={22} />
-                </div>
-                <div className="card-details">
-                  <h4>Phone</h4>
-                  <p>
-                    <a href={companyInfo.phoneLink}>{companyInfo.phone}</a>
-                  </p>
-                </div>
-              </motion.div>
-
-              <motion.div
-                className="briter-contact-card"
-                variants={fadeInUp}
-                whileHover={{ x: 6 }}
-              >
-                <div className="card-icon-wrap">
-                  <MessageCircle size={22} />
-                </div>
-                <div className="card-details">
-                  <h4>WhatsApp</h4>
-                  <p>
-                    <a href={companyInfo.whatsappLink} target="_blank" rel="noreferrer">
-                      {companyInfo.whatsapp}
-                    </a>
-                  </p>
-                </div>
-              </motion.div>
-
-              <motion.div
-                className="briter-contact-card"
-                variants={fadeInUp}
-                whileHover={{ x: 6 }}
-              >
-                <div className="card-icon-wrap">
                   <Mail size={22} />
                 </div>
                 <div className="card-details">
                   <h4>Email</h4>
                   <p>
                     <a href={companyInfo.emailLink}>{companyInfo.email}</a>
+                  </p>
+                </div>
+              </motion.div>
+
+              <motion.div
+                className="briter-contact-card"
+                variants={fadeInUp}
+                whileHover={{ x: 6 }}
+              >
+                <div className="card-icon-wrap">
+                  <MapPin size={22} />
+                </div>
+                <div className="card-details">
+                  <h4>Location</h4>
+                  <p>
+                    {companyInfo.addressLine1}, {companyInfo.city}
                   </p>
                 </div>
               </motion.div>

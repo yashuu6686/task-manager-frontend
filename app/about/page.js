@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { ArrowRight, CheckCheck, ShieldCheck, MessageCircle } from 'lucide-react';
+import { ArrowRight, CheckCheck, ShieldCheck, Mail } from 'lucide-react';
 import { companyInfo, aboutPoints, qualityPolicy } from '@/data/siteData';
 
 const fadeInUp = {
@@ -100,8 +100,7 @@ export default function AboutPage() {
                 and durability, our plywood and laminate products are crafted to meet
                 the highest standards for both residential and commercial applications.
                 <br /><br />
-                Proudly marketed and distributed by <strong>{companyInfo.marketedBy}</strong>, we ensure
-                that our products reach every corner with the same promise of quality
+                We ensure that our products reach every corner with the same promise of quality
                 and reliability.
               </motion.p>
 
@@ -134,7 +133,7 @@ export default function AboutPage() {
               >
                 From blockboards to shuttering plywood, each product reflects our
                 commitment to excellence. With modern processes and expert craftsmanship,
-                {companyInfo.name}wood - marketed by {companyInfo.marketedBy} - delivers dependable solutions that
+                {companyInfo.name}wood delivers dependable solutions that
                 stand the test of time.
               </motion.p>
 
@@ -152,15 +151,13 @@ export default function AboutPage() {
                   </Link>
                 </motion.div>
                 <motion.a
-                  href={companyInfo.whatsappLink}
-                  target="_blank"
-                  rel="noreferrer"
+                  href={companyInfo.emailLink}
                   className="button button-emerald"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  <MessageCircle size={16} />
-                  <span>Chat WhatsApp</span>
+                  <Mail size={16} />
+                  <span>Email Us</span>
                 </motion.a>
               </motion.div>
             </motion.div>
