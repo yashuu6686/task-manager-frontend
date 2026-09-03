@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Mail, MapPin } from 'lucide-react';
+import { Mail } from 'lucide-react';
 import ContactForm from '@/components/ContactForm';
 import { companyInfo } from '@/data/siteData';
 
@@ -139,21 +139,6 @@ export default function ContactPage() {
                 </div>
               </motion.div>
 
-              <motion.div
-                className="briter-contact-card"
-                variants={fadeInUp}
-                whileHover={{ x: 6 }}
-              >
-                <div className="card-icon-wrap">
-                  <MapPin size={22} />
-                </div>
-                <div className="card-details">
-                  <h4>Location</h4>
-                  <p>
-                    {companyInfo.addressLine1}, {companyInfo.city}
-                  </p>
-                </div>
-              </motion.div>
             </motion.div>
 
             {/* Form Column */}

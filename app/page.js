@@ -12,7 +12,6 @@ import {
   Flame,
   ShieldCheck,
   Mail,
-  MapPin,
   ChevronLeft,
   ChevronRight,
   ArrowRight,
@@ -436,21 +435,6 @@ export default function HomePage() {
                 </div>
               </motion.div>
 
-              <motion.div
-                className="briter-contact-card"
-                variants={fadeInUp}
-                whileHover={{ x: 6 }}
-              >
-                <div className="card-icon-wrap">
-                  <MapPin size={22} />
-                </div>
-                <div className="card-details">
-                  <h4>Location</h4>
-                  <p>
-                    {companyInfo.addressLine1}, {companyInfo.city}
-                  </p>
-                </div>
-              </motion.div>
             </motion.div>
 
             {/* Form Column */}

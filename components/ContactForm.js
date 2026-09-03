@@ -14,19 +14,45 @@ export default function ContactForm() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [errors, setErrors] = useState({});
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setForm((prev) => ({ ...prev, [name]: value }));
+    setErrors((prev) => ({ ...prev, [name]: '' }));
+    setIsSuccess(false);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    const trimmedForm = Object.fromEntries(
+      Object.entries(form).map(([field, value]) => [field, value.trim()]),
+    );
+    const nextErrors = {};
+
+    if (!trimmedForm.name) nextErrors.name = 'Please enter your name.';
+    if (!trimmedForm.email) {
+      nextErrors.email = 'Please enter your email.';
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmedForm.email)) {
+      nextErrors.email = 'Please enter a valid email address.';
+    }
+    if (!trimmedForm.subject) nextErrors.subject = 'Please enter a subject.';
+    if (!trimmedForm.message) nextErrors.message = 'Please enter your message.';
+
+    if (Object.keys(nextErrors).length > 0) {
+      setErrors(nextErrors);
+      return;
+    }
+
     setIsSubmitting(true);
-    await new Promise((resolve) => setTimeout(resolve, 600));
+    const subject = encodeURIComponent(trimmedForm.subject);
+    const body = encodeURIComponent(
+      `Name: ${trimmedForm.name}\nEmail: ${trimmedForm.email}\n\nMessage:\n${trimmedForm.message}`,
+    );
+    window.location.href = `mailto:${companyInfo.email}?subject=${subject}&body=${body}`;
     setIsSubmitting(false);
     setIsSuccess(true);
-    setForm({ name: '', email: '', subject: '', message: '' });
   };
 
   const handleEmailDirect = () => {
@@ -47,8 +73,9 @@ export default function ContactForm() {
               placeholder="Your Name"
               value={form.name}
               onChange={handleChange}
-              required
+              aria-invalid={Boolean(errors.name)}
             />
+            {errors.name && <span className="form-error">{errors.name}</span>}
           </div>
           <div className="form-group">
             <input
@@ -58,8 +85,9 @@ export default function ContactForm() {
               placeholder="Your Email"
               value={form.email}
               onChange={handleChange}
-              required
+              aria-invalid={Boolean(errors.email)}
             />
+            {errors.email && <span className="form-error">{errors.email}</span>}
           </div>
         </div>
 
@@ -71,8 +99,9 @@ export default function ContactForm() {
             placeholder="Subject"
             value={form.subject}
             onChange={handleChange}
-            required
+            aria-invalid={Boolean(errors.subject)}
           />
+          {errors.subject && <span className="form-error">{errors.subject}</span>}
         </div>
 
         <div className="form-group">
@@ -83,8 +112,9 @@ export default function ContactForm() {
             placeholder="Your Message"
             value={form.message}
             onChange={handleChange}
-            required
+            aria-invalid={Boolean(errors.message)}
           />
+          {errors.message && <span className="form-error">{errors.message}</span>}
         </div>
 
         <div className="form-actions-flex">

@@ -4,8 +4,7 @@ import {
   ShieldCheck,
   ArrowRight,
   CheckCircle2,
-  MessageCircle,
-  Phone,
+  Mail,
   ChevronRight,
   Award,
   Layers,
@@ -26,8 +25,10 @@ export default async function ProductDetail({ params }) {
 
   const relatedProducts = products.filter((p) => p.slug !== slug);
 
-  const whatsappInquiry = `https://wa.me/917016059329?text=${encodeURIComponent(
-    `Hello ${companyInfo.name}, I am interested in ${product.name} (${product.grade}). Please share pricing and details.`
+  const emailInquiry = `mailto:${companyInfo.email}?subject=${encodeURIComponent(
+    `Inquiry for ${product.name} (${product.grade})`
+  )}&body=${encodeURIComponent(
+    `Hello ${companyInfo.name},\n\nI am interested in ${product.name} (${product.grade}). Please share pricing and details.\n\nThank you.`
   )}`;
 
   return (
@@ -191,17 +192,11 @@ export default async function ProductDetail({ params }) {
               {/* Direct Actions */}
               <div className="product-cta-row">
                 <a
-                  href={whatsappInquiry}
-                  target="_blank"
-                  rel="noreferrer"
+                  href={emailInquiry}
                   className="btn-whatsapp-quote"
                 >
-                  <MessageCircle size={18} />
-                  <span>Inquire on WhatsApp</span>
-                </a>
-                <a href={companyInfo.phoneLink} className="btn-call-quote">
-                  <Phone size={16} />
-                  <span>Call: {companyInfo.phoneDisplay}</span>
+                  <Mail size={18} />
+                  <span>Inquire via Email</span>
                 </a>
                 <Link href="/products" className="button button-secondary" style={{ padding: '0.9rem 1.5rem' }}>
                   <span>All Products</span>

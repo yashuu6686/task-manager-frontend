@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { ArrowRight, CheckCheck, Droplet, Wrench, Layers, CircleDot, Flame, MessageCircle } from 'lucide-react';
+import { ArrowRight, CheckCheck, Droplet, Wrench, Layers, CircleDot, Flame, Mail } from 'lucide-react';
 import { featureList, companyInfo } from '@/data/siteData';
 
 const featureIconMap = {
@@ -115,15 +115,13 @@ export default function FeaturesEngineeringPage() {
               </Link>
             </motion.div>
             <motion.a
-              href={companyInfo.whatsappLink}
-              target="_blank"
-              rel="noreferrer"
+              href={companyInfo.emailLink}
               className="button button-emerald"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <MessageCircle size={16} />
-              <span>Inquire on WhatsApp</span>
+              <Mail size={16} />
+              <span>Inquire via Email</span>
             </motion.a>
           </motion.div>
         </div>
