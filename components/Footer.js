@@ -64,13 +64,13 @@ export default function Footer() {
             <h3>Products</h3>
             <ul className="footer-links">
               <li>
-                <Link href="/products#core-king-gold">
-                  <span>Core King BWR</span>
+                <Link href="/products#core-king-club">
+                  <span>Core King Club710</span>
                 </Link>
               </li>
               <li>
-                <Link href="/products#core-king-club">
-                  <span>Core King Club710</span>
+                <Link href="/products#core-king-gold">
+                  <span>Core King BWR</span>
                 </Link>
               </li>
             </ul>

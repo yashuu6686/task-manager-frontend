@@ -51,8 +51,8 @@ export const navItems = [
     href: '/products',
     dropdown: [
       { label: 'Plywoods', href: '/products' },
-      { label: 'Core King BWR', href: '/products#core-king-gold' },
       { label: 'Core King Club710', href: '/products#core-king-club' },
+      { label: 'Core King BWR', href: '/products#core-king-gold' },
     ],
   },
   { label: 'Contact', href: '/#contact' },

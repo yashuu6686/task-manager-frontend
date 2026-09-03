@@ -140,24 +140,6 @@ export default function Header() {
 
   return (
     <>
-      {/* Top Announcement Bar */}
-      <div className="top-bar">
-        <div className="container top-bar-content">
-          <div className="top-bar-left">
-            <span className="top-bar-item">
-              <span>{companyInfo.name} - {companyInfo.tagline}</span>
-            </span>
-          </div>
-
-          <div className="top-bar-right">
-            <a href={companyInfo.emailLink} className="top-bar-item">
-              <Mail size={13} color="#f59e0b" />
-              <span>{companyInfo.email}</span>
-            </a>
-          </div>
-        </div>
-      </div>
-
       {/* Main Sticky Header */}
       <header id="header" className={`site-header ${isScrolled ? 'scrolled' : ''}`}>
         <div className="container nav-shell">

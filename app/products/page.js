@@ -6,8 +6,6 @@ import {
   CheckCircle2,
   ChevronRight,
   Mail,
-  MessageCircle,
-  Phone,
   ShieldCheck,
   Award,
   Layers,
@@ -255,28 +253,6 @@ export default function ProductsPage() {
               {/* Action Buttons */}
               <div className="product-cta-row">
                 <motion.a
-                  className="btn-whatsapp-quote"
-                  href={`https://wa.me/917016059329?text=${encodeURIComponent(`Hi, I am interested in ${clubProduct.name} (${clubProduct.grade}). Please share pricing and details.`)}`}
-                  target="_blank"
-                  rel="noreferrer"
-                  whileHover={{ scale: 1.04, y: -2 }}
-                  whileTap={{ scale: 0.96 }}
-                >
-                  <MessageCircle size={18} />
-                  <span>Chat on WhatsApp</span>
-                </motion.a>
-
-                <motion.a
-                  href="tel:+917016059329"
-                  className="btn-call-quote"
-                  whileHover={{ scale: 1.04, y: -2 }}
-                  whileTap={{ scale: 0.96 }}
-                >
-                  <Phone size={16} />
-                  <span>Call: +91 7016059329</span>
-                </motion.a>
-
-                <motion.a
                   href={`mailto:${companyInfo.email}?subject=${encodeURIComponent(`Inquiry for ${clubProduct.name} (${clubProduct.grade})`)}&body=${encodeURIComponent(`Hi, I am interested in ${clubProduct.name} (${clubProduct.grade}). Please share pricing and details.`)}`}
                   className="btn-call-quote"
                   whileHover={{ scale: 1.04, y: -2 }}
@@ -418,28 +394,6 @@ export default function ProductsPage() {
 
               {/* Action Buttons */}
               <div className="product-cta-row">
-                <motion.a
-                  className="btn-whatsapp-quote"
-                  href={`https://wa.me/917016059329?text=${encodeURIComponent(`Hi, I am interested in ${goldProduct.name} (${goldProduct.grade}). Please share pricing and details.`)}`}
-                  target="_blank"
-                  rel="noreferrer"
-                  whileHover={{ scale: 1.04, y: -2 }}
-                  whileTap={{ scale: 0.96 }}
-                >
-                  <MessageCircle size={18} />
-                  <span>Chat on WhatsApp</span>
-                </motion.a>
-
-                <motion.a
-                  href="tel:+917016059329"
-                  className="btn-call-quote"
-                  whileHover={{ scale: 1.04, y: -2 }}
-                  whileTap={{ scale: 0.96 }}
-                >
-                  <Phone size={16} />
-                  <span>Call: +91 7016059329</span>
-                </motion.a>
-
                 <motion.a
                   href={`mailto:${companyInfo.email}?subject=${encodeURIComponent(`Inquiry for ${goldProduct.name} (${goldProduct.grade})`)}&body=${encodeURIComponent(`Hi, I am interested in ${goldProduct.name} (${goldProduct.grade}). Please share pricing and details.`)}`}
                   className="btn-call-quote"
