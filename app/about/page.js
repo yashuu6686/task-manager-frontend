@@ -27,34 +27,6 @@ const staggerContainer = {
 export default function AboutPage() {
   return (
     <>
-      {/* Header Banner */}
-      <div className="page-header">
-        <div className="container">
-          <motion.span
-            className="eyebrow eyebrow-dark"
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            {companyInfo.name}
-          </motion.span>
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-          >
-            About Our Company
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            Where Quality Meets Craftsmanship. Supplying quality plywoods with trust and speed.
-          </motion.p>
-        </div>
-      </div>
-
       {/* Main About Section */}
       <section className="briter-about-section" style={{ padding: '5rem 0' }}>
         <div className="container">

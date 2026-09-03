@@ -36,33 +36,6 @@ const staggerContainer = {
 export default function FeaturesEngineeringPage() {
   return (
     <>
-      <div className="page-header">
-        <div className="container">
-          <motion.span
-            className="eyebrow eyebrow-dark"
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            {companyInfo.name}
-          </motion.span>
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-          >
-            Key Features & Quality
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            Check our key features crafted to deliver strength, precision, and lasting durability.
-          </motion.p>
-        </div>
-      </div>
-
       {/* 6 Key Features Section */}
       <section className="briter-features-section" style={{ padding: '5rem 0' }}>
         <div className="container">
