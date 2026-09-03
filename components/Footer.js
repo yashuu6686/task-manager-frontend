@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Mail, MessageCircle, Phone } from 'lucide-react';
+import { Mail } from 'lucide-react';
 import { companyInfo, navItems } from '@/data/siteData';
 
 function InstagramIcon({ size = 18 }) {
@@ -80,24 +80,14 @@ export default function Footer() {
             <h3>Contact Us</h3>
             <ul className="footer-contact">
               <li>
-                <Phone size={18} />
-                <a href={companyInfo.phoneLink}>{companyInfo.phone}</a>
-              </li>
-              <li>
-                <MessageCircle size={18} />
-                <a href={companyInfo.whatsappLink} target="_blank" rel="noreferrer">
-                  WhatsApp: {companyInfo.whatsapp}
-                </a>
+                <Mail size={18} />
+                <a href={companyInfo.emailLink}>{companyInfo.email}</a>
               </li>
               <li>
                 <InstagramIcon size={18} />
                 <a href={companyInfo.instagramLink} target="_blank" rel="noreferrer">
-                  Instagram
+                  Instagram: {companyInfo.instagramHandle}
                 </a>
-              </li>
-              <li>
-                <Mail size={18} />
-                <a href={companyInfo.emailLink}>{companyInfo.email}</a>
               </li>
             </ul>
           </div>

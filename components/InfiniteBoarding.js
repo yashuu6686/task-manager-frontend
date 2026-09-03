@@ -23,8 +23,8 @@ const defaultBoardingItems = [
   },
   {
     icon: <Zap size={16} />,
-    title: 'Marketed by',
-    subtitle: companyInfo.marketedBy,
+    title: 'Premium Craftsmanship',
+    subtitle: 'Strength, Precision & Durability',
     highlight: false,
   },
   {

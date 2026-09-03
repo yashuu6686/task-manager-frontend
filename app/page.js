@@ -11,9 +11,8 @@ import {
   CircleDot,
   Flame,
   ShieldCheck,
-  Phone,
-  MessageCircle,
   Mail,
+  MapPin,
   ChevronLeft,
   ChevronRight,
   ArrowRight,
@@ -182,8 +181,7 @@ export default function HomePage() {
                 and durability, our plywood and laminate products are crafted to meet
                 the highest standards for both residential and commercial applications.
                 <br /><br />
-                Proudly marketed and distributed by <strong>{companyInfo.marketedBy}</strong>, we ensure
-                that our products reach every corner with the same promise of quality
+                We ensure that our products reach every corner with the same promise of quality
                 and reliability.
               </motion.p>
 
@@ -216,7 +214,7 @@ export default function HomePage() {
               >
                 From blockboards to shuttering plywood, each product reflects our
                 commitment to excellence. With modern processes and expert craftsmanship,
-                {companyInfo.name}wood - marketed by {companyInfo.marketedBy} - delivers dependable solutions that
+                {companyInfo.name}wood delivers dependable solutions that
                 stand the test of time.
               </motion.p>
             </motion.div>

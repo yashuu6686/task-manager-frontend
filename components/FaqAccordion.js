@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronDown, HelpCircle, MessageCircle } from 'lucide-react';
+import { ChevronDown, HelpCircle, Mail } from 'lucide-react';
 import { faqs, companyInfo } from '@/data/siteData';
 
 export default function FaqAccordion() {
@@ -64,14 +64,12 @@ export default function FaqAccordion() {
             Have a custom architectural requirement or need physical test samples?
           </p>
           <a
-            href={companyInfo.whatsappLink}
-            target="_blank"
-            rel="noreferrer"
+            href={companyInfo.emailLink}
             className="button button-emerald small-button"
             style={{ display: 'inline-flex' }}
           >
-            <MessageCircle size={16} />
-            <span>Chat Directly with Technical Support</span>
+            <Mail size={16} />
+            <span>Email Technical Support</span>
           </a>
         </div>
       </div>

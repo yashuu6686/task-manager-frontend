@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { useEffect, useState, useRef } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { ChevronDown, ChevronRight, Menu, MessageCircle, Phone, X } from 'lucide-react';
+import { ChevronDown, ChevronRight, Mail, Menu, X } from 'lucide-react';
 import { companyInfo, navItems } from '@/data/siteData';
 
 export default function Header() {
@@ -145,18 +145,14 @@ export default function Header() {
         <div className="container top-bar-content">
           <div className="top-bar-left">
             <span className="top-bar-item">
-              <span>{companyInfo.name} - Marketed by {companyInfo.marketedBy}</span>
+              <span>{companyInfo.name} - {companyInfo.tagline}</span>
             </span>
           </div>
 
           <div className="top-bar-right">
-            <a href={companyInfo.phoneLink} className="top-bar-item">
-              <Phone size={13} color="#f59e0b" />
-              <span>Sales: {companyInfo.phoneDisplay}</span>
-            </a>
-            <a href={companyInfo.whatsappLink} target="_blank" rel="noreferrer" className="top-bar-item">
-              <MessageCircle size={13} color="#d4af37" />
-              <span>WhatsApp</span>
+            <a href={companyInfo.emailLink} className="top-bar-item">
+              <Mail size={13} color="#f59e0b" />
+              <span>{companyInfo.email}</span>
             </a>
           </div>
         </div>
@@ -272,10 +268,10 @@ export default function Header() {
           </nav>
 
           <div className="nav-actions">
-            <a href={companyInfo.whatsappLink} target="_blank" rel="noreferrer" className="button button-primary small-button header-quote-btn">
-              <MessageCircle size={15} />
-              <span className="quote-btn-text">Chat WhatsApp</span>
-              <span className="quote-btn-short">WhatsApp</span>
+            <a href={companyInfo.emailLink} className="button button-primary small-button header-quote-btn">
+              <Mail size={15} />
+              <span className="quote-btn-text">Email Us</span>
+              <span className="quote-btn-short">Email</span>
             </a>
 
             <button
@@ -349,15 +345,10 @@ export default function Header() {
 
               <div className="mobile-contact-box">
                 <a
-                  href={companyInfo.whatsappLink}
-                  target="_blank"
-                  rel="noreferrer"
+                  href={companyInfo.emailLink}
                   className="button button-primary"
                 >
-                  <MessageCircle size={16} /> Chat on WhatsApp
-                </a>
-                <a href={companyInfo.phoneLink} className="button button-dark">
-                  <Phone size={16} /> Call: {companyInfo.phone}
+                  <Mail size={16} /> Email: {companyInfo.email}
                 </a>
               </div>
             </motion.div>

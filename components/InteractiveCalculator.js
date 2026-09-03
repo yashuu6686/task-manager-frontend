@@ -2,7 +2,7 @@
 
 import { useState, useMemo } from 'react';
 import { motion } from 'framer-motion';
-import { Calculator, CheckCircle2, ArrowRight, Sparkles, MessageCircle, HelpCircle } from 'lucide-react';
+import { Calculator, CheckCircle2, ArrowRight, Sparkles, Mail, HelpCircle } from 'lucide-react';
 import { companyInfo } from '@/data/siteData';
 
 const applications = [
@@ -29,8 +29,10 @@ export default function InteractiveCalculator() {
     return Math.max(1, sheets);
   }, [areaSqFt]);
 
-  const whatsappInquiryUrl = `https://wa.me/917016059329?text=${encodeURIComponent(
-    `Hello Core King Ply, I calculated my requirement on your website:\n- Application: ${currentApp.label}\n- Approximate Area: ${areaSqFt} sq.ft\n- Recommended Grade: ${currentApp.recommended}\n- Estimated Sheets (8x4 ft): ~${estimatedSheets} sheets\nPlease share direct factory quotation and dealer availability.`
+  const emailInquiryUrl = `mailto:${companyInfo.email}?subject=${encodeURIComponent(
+    `Factory Price Inquiry - ${currentApp.label}`
+  )}&body=${encodeURIComponent(
+    `Hello Core King Ply,\n\nI calculated my requirement on your website:\n- Application: ${currentApp.label}\n- Approximate Area: ${areaSqFt} sq.ft\n- Recommended Grade: ${currentApp.recommended}\n- Estimated Sheets (8x4 ft): ~${estimatedSheets} sheets\n\nPlease share direct factory quotation and dealer availability.\n\nThank you.`
   )}`;
 
   return (
@@ -131,13 +133,11 @@ export default function InteractiveCalculator() {
               </div>
 
               <a
-                href={whatsappInquiryUrl}
-                target="_blank"
-                rel="noreferrer"
+                href={emailInquiryUrl}
                 className="button button-emerald calc-whatsapp-btn"
               >
-                <MessageCircle size={18} />
-                <span>Get Exact Factory Price On WhatsApp</span>
+                <Mail size={18} />
+                <span>Get Exact Factory Price Via Email</span>
               </a>
             </div>
           </div>

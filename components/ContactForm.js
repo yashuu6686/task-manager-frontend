@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Send, CheckCircle2, LoaderCircle, MessageCircle } from 'lucide-react';
+import { Send, CheckCircle2, LoaderCircle, Mail } from 'lucide-react';
 import { companyInfo } from '@/data/siteData';
 
 export default function ContactForm() {
@@ -29,9 +29,10 @@ export default function ContactForm() {
     setForm({ name: '', email: '', subject: '', message: '' });
   };
 
-  const handleWhatsAppChat = () => {
-    const text = `Hello ${companyInfo.name}, I would like to inquire about your plywood products.\nName: ${form.name || ''}\nEmail: ${form.email || ''}\nSubject: ${form.subject || ''}\nMessage: ${form.message || ''}`;
-    window.open(`https://wa.me/917016059329?text=${encodeURIComponent(text)}`, '_blank');
+  const handleEmailDirect = () => {
+    const subject = encodeURIComponent(form.subject || `Inquiry from ${form.name || 'Website Visitor'}`);
+    const body = encodeURIComponent(`Name: ${form.name || ''}\nEmail: ${form.email || ''}\n\nMessage:\n${form.message || ''}`);
+    window.location.href = `mailto:${companyInfo.email}?subject=${subject}&body=${body}`;
   };
 
   return (
@@ -106,12 +107,12 @@ export default function ContactForm() {
           </motion.button>
           <motion.button
             type="button"
-            onClick={handleWhatsAppChat}
+            onClick={handleEmailDirect}
             className="button button-emerald btn-whatsapp-direct"
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
           >
-            <MessageCircle size={18} /> Chat on WhatsApp
+            <Mail size={18} /> Email Directly
           </motion.button>
         </div>
 

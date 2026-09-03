@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { ArrowRight, CheckCircle2, ShieldCheck, Sparkles } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { companyInfo } from '@/data/siteData';
 
 export default function ProductCard({ product }) {
   return (
@@ -55,16 +56,16 @@ export default function ProductCard({ product }) {
             <ArrowRight size={16} />
           </Link>
           <a
-            href={`https://wa.me/917016059329?text=Hi%2C%20I%20want%20to%20know%20more%20about%20${encodeURIComponent(
-              product.name
+            href={`mailto:${companyInfo.email}?subject=${encodeURIComponent(
+              `Inquiry about ${product.name}`
+            )}&body=${encodeURIComponent(
+              `Hi, I want to know more about ${product.name}. Please share pricing and details.`
             )}`}
-            target="_blank"
-            rel="noreferrer"
             className="button button-secondary"
             style={{ padding: '0.85rem 1rem' }}
-            title="Instant WhatsApp inquiry"
+            title="Email inquiry"
           >
-            Quick Inquiry
+            Email Inquiry
           </a>
         </div>
       </div>

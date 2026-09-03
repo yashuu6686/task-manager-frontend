@@ -1,29 +1,29 @@
 export const companyInfo = {
   name: 'Core King Ply',
-  marketedBy: 'Ruhi Enterprise',
+  marketedBy: '',
   tagline: 'Wholesale Dealer of Plywood, Board & Veneer',
   shortDescription:
     'Core King Plywood is one of India\'s fastest-growing manufacturers and suppliers of premium calibrated plywood. Known for strength, precision, and durability, our plywood and laminate products are crafted to meet the highest standards for both residential and commercial applications.',
   fullDescription:
-    'Core King Plywood is one of India\'s fastest-growing manufacturers and suppliers of premium calibrated plywood. Proudly marketed and distributed by Ruhi Enterprise, we ensure that our products reach every corner with the same promise of quality and reliability.',
+    'Core King Plywood is one of India\'s fastest-growing manufacturers and suppliers of premium calibrated plywood. We ensure that our products reach every corner with the same promise of quality and reliability.',
   aboutElevateText:
     'Core King Plywood is one of India\'s fastest-growing manufacturers and suppliers of premium calibrated plywood. Known for strength, precision, and durability, our plywood and laminate products are crafted to meet the highest standards for both residential and commercial applications.',
   aboutMarketedText:
-    'Proudly marketed and distributed by Ruhi Enterprise, we ensure that our products reach every corner with the same promise of quality and reliability.',
+    'We ensure that our products reach every corner with the same promise of quality and reliability.',
   aboutClosingText:
-    'From blockboards to shuttering plywood, each product reflects our commitment to excellence. With modern processes and expert craftsmanship, Core King Plywood - marketed by Ruhi Enterprise - delivers dependable solutions that stand the test of time.',
+    'From blockboards to shuttering plywood, each product reflects our commitment to excellence. With modern processes and expert craftsmanship, Core King Plywood delivers dependable solutions that stand the test of time.',
   address: 'Khajoori road,\nYamunanagar,\nHaryana-135001',
   addressLine1: 'Khajoori road',
   addressLine2: 'Yamunanagar',
   addressLine3: 'Haryana-135001',
   city: 'Yamunanagar, Haryana',
-  phone: '+91 7016059329',
-  phoneDisplay: '+91 7016059329',
-  whatsapp: '+91 7016059329',
+  phone: '',
+  phoneDisplay: '',
+  whatsapp: '',
   email: 'corekingply@gmail.com',
   supportEmail: 'corekingply@gmail.com',
-  whatsappLink: 'https://wa.me/917016059329',
-  phoneLink: 'tel:+917016059329',
+  whatsappLink: 'mailto:corekingply@gmail.com',
+  phoneLink: 'mailto:corekingply@gmail.com',
   emailLink: 'mailto:corekingply@gmail.com',
   instagramLink: 'https://www.instagram.com/core_king_ply?utm_source=qr&igsh=d2lna2N0aGV2bnBk',
   instagramHandle: '@core_king_ply',
@@ -156,37 +156,37 @@ export const qualityPolicy = {
 export const heroSlides = [
   {
     id: 1,
-    image: '/images/hero/IMG-20260803-WA0000(1).jpg',
+    image: '/images/hero/01.png',
     alt: 'Core King Premium Calibrated Plywood Banner 1',
   },
   {
     id: 2,
-    image: '/images/hero/file_000000005bcc8211bf8fd3ade923888a.png',
+    image: '/images/hero/2.png',
     alt: 'Core King Premium Calibrated Plywood Banner 2',
   },
   {
     id: 3,
-    image: '/images/hero/IMG-20260826-WA0018(1).jpg',
+    image: '/images/hero/3.jpeg',
     alt: 'Core King Premium Calibrated Plywood Banner 3',
   },
   {
     id: 4,
-    image: '/images/hero/file_000000009d688208a7b556e236f2c8b1.png',
+    image: '/images/hero/4.png',
     alt: 'Core King Premium Calibrated Plywood Banner 4',
   },
   {
     id: 5,
-    image: '/images/hero/file_00000000c5e4821192b0b168d353ceca.png',
+    image: '/images/hero/5.png',
     alt: 'Core King Premium Calibrated Plywood Banner 5',
   },
   {
     id: 6,
-    image: '/images/hero/IMG_20260824_181350.png',
+    image: '/images/hero/6.png',
     alt: 'Core King Premium Calibrated Plywood Banner 6',
   },
   {
     id: 7,
-    image: '/images/hero/IMG-20260809-WA0000.jpg',
+    image: '/images/hero/7.png',
     alt: 'Core King Premium Calibrated Plywood Banner 7',
   },
 ];

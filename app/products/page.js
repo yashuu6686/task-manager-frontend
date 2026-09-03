@@ -106,188 +106,34 @@ export default function ProductsPage() {
               transition={{ duration: 0.65, delay: 0.4 }}
             >
               <motion.a
-                href="#core-king-gold"
-                className="btn btn-outline-light me-3"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                View Core King BWR
-              </motion.a>
-              <motion.a
                 href="#core-king-club"
-                className="btn btn-outline-light"
+                className="btn btn-outline-light me-3"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
                 View Core King Club710
               </motion.a>
+              <motion.a
+                href="#core-king-gold"
+                className="btn btn-outline-light"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                View Core King BWR
+              </motion.a>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* 1. Core King BWR Product Section */}
-      <section id="core-king-gold" className="briter-product-fullscreen-section">
-        <div className="container">
-          <div className="product-fullscreen-grid">
-            {/* Visual Display Frame */}
-            <motion.div
-              className="product-image-col order-image-right"
-              initial={{ opacity: 0, x: 40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, amount: 0.25 }}
-              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            >
-              <div className="luxury-product-showcase">
-                <div className="product-img-card-inner">
-                  {/* Floating Badges */}
-                  <div className="product-floating-badges">
-                    <span className="badge-grade">
-                      <Award size={13} /> {goldProduct.grade.split(' ')[0]} Grade
-                    </span>
-                    <span className="badge-warranty">
-                      <ShieldCheck size={14} /> {goldProduct.warranty}
-                    </span>
-                  </div>
-
-                  <img
-                    src={goldProduct.image}
-                    alt={goldProduct.name}
-                    className="product-display-img"
-                  />
-                </div>
-
-                {/* Bottom Highlight Strip */}
-                <div className="product-card-bottom-strip">
-                  <div className="bottom-feature-item">
-                    <Layers size={14} />
-                    <span>4-Time Press</span>
-                  </div>
-                  <div className="bottom-feature-item">
-                    <CheckCheck size={14} />
-                    <span>100% Calibrated</span>
-                  </div>
-                  <div className="bottom-feature-item">
-                    <Sparkles size={14} />
-                    <span>BWR</span>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Information Column */}
-            <motion.div
-              className="product-content-col order-content-left luxury-product-info"
-              initial={{ opacity: 0, x: -40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, amount: 0.25 }}
-              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            >
-              <span className="product-eyebrow">
-                <Sparkles size={14} /> Premium Architectural Plywood
-              </span>
-              <h2>{goldProduct.name}<span>.</span></h2>
-
-              <p className="product-description-p">
-                {goldProduct.description}
-              </p>
-
-              {/* 2x2 Specifications Grid */}
-              <div className="luxury-specs-grid">
-                <div className="luxury-spec-card">
-                  <div className="spec-icon-wrap">
-                    <Award size={20} />
-                  </div>
-                  <div className="spec-details">
-                    <span className="spec-title-label">Grade Benchmark</span>
-                    <strong className="spec-value-strong">{goldProduct.grade}</strong>
-                  </div>
-                </div>
-
-                <div className="luxury-spec-card">
-                  <div className="spec-icon-wrap">
-                    <ShieldCheck size={20} />
-                  </div>
-                  <div className="spec-details">
-                    <span className="spec-title-label">Warranty</span>
-                    <strong className="spec-value-strong">{goldProduct.warranty}</strong>
-                  </div>
-                </div>
-
-                <div className="luxury-spec-card">
-                  <div className="spec-icon-wrap">
-                    <Layers size={20} />
-                  </div>
-                  <div className="spec-details">
-                    <span className="spec-title-label">Technology</span>
-                    <strong className="spec-value-strong">{goldProduct.technology}</strong>
-                  </div>
-                </div>
-
-                <div className="luxury-spec-card">
-                  <div className="spec-icon-wrap">
-                    <Wrench size={20} />
-                  </div>
-                  <div className="spec-details">
-                    <span className="spec-title-label">Applications</span>
-                    <strong className="spec-value-strong">{goldProduct.applications}</strong>
-                  </div>
-                </div>
-              </div>
-
-              {/* Key Features */}
-              <div className="product-key-features">
-                <h4>
-                  <CheckCheck size={18} />
-                  <span>Key Features:</span>
-                </h4>
-                <ul className="luxury-features-pills">
-                  {goldProduct.features.map((feat) => (
-                    <li key={feat}>
-                      <CheckCircle2 size={16} className="feature-bullet-icon" />
-                      <span>{feat}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              {/* Action Buttons */}
-              <div className="product-cta-row">
-                <motion.a
-                  href={`https://wa.me/917016059329?text=${encodeURIComponent(`Hi, I am interested in ${goldProduct.name} (${goldProduct.grade}). Please share pricing and details.`)}`}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="btn-whatsapp-quote"
-                  whileHover={{ scale: 1.04, y: -2 }}
-                  whileTap={{ scale: 0.96 }}
-                >
-                  <MessageCircle size={18} />
-                  <span>Chat on WhatsApp</span>
-                </motion.a>
-
-                <motion.a
-                  href="tel:+917016059329"
-                  className="btn-call-quote"
-                  whileHover={{ scale: 1.04, y: -2 }}
-                  whileTap={{ scale: 0.96 }}
-                >
-                  <Phone size={16} />
-                  <span>Call: +91 7016059329</span>
-                </motion.a>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* 2. Core King Club710 Product Section */}
-      <section id="core-king-club" className="briter-product-fullscreen-section alt-bg">
+      {/* 1. Core King Club710 Product Section */}
+      <section id="core-king-club" className="briter-product-fullscreen-section">
         <div className="container">
           <div className="product-fullscreen-grid">
             {/* Visual Display Frame */}
             <motion.div
               className="product-image-col"
-              initial={{ opacity: 0, x: -40 }}
+              initial={{ opacity: 0, x: 40 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, amount: 0.25 }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
@@ -300,7 +146,7 @@ export default function ProductsPage() {
                       <Award size={13} /> {clubProduct.grade.split(' ')[0]} Marine Grade
                     </span>
                     <span className="badge-warranty">
-                      <ShieldCheck size={14} /> {clubProduct.warranty}
+                      <ShieldCheck size={14} /> {goldProduct.warranty}
                     </span>
                   </div>
 
@@ -331,8 +177,8 @@ export default function ProductsPage() {
 
             {/* Information Column */}
             <motion.div
-              className="product-content-col luxury-product-info"
-              initial={{ opacity: 0, x: 40 }}
+              className="product-content-col order-content-left luxury-product-info"
+              initial={{ opacity: 0, x: -40 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, amount: 0.25 }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
@@ -409,6 +255,160 @@ export default function ProductsPage() {
               <div className="product-cta-row">
                 <motion.a
                   href={`https://wa.me/917016059329?text=${encodeURIComponent(`Hi, I am interested in ${clubProduct.name} (${clubProduct.grade}). Please share pricing and details.`)}`}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="btn-whatsapp-quote"
+                  whileHover={{ scale: 1.04, y: -2 }}
+                  whileTap={{ scale: 0.96 }}
+                >
+                  <MessageCircle size={18} />
+                  <span>Chat on WhatsApp</span>
+                </motion.a>
+
+                <motion.a
+                  href="tel:+917016059329"
+                  className="btn-call-quote"
+                  whileHover={{ scale: 1.04, y: -2 }}
+                  whileTap={{ scale: 0.96 }}
+                >
+                  <Phone size={16} />
+                  <span>Call: +91 7016059329</span>
+                </motion.a>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* 2. Core King BWR Product Section */}
+      <section id="core-king-gold" className="briter-product-fullscreen-section alt-bg">
+        <div className="container">
+          <div className="product-fullscreen-grid">
+            {/* Visual Display Frame */}
+            <motion.div
+              className="product-image-col"
+              initial={{ opacity: 0, x: -40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.25 }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            >
+              <div className="luxury-product-showcase">
+                <div className="product-img-card-inner">
+                  {/* Floating Badges */}
+                  <div className="product-floating-badges">
+                    <span className="badge-grade">
+                      <Award size={13} /> {goldProduct.grade.split(' ')[0]} Grade
+                    </span>
+                    <span className="badge-warranty">
+                      <ShieldCheck size={14} /> {clubProduct.warranty}
+                    </span>
+                  </div>
+
+                  <img
+                    src={goldProduct.image}
+                    alt={goldProduct.name}
+                    className="product-display-img"
+                  />
+                </div>
+
+                {/* Bottom Highlight Strip */}
+                <div className="product-card-bottom-strip">
+                  <div className="bottom-feature-item">
+                    <Layers size={14} />
+                    <span>4-Time Press</span>
+                  </div>
+                  <div className="bottom-feature-item">
+                    <CheckCheck size={14} />
+                    <span>100% Calibrated</span>
+                  </div>
+                  <div className="bottom-feature-item">
+                    <Sparkles size={14} />
+                    <span>BWR</span>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Information Column */}
+            <motion.div
+              className="product-content-col luxury-product-info"
+              initial={{ opacity: 0, x: 40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.25 }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            >
+              <span className="product-eyebrow">
+                <Sparkles size={14} /> Premium Architectural Plywood
+              </span>
+              <h2>{goldProduct.name}<span>.</span></h2>
+
+              <p className="product-description-p">
+                {goldProduct.description}
+              </p>
+
+              {/* 2x2 Specifications Grid */}
+              <div className="luxury-specs-grid">
+                <div className="luxury-spec-card">
+                  <div className="spec-icon-wrap">
+                    <Award size={20} />
+                  </div>
+                  <div className="spec-details">
+                    <span className="spec-title-label">Grade Benchmark</span>
+                    <strong className="spec-value-strong">{goldProduct.grade}</strong>
+                  </div>
+                </div>
+
+                <div className="luxury-spec-card">
+                  <div className="spec-icon-wrap">
+                    <ShieldCheck size={20} />
+                  </div>
+                  <div className="spec-details">
+                    <span className="spec-title-label">Warranty</span>
+                    <strong className="spec-value-strong">{goldProduct.warranty}</strong>
+                  </div>
+                </div>
+
+                <div className="luxury-spec-card">
+                  <div className="spec-icon-wrap">
+                    <Layers size={20} />
+                  </div>
+                  <div className="spec-details">
+                    <span className="spec-title-label">Technology</span>
+                    <strong className="spec-value-strong">{goldProduct.technology}</strong>
+                  </div>
+                </div>
+
+                <div className="luxury-spec-card">
+                  <div className="spec-icon-wrap">
+                    <Wrench size={20} />
+                  </div>
+                  <div className="spec-details">
+                    <span className="spec-title-label">Applications</span>
+                    <strong className="spec-value-strong">{goldProduct.applications}</strong>
+                  </div>
+                </div>
+              </div>
+
+              {/* Key Features */}
+              <div className="product-key-features">
+                <h4>
+                  <CheckCheck size={18} />
+                  <span>Key Features:</span>
+                </h4>
+                <ul className="luxury-features-pills">
+                  {goldProduct.features.map((feat) => (
+                    <li key={feat}>
+                      <CheckCircle2 size={16} className="feature-bullet-icon" />
+                      <span>{feat}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Action Buttons */}
+              <div className="product-cta-row">
+                <motion.a
+                  href={`https://wa.me/917016059329?text=${encodeURIComponent(`Hi, I am interested in ${goldProduct.name} (${goldProduct.grade}). Please share pricing and details.`)}`}
                   target="_blank"
                   rel="noreferrer"
                   className="btn-whatsapp-quote"

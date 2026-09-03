@@ -1,20 +1,18 @@
 'use client';
 
 import Link from 'next/link';
-import { MessageCircle } from 'lucide-react';
+import { Mail } from 'lucide-react';
 import { companyInfo } from '@/data/siteData';
 
 export default function WhatsAppButton() {
   return (
     <Link
-      href={companyInfo.whatsappLink}
-      target="_blank"
-      rel="noreferrer"
+      href={companyInfo.emailLink}
       className="whatsapp-float"
-      aria-label="Chat with Core King Ply Specialist on WhatsApp"
-      title="Chat with Core King Ply Specialist on WhatsApp"
+      aria-label="Email Core King Ply Specialist"
+      title="Email Core King Ply Specialist"
     >
-      <MessageCircle size={28} strokeWidth={2.2} />
+      <Mail size={28} strokeWidth={2.2} />
     </Link>
   );
 }
