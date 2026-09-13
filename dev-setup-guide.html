@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="gu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dev Environment End-to-End Setup Guide</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --card-border: #334155;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --primary: #38bdf8;
+      --accent: #22c55e;
+      --code-bg: #090d16;
+      --warning: #f59e0b;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    }
+    body {
+      background-color: var(--bg);
+      color: var(--text-main);
+      line-height: 1.6;
+      padding: 30px 16px;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 40px;
+      padding: 24px;
+      background: linear-gradient(135deg, rgba(56,189,248,0.1) 0%, rgba(34,197,94,0.1) 100%);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+    }
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 8px;
+      color: #fff;
+    }
+    .badge {
+      display: inline-block;
+      background: #0284c7;
+      color: white;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 9999px;
+      margin-bottom: 12px;
+      letter-spacing: 0.05em;
+    }
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+    .step-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 24px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+    }
+    .step-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .step-number {
+      background: var(--primary);
+      color: #0f172a;
+      font-weight: 800;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      font-size: 0.95rem;
+    }
+    h2 {
+      font-size: 1.25rem;
+      color: #fff;
+    }
+    p {
+      color: var(--text-muted);
+      margin-bottom: 12px;
+      font-size: 0.95rem;
+    }
+    .gu-desc {
+      color: #cbd5e1;
+      font-weight: 500;
+      margin-bottom: 12px;
+    }
+    pre {
+      background: var(--code-bg);
+      border: 1px solid #1e293b;
+      padding: 14px 18px;
+      border-radius: 8px;
+      overflow-x: auto;
+      margin: 10px 0 16px;
+      font-family: "JetBrains Mono", Consolas, Menlo, monospace;
+      font-size: 0.88rem;
+      color: #e2e8f0;
+    }
+    code {
+      font-family: inherit;
+      color: var(--primary);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 12px 0 16px;
+      font-size: 0.9rem;
+    }
+    th, td {
+      border: 1px solid var(--card-border);
+      padding: 10px 12px;
+      text-align: left;
+    }
+    th {
+      background: rgba(255,255,255,0.03);
+      color: #fff;
+    }
+    td {
+      color: #cbd5e1;
+    }
+    .tip-box {
+      background: rgba(245, 158, 11, 0.1);
+      border-left: 4px solid var(--warning);
+      padding: 12px 16px;
+      border-radius: 0 8px 8px 0;
+      margin: 14px 0;
+      font-size: 0.9rem;
+      color: #fde68a;
+    }
+    .success-box {
+      background: rgba(34, 197, 94, 0.1);
+      border-left: 4px solid var(--accent);
+      padding: 12px 16px;
+      border-radius: 0 8px 8px 0;
+      margin: 14px 0;
+      font-size: 0.9rem;
+      color: #bbf7d0;
+    }
+    ul, ol {
+      padding-left: 20px;
+      margin-bottom: 12px;
+      color: var(--text-muted);
+    }
+    li {
+      margin-bottom: 6px;
+    }
+    .footer {
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid var(--card-border);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <span class="badge">DEV ENVIRONMENT ONLY</span>
+      <h1>Docker + Nginx + CI/CD Setup Guide</h1>
+      <p class="subtitle">તમારે End-to-End શું શું Configuration કરવું પડશે તેનું સ્ટેપ-બાય-સ્ટેપ ગાઇડ</p>
+    </header>
+
+    <!-- STEP 1 -->
+    <div class="step-card">
+      <div class="step-header">
+        <div class="step-number">1</div>
+        <h2>Git 'dev' Branch બનાવો અને Push કરો</h2>
+      </div>
+      <p class="gu-desc">આ CI/CD workflow ફક્ત <code>dev</code> બ્રાન્ચ પર જ ટ્રિગર થશે. જો તમારા repo માં <code>dev</code> બ્રાન્ચ નથી, તો લોકલ મશીન પરથી આ કમાન્ડ ચલાવો:</p>
+      <pre><code># 1. 'dev' બ્રાન્ચ બનાવો અને સ્વિચ કરો
+git checkout -b dev
+
+# 2. નવી ફાઇલો add કરો
+git add .
+
+# 3. Commit કરો
+git commit -m "chore: setup docker nginx and dev cicd"
+
+# 4. GitHub પર push કરો
+git push -u origin dev</code></pre>
+    </div>
+
+    <!-- STEP 2 -->
+    <div class="step-card">
+      <div class="step-header">
+        <div class="step-number">2</div>
+        <h2>GitHub Repository Secrets સેટ કરો</h2>
+      </div>
+      <p class="gu-desc">જો તમે Dev Server (VPS/Cloud) પર ઓટોમેટિક ડેપ્લોય કરવા માંગો છો, તો GitHub માં આ સિક્રેટ્સ ઉમેરવા પડશે:</p>
+      <p>જાવ: <strong>GitHub Repo &rarr; Settings &rarr; Secrets and variables &rarr; Actions &rarr; "New repository secret"</strong></p>
+      <table>
+        <thead>
+          <tr>
+            <th>Secret Name</th>
+            <th>શુ વેલ્યુ આપવી? (Value Description)</th>
+            <th>ઉદાહરણ (Example)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>DEV_SERVER_HOST</code></td>
+            <td>તમારા Dev Cloud/VPS સર્વરનો પબ્લિક IP એડ્રેસ</td>
+            <td><code>13.233.45.67</code></td>
+          </tr>
+          <tr>
+            <td><code>DEV_SERVER_USER</code></td>
+            <td>સર્વરનું SSH યુઝરનેમ</td>
+            <td><code>ubuntu</code> અથવા <code>root</code></td>
+          </tr>
+          <tr>
+            <td><code>DEV_SERVER_SSH_KEY</code></td>
+            <td>તમારા સર્વરની Private SSH Key (<code>~/.ssh/id_rsa</code>)</td>
+            <td><code>-----BEGIN OPENSSH PRIVATE KEY----- ...</code></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="tip-box">
+        <strong>નોંધ:</strong> Docker image build અને verify કરવા માટે વધારાના કોઈ સિક્રેટની જરૂર નથી, કારણકે GitHub Actions પોતાની ડિફોલ્ટ <code>secrets.GITHUB_TOKEN</code> વાપરે છે.
+      </div>
+    </div>
+
+    <!-- STEP 3 -->
+    <div class="step-card">
+      <div class="step-header">
+        <div class="step-number">3</div>
+        <h2>Dev Server (VPS) પર સર્વર Setup</h2>
+      </div>
+      <p class="gu-desc">જો તમારી પાસે AWS EC2, DigitalOcean, Hetzner કે કોઈ પણ Linux VPS છે, તો ત્યાં 1 વાર આ કમાન્ડ રન કરો:</p>
+      <pre><code># 1. Server અપડેટ કરો અને Docker ઇન્સ્ટોલ કરો
+sudo apt update && sudo apt upgrade -y
+curl -fsSL https://get.docker.com | sh
+
+# 2. Docker Compose પ્લગઇન ઇન્સ્ટોલ કરો
+sudo apt install docker-compose-plugin -y
+
+# 3. કરંટ યુઝરને docker ગ્રુપમાં એડ કરો (sudo વગર ચલાવવા માટે)
+sudo usermod -aG docker $USER
+newgrp docker
+
+# 4. પોર્ટ ઓપન કરો (Firewall / AWS Security Group)
+# Port 80 (HTTP) -> 0.0.0.0/0 (અને જો SSH હોય તો Port 22)</code></pre>
+    </div>
+
+    <!-- STEP 4 -->
+    <div class="step-card">
+      <div class="step-header">
+        <div class="step-number">4</div>
+        <h2>સર્વર પર પ્રોજેક્ટ ક્લોન અને .env ફાઇલ</h2>
+      </div>
+      <p class="gu-desc">તમારા Dev સર્વર પર જઈને આ રીતે ફોલ્ડર સેટઅપ કરો:</p>
+      <pre><code># સર્વર પર ગિટ પ્રોજેક્ટ ક્લોન કરો (ફક્ત dev બ્રાન્ચ)
+git clone -b dev https://github.com/YOUR_USERNAME/task-manager-frontend.git /var/www/dev-frontend
+cd /var/www/dev-frontend
+
+# જો કોઈ Environment Variables હોય તો .env.local અથવા .env બનાવો:
+nano .env</code></pre>
+      <p>જો Next.js માં backend API url હોય તો ઉમેરો, જેમ કે: <code>NEXT_PUBLIC_API_URL=http://your-dev-backend-api</code></p>
+    </div>
+
+    <!-- STEP 5 -->
+    <div class="step-card">
+      <div class="step-header">
+        <div class="step-number">5</div>
+        <h2>સર્વર પર Docker Compose ચલાવો</h2>
+      </div>
+      <p class="gu-desc">સર્વર પર એક વાર મેન્યુઅલી અથવા CI/CD દ્વારા કન્ટેનર સ્ટાર્ટ કરો:</p>
+      <pre><code># 1. કન્ટેનર્સ બિલ્ડ અને બેકગ્રાઉન્ડમાં સ્ટાર્ટ કરો
+docker compose -f docker-compose.dev.yml up -d --build
+
+# 2. કંટેનર રન થઈ રહ્યા છે કે નહિ તે ચેક કરો
+docker ps
+
+# 3. Nginx અને Next.js ના લાઇવ logs જુઓ
+docker compose -f docker-compose.dev.yml logs -f</code></pre>
+      <div class="success-box">
+        <strong>ચેક કરો:</strong> બ્રાઉઝરમાં <code>http://&lt;SERVER_IP&gt;</code> ખોલો. એપ લાઇવ દેખાશે! <br>
+        Health check ચેક કરવા માટે: <code>http://&lt;SERVER_IP&gt;/health</code> (જવાબ આવશે: <code>healthy</code>).
+      </div>
+    </div>
+
+    <!-- STEP 6 -->
+    <div class="step-card">
+      <div class="step-header">
+        <div class="step-number">6</div>
+        <h2>CI/CD કેવી રીતે કામ કરશે? (Workflow Lifecycle)</h2>
+      </div>
+      <p class="gu-desc">હવેથી જ્યારે પણ તમે <code>dev</code> બ્રાન્ચમાં કોડ Push કરશો:</p>
+      <ol>
+        <li>GitHub Actions આપોઆપ શરૂ થશે.</li>
+        <li><strong>Lint & Tests</strong> રન કરશે.</li>
+        <li><strong>Docker Build</strong> કરશે અને <code>:dev</code> ટેગ સાથે ઈમેજ તૈયાર કરશે.</li>
+        <li>સર્વર પર SSH દ્વારા લેટેસ્ટ કોડ પુલ કરીને કન્ટેનર રિસ્ટાર્ટ કરશે.</li>
+        <li><strong>Main/Production બ્રાન્ચને કશું જ અસર નહિ થાય!</strong></li>
+      </ol>
+    </div>
+
+    <!-- STEP 7 -->
+    <div class="step-card">
+      <div class="step-header">
+        <div class="step-number">7</div>
+        <h2>મહત્વના કમાન્ડ્સ (Quick Reference)</h2>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>જરૂરિયાત (Action)</th>
+            <th>કમાન્ડ (Command)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Dev સર્વર સ્ટાર્ટ કરવા</td>
+            <td><code>docker compose -f docker-compose.dev.yml up -d</code></td>
+          </tr>
+          <tr>
+            <td>Dev સર્વર સ્ટોપ કરવા</td>
+            <td><code>docker compose -f docker-compose.dev.yml down</code></td>
+          </tr>
+          <tr>
+            <td>નવા ફેરફારો સાથે Rebuild કરવા</td>
+            <td><code>docker compose -f docker-compose.dev.yml up -d --build</code></td>
+          </tr>
+          <tr>
+            <td>Next.js અને Nginx ના Logs જોવા</td>
+            <td><code>docker compose -f docker-compose.dev.yml logs -f</code></td>
+          </tr>
+          <tr>
+            <td>Frontend કન્ટેનરના logs ફક્ત જોવા</td>
+            <td><code>docker logs -f dev-frontend</code></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="footer">
+      <p>Task Management App — Dev Environment Docker & Nginx CI/CD Setup Complete</p>
+    </div>
+  </div>
+</body>
+</html>
