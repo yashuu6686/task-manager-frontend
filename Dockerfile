@@ -17,7 +17,7 @@ COPY . ./
 
 # Environment variables for dev build
 ENV NEXT_TELEMETRY_DISABLED=1
-ENV NODE_ENV=development
+# ENV NODE_ENV=development
 
 RUN npm run build
 
@@ -25,7 +25,7 @@ RUN npm run build
 FROM base AS runner
 WORKDIR /app
 
-ENV NODE_ENV=development
+# ENV NODE_ENV=development
 ENV NEXT_TELEMETRY_DISABLED=1
 ENV PORT=3000
 ENV HOSTNAME="0.0.0.0"
